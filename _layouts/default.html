@@ -1,45 +1,15 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% if page.title %}{{ page.title }} - {% endif %}Заметки зеленого программиста.</title>
+---
+layout: framework
+includes: <link rel="stylesheet" href="/static/css/common.css">
+---
+<div class="container">
+    <div class="header">
+        <h3 class="text-muted"><a href="/">boonya.info</a></h3>
+    </div>
 
-    <meta name="keywords" content="php, Zend Framework, html, css, JavaScript, jQuery, Windows, Linux, Twitter bootstrap, Angular.js, Python, Django" />
-    <meta name="rights" content="Sergey boonya Buinitskiy Буйницкий Сергей" />
-    <meta name="description" content="Заметки зеленого программиста. php, Zend Framework, html, css, JavaScript, jQuery, Windows, Linux, Twitter bootstrap, Angular.js, Python, Django..." />
-    <meta name="author" content="Sergey boonya Buynitskiy">
-    <link rel="icon" href="favicon.ico">
+    {{ content }}
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-    <link rel="stylesheet" href="/static/css/common.css">
-
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-
-    <div class="container">
-        <div class="header">
-            <h3 class="text-muted"><a href="/">boonya.info</a></h3>
-        </div>
-
-        {{ content }}
-
-        <footer class="footer">
-            <p>&copy; boonya.info from 2008 till now.</p>
-        </footer>
-    </div><!-- /container -->
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    {% include analytics.html %}
-</body>
-</html>
+    <footer class="footer">
+        <p>&copy; boonya.info from 2008 till now.</p>
+    </footer>
+</div><!-- /container -->
