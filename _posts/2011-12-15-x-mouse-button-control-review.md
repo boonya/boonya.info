@@ -14,45 +14,45 @@ redirect_from: /my-blog/x-mouse-button-control-review.html
 
 Для начала нужно [скачать X-Mouse Button Control](http://www.highrez.co.uk/downloads/XMouseButtonControl.htm) и уставить её. Установка совершенно стандартная.
 
-![img 01](https://doc-0s-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/f44547kpk167vdq58h8516hoghtl0lb5/1419372000000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxZGFzNHE4Z3RBaHc)
+![img 01](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/01.jpg)
 
-![img 02](https://doc-10-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/p3bjdj3f6ur33auvk0uv9kgkoa03bn0n/1419372000000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxYTRoSEtVYXlqZms)
+![img 02](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/02.jpg)
 
-![img 03](https://doc-04-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/orpp1orp4sh26d8q5vbpmphl944rs0go/1419372000000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxN0c3Sy04aWFqMFE)
+![img 03](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/03.jpg)
 
 Приглашение к установке, соглашение с лицензией, выбор директории для установки...
 
 Не совсем стандартое лишь четвёртое диалоговое окно. Здесь вы можете выбрать директорию в которую программа будет сохранять свои настройки и логи. И это замечательно, поскольку обычно, после переустановки операционной системы, настройки всех программ теряются, а в этом случае вам достаточно будет лишь установить программу и указать ей директорию с конфигами, а она подхватит уже однажды настроенные профили. Мелочь, а приятно ;) Нужно только понимать, что настройки должы храниться на разделе (диске), который вы не форматируете при переустановке системы.
 
-![img 04](https://doc-00-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/9oth3uluhnl3cpabkshi7a62skf533g9/1419372000000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxZjFCZm53NlFWLWM)
+![img 04](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/04.jpg)
 
 Далее всё так же как и обычно - процесс распаковки и инсталляции, и вконце предложение запустить только что установленный софт. Так же после нажатия кнопки "Finish" откроется страца программы в вашем стандартном браузере.
 
-![img 05](https://doc-0s-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/a948qk0mv1smovallh3id2tdd3lget11/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxSDBsT0t5R3dXYm8)
+![img 05](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/05.jpg)
 
-![img 06](https://doc-04-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/r6oc3aubdrqkcjjuad1v39empjfpo5ph/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxNmo5Y3FaUGluRFU)
+![img 06](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/06.jpg)
 
 После установки **X-Mouse Button Control** компьютер не обязательно перезагружать, хотя всё таки лучше это сделать. Ведь вам после занятия одним делом обычно нужно собраться с мыслями, чтобы перейти к другой деятельности? А чем ваш домашний любимец хуже?
 
-![img 07](https://doc-0o-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/ht1er17vjmc9s8cu54sbmu33a8pcljs2/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxbUtlNzJwNjdjalE)
+![img 07](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/07.jpg)
 
 В системном лотке пиктограмма нашей утилиты выглядит как на картинке выше и если по ней кликнуть, то мы увидем следующее окно.
 
-![img 08](https://doc-04-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/s2iouivtltj02hr8f6m6v1a0h5vfo7gk/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxNkh6TTRBa1dEMVU)
+![img 08](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/08.jpg)
 
 А вот так будет подсвечиваться именно то событие которое произошло на мышке. То есть, если вы кликните левой кнопкой мыши, то подсветится тот селектор, который указывает действие для этой кнопки. Таким образом мы без труда и "научного тыка" можем настроить все кнопки.
 
-![img 09](https://doc-00-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/i7jmulq4eegf0urpet8u80jk94kttiuk/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxdWJUcGYwdlkzNmc)
+![img 09](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/09.jpg)
 
 Вот так выглядит у меня настроенная программа для двух дополнительных кнопок. Как вы можете видеть, левая бокаовая кнопка у меня выполняет действие "Копировать" (Ctrl+C), а правая "Вставить" (Ctrl+V). Проблема возникла с настройкой второго колесика. **X-Mouse Button Control** воспринимает его точно так же как и основное.
 
-![img 10](https://doc-08-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/mtbbishuksfg30mpu68mk36gjaoh6jrg/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxNnI5aW1xUTJrZnM)
+![img 10](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/10.jpg)
 
 А ещё есть возможность настроить разные профили для различных программ. То есть в каждой программе, кнопки мышки могут реагировать по разному, так как вам того хотелось бы. Для этого нужно нажать кнопку "Add" и выбрать приложение для которого вы будете настраивать новый профиль.
 
-![img 11](https://doc-00-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/7rl9b9f27ohjkk9ahk2s5cp8drs9btp7/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxVklTektMRElpZ2c)
+![img 11](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/11.jpg)
 
-![img 12](https://doc-0c-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/lh9va5up51hkp3s6ed6do86qgv8nitdb/1419372000000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxVm1HZU9aSVkzOGs)
+![img 12](https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/x-mouse-button-control-review/12.jpg)
 
 Чтобы применить все настройки, нужно кликнуть по кнопке "Apply", что на английском это и означает ;)
 

@@ -9,7 +9,7 @@ redirect_from: /my-blog/virtualbox-boot-from-usb-hdd.html
 
 <!--more-->
 
-<p><img src="https://doc-0s-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/jg9pgml09h17qcaq7bdn70vkjduamjs4/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxa3p4NzhnUjJQMFk" alt="Ubuntu Linux в VirtualBox" class="decorated aligncenter" /></p>
+<p><img src="https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/virtualbox-boot-from-usb-hdd/01.jpg" alt="Ubuntu Linux в VirtualBox" /></p>
 
 <h4>Дано:</h4>
 <ul>
@@ -22,7 +22,7 @@ redirect_from: /my-blog/virtualbox-boot-from-usb-hdd.html
 
 <h4>Решение:</h4>
 <p>Для начала нужно <strong>запустить коммандную строку</strong> (консоль, cmd.exe) <strong>от имени администратора (!!! <strong>ОБЯЗАТЕЛЬНО !!!</strong>)</strong>, если вы используете Windows 7 или Vista.</p>
-<p><img src="https://doc-10-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/8468pbgc87la11vvr169qrcu24qf4ahf/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxRllBaTFEbXFMdkU" alt="how to cmd start"/></p>
+<p><img src="https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/virtualbox-boot-from-usb-hdd/02.png" alt="how to cmd start"/></p>
 
 <p>И выполнить в ней следующие три команды.</p>
 <kbd class="pre">
@@ -45,13 +45,13 @@ VBoxManage internalcommands createrawvmdk -filename "%USERPROFILE%\USB-HDD-conne
 <p>Лично я предпочитаю второй вариант, правда для этого нужно помнить эту команду. Благо я однажды добавил в панель инструментов своего TotalCommander'а кнопку, которая открывает окно "управление компьютером". Что, то я отвлекся...</p>
 <p>В разделе "управление дисками" ищем свой диск. Диск 0, Диск 1, Диск 2... Цифры - это и есть номера дисков.</p>
 
-<p><img src="https://doc-00-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/bmtnnr1prtgcl4rrratomo8b97scef5u/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxNjRJT3ZaVkowWUk" alt="pс managment" /></p>
+<p><img src="https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/virtualbox-boot-from-usb-hdd/03.png" alt="pс managment" /></p>
 
 <p>В моем случае - это был <b>Диск 1</b>. Так вот, в вышеописаной команде есть такая подстрока <code>\\.\PhysicalDrive1</code>. Последняя цифра здесь должна совпадать с номером диска, который вы узнали в панели управления компьютером.</p>
 <p>Ещё один момент, который я хотел бы описать - это место где будет создан нужный нам файл. В моем варианте - <code>%USERPROFILE%\USB-HDD-connector.vmdk</code> - это значит, что в папке <code>%USERPROFILE%</code> <i>(это системная переменная Windows, которая будет заменена интерпретатором командной строки на путь к папке пользователя, под которым вы авторизованы в системе)</i> будет создан файл <code>USB-HDD-connector.vmdk</code>. Конечно же вы можете использовать здель любое удобное вам имя файла и путь, но если в этой строке есть пробелы, то её обязательно нужно заключить в кавычки. Иначе интерпретатор воспримйет этот пробел как переход к следующей инструкции.</p>
 
 <h4>В итоге в вашей консоли должа быть примерно следующая картина:</h4>
-<p><img src="https://doc-0g-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/drg9jm2cob3b9fg2la0do2lo97cimdtg/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxM0JGbWdKNWpDTlE" alt="cmd" /></p>
+<p><img src="https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/virtualbox-boot-from-usb-hdd/04.png" alt="cmd" /></p>
 <p>В случае успешного выполнения команды и создания файла связи вы увидите ответ: <kbd>RAW host disk access VMDK file %userpofile%\USB-HDD-connector.vmdk created successfully</kbd>". Вооот. Осталось дело за малым - создать виртуальную машину и выбрать в качестве жесткого диска файл, который мы только что создали. Ах да... И включить его как "первичный мастер".</p>
-<p><img src="https://doc-10-ak-docs.googleusercontent.com/docs/securesc/mq689qlfmpss2rpgtdavi9i3japc1msh/op4428m75lmr3ebq8g5fi269so2m5hes/1419379200000/04492691392261250650/04492691392261250650/0BxJRQxIajdRxVVMyREhuMzJ5cm8" alt="virtual machine" /></p>
+<p><img src="https://googledrive.com/host/0BxJRQxIajdRxRXVZNkZVRDl1a3c/blog/virtualbox-boot-from-usb-hdd/05.png" alt="virtual machine" /></p>
 <p>Сразу хотелось бы предупредить, что VirtualBox может ругаться на то, что такого диска не существует и виртуальная машина не запустится. Это связано с тем, что у пользователя под которым вы авторизованы в системе недостаточно прав. Чтобы обойти эту неприятность запустите ваш VirtualBox от имени администратора.</p>
