@@ -2,7 +2,6 @@
 layout: post
 title: Простой импорт контактов в формате vCard в контакты Google.
 permalink: /blog/simple-import-vcards-to-google.html
-alias: /my-blog/simple-import-vcards-to-google.html
 ---
 Эта короткая заметка поведает вам о том, как без лишних телодвижений можно **импортировать большое количество контактов в формате vCard в контакты Google**.
 

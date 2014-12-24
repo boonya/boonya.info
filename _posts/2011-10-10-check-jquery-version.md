@@ -2,7 +2,6 @@
 layout: post
 title: Проверить наличие jQuery и узнать её версию.
 permalink: /blog/check-jquery-version.html
-alias: [/blog/10-web-technology/javascript/jquery/1-check-jquery-version.html, /my-blog/check-jquery-version.html]
 ---
 Иногда возникает необходимость проверить установлена ли на сайте **JavaScript библиотека jQuery** и если да, то какой она версии.
 
