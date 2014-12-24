@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<div class="post">
+    <h2>{{ page.title }}</h2>
+    <div class="content">{{ content }}</div>
+    <p class="text-right">{{ page.date | date: "%d.%m.%Y" }}</p>
+</div>
+
+{% include disqus.html %}

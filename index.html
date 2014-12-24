@@ -1,18 +1,18 @@
 ---
-layout: default
-title: My Blog
+layout: blog
+title: Блог
 ---
 {% for post in paginator.posts %}
-    <h2>
-      <a href="{{ post.url }}" class="entry_title" rel="bookmark">{{ post.title }}</a>
-      <span class="entry_date">{{ post.date | date: "%d.%m.%Y" }}</span>
-    </h2>
+<div class="post row">
+    <h2><a href="{{ post.url }}" class="entry_title" rel="bookmark">{{ post.title }}</a></h2>
+    {% if post.image %}<img src="{{ post.image }}" class="img-responsive img-rounded" />{% endif %}
     {% if post.content contains site.excerpt_separator %}
-    <div class="entry">{{ post.excerpt }}</div>
-    <h4><a href="{{ post.url }}">Читать дальше &rarr;</a></h4>
+        <div class="entry">{{ post.excerpt }}</div>
+        <p class=""><a href="{{ post.url }}">Читать дальше &rarr;</a></p>
     {% else %}
-    <div class="entry">{{ post.content }}</div>
+        <div class="entry">{{ post.content }}</div>
     {% endif %}
+</div><!-- .post -->
 {% endfor %}
 
 <h4>
