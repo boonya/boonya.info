@@ -2,6 +2,7 @@
 layout: post
 title: Как обновить Mozilla Firefox в Ubuntu.
 permalink: /blog/update-firefox-ubuntu.html
+alias: [/blog/3-update-firefox-ubuntu.html, /my-blog/update-firefox-ubuntu.html]
 ---
 Для того чтобы обновить **Mozilla Firefox** в **Ubuntu** до актуальной версии достаточно в терминале ввести команду:
 
