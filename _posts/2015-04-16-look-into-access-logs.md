@@ -30,23 +30,14 @@ permalink: /blog/look-into-access-logs.html
 
 ```
 5 72.46.135.146 /.7z
-
 5 72.46.135.146 /backup.tar.bz2
-
 5 72.46.135.146 /site.com.rar
-
 5 72.46.135.146 /site.com.zip
-
 5 72.46.135.146 /site.tar.gz
-
 6 176.36.80.39 /robots.txt
-
 6 217.69.133.217 /robots.txt
-
 6 24.114.29.162 /administrator/index.php
-
 18 136.243.5.215 /robots.txt
-
 234 46.118.154.195 /administrator/index.php
 ```
 
