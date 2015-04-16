@@ -81,3 +81,7 @@ body {
     display: inline-block;
     white-space: pre;
 }
+
+code {
+    white-space: pre-wrap;
+}
