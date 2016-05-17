@@ -12,7 +12,7 @@
     </ul>
     <script>
         alert(navigator.userAgent);
-        alert(navigator.userAgent.test(/iPhone/));
+        alert(/iPhone/.test(navigator.userAgent.toLowerCase()) ? 'iPhone' : 'something else');
     </script>
 </body>
 </html>
