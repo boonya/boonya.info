@@ -12,8 +12,17 @@ redirect_from: /my-blog/system-clock-trouble-ubuntu-windows.html
 
 ![карта часовых поясов](http://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Standard_time_zones_of_the_world.png/800px-Standard_time_zones_of_the_world.png)
 
+
+_Для версий Ubuntu до 15.04:_
+ 
 Нужно открыть файл переменных настроек с помощью команды:
 
 `sudo gedit /etc/default/rcS`
 
 или любой другой удобной вам и изменить значение параметра UTC с yes на no.
+
+_Для версий Ubuntu 15.04 и выше:_
+
+`timedatectl set-local-rtc 1`
+
+Источник: [help.ubuntu.com](https://help.ubuntu.com/community/UbuntuTime#Make_Linux_use_.27Local.27_time)
