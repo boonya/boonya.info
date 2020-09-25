@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Arm64 Ubuntu Server для Raspberry PI 3 B+ без использования SD карты.
+title: Arm64 Ubuntu Server 18.04.3 для Raspberry PI 3 B+ без использования SD карты.
 permalink: /blog/raspi-ubuntu-usb-boot.html
 ---
 
