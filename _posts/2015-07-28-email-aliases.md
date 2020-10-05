@@ -24,7 +24,8 @@ permalink: /blog/email-aliases.html
 Это такой почтовый сервер. Умеет он много чего и еще маленкая тележка,
 но я разбирался только с сабжем.
 
-#### Устанавливаем postfix:
+#### Устанавливаем postfix
+
 `sudo apt-get update`
 
 `sudo apt-get install postfix`
@@ -32,11 +33,14 @@ permalink: /blog/email-aliases.html
 _Это в случае если у вас Ubuntu на сервере. Если какой-то другой дистрибутив, то
 поищите инструкцию для вашего него._
 
-#### Модифячим конфиг:
+#### Модифячим конфиг
+
 `sudo vim /etc/postfix/main.cf`
 
-#### Его содержимое должно быть +/- следующим:
-```virtual_alias_domains = your-first-domain.com, your-second-domain.com
+#### Его содержимое должно быть +/- следующим
+
+```txt
+virtual_alias_domains = your-first-domain.com, your-second-domain.com
 virtual_alias_maps = hash:/etc/postfix/virtual
 myorigin = /etc/mailname
 inet_protocols = all
@@ -44,26 +48,30 @@ inet_protocols = all
 
 _Доменные имена замените на свои. Или одно имя без запятой._
 
-#### Сопоставляем алиасы с целями:
+#### Сопоставляем алиасы с целями
+
 Редактируем файл: `sudo vim /etc/postfix/virtual`
 
 Начинка в нем, что-то типа вот этого. Пары ключ/значение через пробел.
 Каждая пара на новой строке. Первое - это алиас, второе - это цель.
 
-```name1@your-first-domain.com some-name@destination.com
+```txt
+name1@your-first-domain.com some-name@destination.com
 name2@your-first-domain.com some-name@destination.com
 name@your-second-domain.com some-name@destination.com
 ```
 
-#### Обновляем таблицу имен:
+#### Обновляем таблицу имен
+
 Эта команда применяет карту алиасов к базе данных сервиса `postfix`.
 
 `sudo postmap /etc/postfix/virtual`
 
-#### Перезагрузить сервис:
+#### Перезагрузить сервис
+
 `sudo service postfix restart`
 
-#### Ах да! Забыл сказать об DNS конфигурации вашего домена.
+#### Ах да! Забыл сказать об DNS конфигурации вашего домена
 
 В общем, нужно создать `A` запись для поддомена `mail` (по вашему желанию),
 которая будет смотреть на IP адрес сервера, где "крутится" `postfix`.
