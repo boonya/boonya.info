@@ -4,6 +4,10 @@ body {
     padding-bottom: 20px;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .footer {
