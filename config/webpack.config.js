@@ -147,44 +147,46 @@ module.exports = function (webpackEnv) {
 		return loaders;
 	};
 
+	// eslint-disable-next-line no-extra-parens
+	const devtool = isEnvProduction ? (
+		shouldUseSourceMap
+			? 'source-map'
+			: false
+	) : isEnvDevelopment && 'cheap-module-source-map';
+
+	const entry = isEnvDevelopment && !shouldUseReactRefresh
+		? [
+			// Include an alternative client for WebpackDevServer. A client's job is to
+			// connect to WebpackDevServer by a socket and get notified about changes.
+			// When you save a file, the client will either apply hot updates (in case
+			// of CSS changes), or refresh the page (in case of JS changes). When you
+			// make a syntax error, this client will display a syntax error overlay.
+			// Note: instead of the default WebpackDevServer client, we use a custom one
+			// to bring better experience for Create React App users. You can replace
+			// the line below with these two lines if you prefer the stock client:
+			//
+			// require.resolve('webpack-dev-server/client') + '?/',
+			// require.resolve('webpack/hot/dev-server'),
+			//
+			// When using the experimental react-refresh integration,
+			// the webpack plugin takes care of injecting the dev client for us.
+			webpackDevClientEntry,
+			// Finally, this is your app's code:
+			paths.appIndexJs,
+			// We include the app code last so that if there is a runtime error during
+			// initialization, it doesn't blow up the WebpackDevServer client, and
+			// changing JS code would still trigger a refresh.
+		]
+		: paths.appIndexJs;
+
 	return {
 		mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
 		// Stop compilation early in production
 		bail: isEnvProduction,
-		devtool: isEnvProduction
-			// eslint-disable-next-line no-extra-parens
-			? (
-				shouldUseSourceMap
-					? 'source-map'
-					: false
-			) : isEnvDevelopment && 'cheap-module-source-map',
+		devtool,
 		// These are the "entry points" to our application.
 		// This means they will be the "root" imports that are included in JS bundle.
-		entry:
-			isEnvDevelopment && !shouldUseReactRefresh
-				? [
-					// Include an alternative client for WebpackDevServer. A client's job is to
-					// connect to WebpackDevServer by a socket and get notified about changes.
-					// When you save a file, the client will either apply hot updates (in case
-					// of CSS changes), or refresh the page (in case of JS changes). When you
-					// make a syntax error, this client will display a syntax error overlay.
-					// Note: instead of the default WebpackDevServer client, we use a custom one
-					// to bring better experience for Create React App users. You can replace
-					// the line below with these two lines if you prefer the stock client:
-					//
-					// require.resolve('webpack-dev-server/client') + '?/',
-					// require.resolve('webpack/hot/dev-server'),
-					//
-					// When using the experimental react-refresh integration,
-					// the webpack plugin takes care of injecting the dev client for us.
-					webpackDevClientEntry,
-					// Finally, this is your app's code:
-					paths.appIndexJs,
-					// We include the app code last so that if there is a runtime error during
-					// initialization, it doesn't blow up the WebpackDevServer client, and
-					// changing JS code would still trigger a refresh.
-				]
-				: paths.appIndexJs,
+		entry,
 		output: {
 			// The build folder.
 			path: isEnvProduction ? paths.appBuild : undefined,
@@ -297,6 +299,12 @@ module.exports = function (webpackEnv) {
 				name: (entrypoint) => `runtime-${entrypoint.name}`,
 			},
 		},
+		resolveLoader: {
+			modules: [
+				path.resolve(__dirname, 'webpack'),
+				path.resolve(__dirname, '..', 'node_modules'),
+			],
+		},
 		resolve: {
 			// This allows you to set a fallback for where webpack should look for modules.
 			// We placed these paths second because we want `node_modules` to "win"
@@ -331,7 +339,7 @@ module.exports = function (webpackEnv) {
 				// To fix this, we prevent you from importing files out of src/ -- if you'd like to,
 				// please link the files into your node_modules/ and let module-resolution kick in.
 				// Make sure your source files are compiled, as they will not be processed in any way.
-				new ModuleScopePlugin(paths.appSrc, [
+				new ModuleScopePlugin(paths.appPath, [
 					paths.appPackageJson,
 					reactRefreshOverlayEntry,
 				]),
@@ -514,6 +522,10 @@ module.exports = function (webpackEnv) {
 								'sass-loader'
 							),
 						},
+						{
+							test: /\.md$/iu,
+							use: 'md-post-loader',
+						},
 						// "file" loader makes sure those assets get served by WebpackDevServer.
 						// When you `import` an asset, you get its (virtual) filename.
 						// In production, they would get copied to the `build` folder.
@@ -538,29 +550,26 @@ module.exports = function (webpackEnv) {
 		},
 		plugins: [
 			// Generates an `index.html` file with the <script> injected.
-			new HtmlWebpackPlugin(
-				{
-
-					inject: true,
-					template: paths.appHtml,
-					...isEnvProduction
-						? {
-							minify: {
-								removeComments: true,
-								collapseWhitespace: true,
-								removeRedundantAttributes: true,
-								useShortDoctype: true,
-								removeEmptyAttributes: true,
-								removeStyleLinkTypeAttributes: true,
-								keepClosingSlash: true,
-								minifyJS: true,
-								minifyCSS: true,
-								minifyURLs: true,
-							},
-						}
-						: undefined,
-				}
-			),
+			new HtmlWebpackPlugin({
+				inject: true,
+				template: paths.appHtml,
+				...isEnvProduction
+					? {
+						minify: {
+							removeComments: true,
+							collapseWhitespace: true,
+							removeRedundantAttributes: true,
+							useShortDoctype: true,
+							removeEmptyAttributes: true,
+							removeStyleLinkTypeAttributes: true,
+							keepClosingSlash: true,
+							minifyJS: true,
+							minifyCSS: true,
+							minifyURLs: true,
+						},
+					}
+					: undefined,
+			}),
 			// Inlines the webpack runtime script. This script is too small to warrant
 			// a network request.
 			// https://github.com/facebook/create-react-app/issues/5358
