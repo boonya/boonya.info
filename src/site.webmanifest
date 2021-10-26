@@ -1,0 +1,21 @@
+{
+	"short_name": "${META_NAME}",
+	"name": "${META_TITLE}",
+	"description": "${META_DESCRIPTION}",
+	"icons": [
+		{
+			"src": "/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"start_url": "${APP_BASE_PATH}",
+	"theme_color": "${META_THEME_COLOR}",
+	"background_color": "${META_BG_COLOR}",
+	"display": "standalone"
+}
