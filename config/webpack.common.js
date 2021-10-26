@@ -51,11 +51,6 @@ module.exports = {
 			xhtml: true,
 		}),
 		new CopyPlugin({patterns: [{
-			from: webManifestEntry,
-			to: outputPath,
-			transform: copyFileTransformer,
-		}]}),
-		new CopyPlugin({patterns: [{
 			from: jsonManifestEntry,
 			to: outputPath,
 			transform: copyFileTransformer,

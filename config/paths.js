@@ -16,7 +16,6 @@ module.exports = {
 	publicRoot,
 	jsEntry: path.join(appSrc, 'index.js'),
 	htmlEntry: path.resolve(appSrc, 'index.html'),
-	webManifestEntry: path.resolve(appSrc, 'site.webmanifest'),
 	jsonManifestEntry: path.resolve(appSrc, 'manifest.json'),
 	nodeModules: path.resolve(appRoot, 'node_modules'),
 	outputPath: path.resolve(appRoot, 'build'),
