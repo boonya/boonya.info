@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Ubuntu Server 20.04.3 LTS (Focal Fossa)(ARM64) на Raspberry PI версий 2, 3 и 4 (но это не точно)
-permalink: /blog/2021-10-23-raspi-ubuntu-20.04.03.html
+permalink: /blog/raspi-ubuntu-20.04.03.html
+redirect_from: /blog/2021-10-23-raspi-ubuntu-20.04.03.html
 ---
 
 В предыдущей заметке я писал о том [как нужно плясать, чтобы Ubuntu Server 20.04.1 LTS взлетел на RaspberryPi 3b+](/blog/raspi-3b+-ubuntu-20.04.01-usb-boot.html). Способ абсолютно рабочий. Одна из моих "малин" стабильно работает уже второй год в качестве домашнего мини сервера. Home Assistance, видеонаблюдение, датчики и прочее.

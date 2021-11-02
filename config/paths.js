@@ -2,17 +2,19 @@
 
 const path = require('path');
 
-const appRoot = path.resolve(__dirname, '..');
-const config = path.resolve(__dirname);
-const webpack = path.resolve(__dirname, 'webpack');
+const configRoot = path.resolve(__dirname);
+const appRoot = path.resolve(configRoot, '..');
+const postsRoot = path.resolve(appRoot, '_posts');
+const webpackPath = path.resolve(__dirname, 'webpack');
 const appSrc = path.resolve(appRoot, 'src');
 const publicRoot = path.resolve(appRoot, 'public');
 
 module.exports = {
 	appRoot,
-	config,
-	webpack,
+	configRoot,
+	webpackPath,
 	appSrc,
+	postsRoot,
 	publicRoot,
 	jsEntry: path.join(appSrc, 'index.js'),
 	htmlEntry: path.resolve(appSrc, 'index.html'),

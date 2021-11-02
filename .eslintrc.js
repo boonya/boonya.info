@@ -5,6 +5,9 @@ module.exports = {
 	env: {
 		jest: true,
 	},
+	globals: {
+		BLOG: 'readonly',
+	},
 	extends: [
 		'bluedrop',
 		'bluedrop/config/node',
