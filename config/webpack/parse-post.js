@@ -1,6 +1,5 @@
 'use strict';
 
-const markdown = require('marked');
 const YAML = require('yaml');
 
 function processRedirectFrom(value) {
@@ -15,13 +14,11 @@ function processRedirectFrom(value) {
 
 module.exports = function (content) {
 	const match = content.toString().match(/^-{3,}\n(?<meta>[.\s\S]+?)(?=-{3,}\n)-{3,}\n(?<md>[.\s\S]+)/um);
-	const {md} = match.groups;
 	// eslint-disable-next-line camelcase
 	const {permalink, title, redirect_from} = YAML.parse(match.groups.meta);
 	return {
 		title,
 		route: permalink,
-		html: markdown(md),
 		redirectFrom: processRedirectFrom(redirect_from),
 	};
 };

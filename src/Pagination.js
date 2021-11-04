@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import {useParams, generatePath, NavLink} from 'react-router-dom';
 
+const PAGINATE = 5;
+
 function PaginationItem({page, ...props}) {
 	const to = React.useMemo(() => {
 		if (page > 1) {
@@ -28,7 +30,7 @@ PaginationItem.propTypes = {
 	page: PropTypes.number.isRequired,
 };
 
-export function usePagination(items, number = 5) {
+export function usePagination(items, number = PAGINATE) {
 	const params = useParams();
 
 	const paginate = React.useMemo(() => {

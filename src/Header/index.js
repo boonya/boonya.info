@@ -1,3 +1,4 @@
+import {useGlobalContext} from '../GlobalContextProvider';
 import Link from '../Link';
 import ROUTES from '../routes';
 import {AppBar, Typography} from '@mui/material';
@@ -13,19 +14,20 @@ const useStyles = makeStyles(({spacing}) => ({
 
 export default function Header() {
 	const classes = useStyles();
+	const {env} = useGlobalContext();
 	const {isExact} = useRouteMatch({path: ROUTES.home});
 
 	const name = React.useMemo(() => {
 		if (isExact) {
-			return ENV.name;
+			return env.NAME;
 		}
-		return <Link href={ROUTES.home} color="inherit">{ENV.name}</Link>;
-	}, [isExact]);
+		return <Link href={ROUTES.home} color="inherit">{env.NAME}</Link>;
+	}, [env, isExact]);
 
 	return (
 		<AppBar position="relative" className={classes.root}>
 			<Typography component="h1">{name}</Typography>
-			<Typography component="h2">{ENV.title}</Typography>
+			<Typography component="h2">{env.TITLE}</Typography>
 		</AppBar>
 	);
 }

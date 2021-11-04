@@ -5,17 +5,17 @@ const {
 	jsEntry,
 	publicRoot,
 	jsonManifestEntry,
+	htmlEntry,
 	postsRoot,
 	outputPath,
 	postsOutputPath,
 	webpackPath,
 	nodeModules,
 } = require('./paths');
-const createArticlePages = require('./webpack/create-articles');
-const createHomePage = require('./webpack/create-index');
-const {createRedirectsMap, createRedirectPages} = require('./webpack/create-redirects');
-const getPosts = require('./webpack/get-posts');
+const createPosts = require('./webpack/create-posts');
+const createRedirectsMap = require('./webpack/create-redirects');
 const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 function jsonManifestTransformer(content) {
@@ -26,19 +26,11 @@ function jsonManifestTransformer(content) {
 		}, content.toString());
 }
 
-const posts = getPosts(postsRoot);
+const posts = createPosts(postsRoot);
 const redirects = createRedirectsMap(posts);
 
 const globals = {
-	ENV: JSON.stringify({
-		themeColor: ENV.META_THEME_COLOR,
-		bgColor: ENV.META_BG_COLOR,
-		author: ENV.META_AUTHOR,
-		name: ENV.META_NAME,
-		title: ENV.META_TITLE,
-		keywords: ENV.META_KEYWORDS,
-		description: ENV.META_DESCRIPTION,
-	}),
+	ENV: JSON.stringify(ENV),
 	POSTS: JSON.stringify(posts.map(({route, filename, name, date}) => ({route, filename, name, date}))),
 	REDIRECTS: JSON.stringify(redirects),
 };
@@ -73,9 +65,19 @@ module.exports = {
 		}]}),
 		new webpack.DefinePlugin(globals),
 		// index.html
-		createHomePage(posts),
-		...createArticlePages(posts),
-		...createRedirectPages(redirects),
+		new HtmlWebpackPlugin({
+			template: htmlEntry,
+			templateParameters: ENV,
+			publicPath: ENV.APP_BASE_PATH,
+			meta: {
+				'theme-color': ENV.THEME_COLOR,
+				keywords: ENV.KEYWORDS,
+				description: ENV.DESCRIPTION,
+				author: ENV.AUTHOR,
+			},
+			xhtml: true,
+			filename: 'index.html',
+		}),
 	],
 	module: {
 		rules: [{

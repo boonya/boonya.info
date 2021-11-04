@@ -20,7 +20,7 @@ module.exports = {
 	postsRoot,
 	publicRoot,
 	jsEntry: path.join(appSrc, 'index.js'),
-	htmlEntry: path.resolve(templatesRoot, 'root.html'),
+	htmlEntry: path.resolve(appSrc, 'index.html'),
 	jsonManifestEntry: path.resolve(appSrc, 'manifest.json'),
 	nodeModules: path.resolve(appRoot, 'node_modules'),
 	outputPath,

@@ -2,7 +2,7 @@ import BlogPost from './BlogPost';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPage from './MainPage';
 import ROUTES from './routes';
-import theme from './theme';
+import createTheme from './theme';
 import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
 import {
@@ -13,7 +13,7 @@ import {
 } from 'react-router-dom';
 
 export default function App() {
-	const {posts, redirects} = useGlobalContext();
+	const {env, posts, redirects} = useGlobalContext();
 	const location = useLocation();
 	const history = useHistory();
 
@@ -32,6 +32,11 @@ export default function App() {
 	if (redirects.get(location.pathname)) {
 		return null;
 	}
+
+	const theme = createTheme({
+		color: env.THEME_COLOR,
+		background: env.BG_COLOR,
+	});
 
 	return (
 		<ThemeProvider theme={theme}>

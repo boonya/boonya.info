@@ -9,17 +9,18 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-const root = document.getElementById('root');
-
 ReactDOM.render(
 	<React.StrictMode>
 		<CssBaseline />
 		<Router>
-			<GlobalContextProvider posts={POSTS} redirects={new Map(REDIRECTS)}>
+			<GlobalContextProvider
+				env={ENV}
+				posts={POSTS}
+				redirects={new Map(REDIRECTS)}
+			>
 				<App />
 			</GlobalContextProvider>
 		</Router>
 	</React.StrictMode>,
-	root,
-	() => { root.style = 'transition: opacity 1s; opacity: 1'; }
+	document.getElementById('root'),
 );

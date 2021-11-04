@@ -1,6 +1,6 @@
 'use strict';
 
-const parseMd = require('./parse-md');
+const parsePost = require('./parse-post');
 const fs = require('fs');
 const path = require('path');
 
@@ -14,9 +14,9 @@ function parseFilename(filename) {
 	return {filename, date, name};
 }
 
-function parsePost(directory, {filename, date, name}) {
+function processFile(directory, {filename, date, name}) {
 	const content = fs.readFileSync(path.join(directory, filename));
-	const post = parseMd(content);
+	const post = parsePost(content);
 	return {
 		filename,
 		name,
@@ -39,6 +39,6 @@ module.exports = function (directory) {
 	return fs.readdirSync(directory)
 		.map(parseFilename)
 		.filter((v) => v)
-		.map((data) => parsePost(directory, data))
+		.map((data) => processFile(directory, data))
 		.sort(sort);
 };
