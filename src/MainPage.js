@@ -1,7 +1,7 @@
+import Article from './Article';
 import {useGlobalContext} from './GlobalContextProvider';
-import Html from './Html';
+import MainPageLayout from './Layout/MainPage';
 import React from 'react';
-import {NavLink} from 'react-router-dom';
 
 export default function MainPage() {
 	const {blog} = useGlobalContext();
@@ -10,18 +10,22 @@ export default function MainPage() {
 		return blog.map(({filename, route, title, date, html}) => {
 			const short = html.split(/<!--\s*more\s*-->/um)[0];
 			return (
-				<article key={filename} id={filename}>
-					<NavLink to={route}><h1>{title}</h1></NavLink>
-					<Html content={short} />
-					{new Intl.DateTimeFormat('ru-UA').format(date)}
-				</article>
+				<Article
+					key={filename}
+					id={filename}
+					link={route}
+					title={title}
+					date={date}
+				>
+					{short}
+				</Article>
 			);
 		});
 	}, [blog]);
 
 	return (
-		<div>
+		<MainPageLayout>
 			{items}
-		</div>
+		</MainPageLayout>
 	);
 }

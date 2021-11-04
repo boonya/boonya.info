@@ -1,5 +1,7 @@
+import Article from './Article';
 import {useGlobalContext} from './GlobalContextProvider';
-import Html from './Html';
+import PostLayout from './Layout/Post';
+import {DiscussionEmbed} from 'disqus-react';
 import React from 'react';
 import {useParams} from 'react-router-dom';
 
@@ -12,10 +14,22 @@ export default function BlogPost() {
 	}, [blog, params.name]);
 
 	return (
-		<article id={filename}>
-			<h1>{title}</h1>
-			<Html content={html} />
-			{new Intl.DateTimeFormat('ru-UA').format(date)}
-		</article>
+		<PostLayout id={filename}>
+			<Article
+				id={filename}
+				title={title}
+				date={date}
+			>
+				{html}
+			</Article>
+			<DiscussionEmbed
+				shortname="comments"
+				config={{
+					identifier: filename,
+					title,
+					url: location.pathname,
+				}}
+			/>
+		</PostLayout>
 	);
 }
