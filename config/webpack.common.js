@@ -30,6 +30,15 @@ const posts = getPosts(postsRoot);
 const redirects = createRedirectsMap(posts);
 
 const globals = {
+	ENV: JSON.stringify({
+		themeColor: ENV.META_THEME_COLOR,
+		bgColor: ENV.META_BG_COLOR,
+		author: ENV.META_AUTHOR,
+		name: ENV.META_NAME,
+		title: ENV.META_TITLE,
+		keywords: ENV.META_KEYWORDS,
+		description: ENV.META_DESCRIPTION,
+	}),
 	POSTS: JSON.stringify(posts.map(({route, filename, name, date}) => ({route, filename, name, date}))),
 	REDIRECTS: JSON.stringify(redirects),
 };

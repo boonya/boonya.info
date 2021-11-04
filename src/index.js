@@ -10,7 +10,6 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
 const root = document.getElementById('root');
-// root.style = 'transition: opacity 1s; opacity: 1';
 
 ReactDOM.render(
 	<React.StrictMode>

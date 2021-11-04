@@ -8,10 +8,9 @@ export default function MainPage({children}) {
 		<Root>
 			<Grid
 				item
-				xs={12}
-				md={11}
+				xs={11}
 				lg={10}
-				xl={8}
+				xl={7}
 				component="main"
 				id="content"
 			>

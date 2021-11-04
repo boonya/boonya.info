@@ -5,8 +5,15 @@ import React from 'react';
 
 export default function Post({children}) {
 	return (
-		<Root spacing={3}>
-			<Grid item xs={12} md={8} lg={7} xl={6} component="main" id="content">
+		<Root>
+			<Grid
+				item
+				xs={11}
+				lg={10}
+				xl={7}
+				component="main"
+				id="content"
+			>
 				{children}
 			</Grid>
 		</Root>

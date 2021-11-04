@@ -40,8 +40,20 @@ export function usePagination(items, number = 5) {
 	}, [items.length, number]);
 
 	const page = React.useMemo(() => {
-		return Number(params.page) || 1;
+		const n = Number(params.page);
+		return n > 1 ? n : 1;
 	}, [params.page]);
+
+	const isValid = React.useMemo(() => {
+		if (params.page === undefined) {
+			return true;
+		}
+		const n = Number(params.page);
+		if (Number.isInteger(n) && n > 1 && n <= count) {
+			return true;
+		}
+		return false;
+	}, [count, params.page]);
 
 	const start = React.useMemo(() => {
 		if (page > 1) {
@@ -60,19 +72,28 @@ export function usePagination(items, number = 5) {
 	return React.useMemo(() => {
 		return [
 			items.slice(start, end),
-			{paginate, count, page},
+			{isValid, paginate, count, page},
 		];
-	}, [items, start, end, paginate, count, page]);
+	}, [items, start, end, isValid, paginate, count, page]);
 }
 
-export default function Pagination(props) {
+export default function Pagination({page, ...props}) {
 	return (
 		<MuiPagination
 			variant="outlined"
 			shape="rounded"
 			renderItem={PaginationItem}
+			page={page || 1}
 			{...props}
 		/>
 	);
 }
+
+Pagination.propTypes = {
+	page: PropTypes.number,
+};
+
+Pagination.defaultProps = {
+	page: undefined,
+};
 /* eslint-enable react/no-multi-comp */

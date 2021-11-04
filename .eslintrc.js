@@ -6,6 +6,7 @@ module.exports = {
 		jest: true,
 	},
 	globals: {
+		ENV: 'readonly',
 		POSTS: 'readonly',
 		REDIRECTS: 'readonly',
 	},

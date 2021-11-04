@@ -1,30 +1,8 @@
-/* eslint-disable react/no-multi-comp */
-import {Link as MuiLink, Typography, Divider} from '@mui/material';
+import Link from './Link';
+import {Typography, Divider} from '@mui/material';
 import MarkdownToJsx from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {NavLink} from 'react-router-dom';
-
-function Link({href, ...props}) {
-	if (href.indexOf('/') === 0) {
-		return <NavLink {...props} to={href} />;
-	}
-	if (href.indexOf(location.origin) === 0) {
-		const to = href.split(location.origin).pop();
-		return <NavLink {...props} to={to} />;
-	}
-	if ((/^(?:mailto:|tel:|#).+/u).test(href)) {
-		return <MuiLink {...props} href={href} />;
-	}
-	if ((/^https?:\/\/.+/u).test(href)) {
-		return <MuiLink {...props} href={href} target="_blank" />;
-	}
-	return <MuiLink {...props} href={href} />;
-}
-
-Link.propTypes = {
-	href: PropTypes.string.isRequired,
-};
 
 export default function Markdown({children, options, ...props}) {
 	const Wrapper = React.useCallback((args) => {
@@ -106,4 +84,3 @@ Markdown.propTypes = {
 Markdown.defaultProps = {
 	options: {},
 };
-/* eslint-enable react/no-multi-comp */

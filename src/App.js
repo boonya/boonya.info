@@ -2,6 +2,8 @@ import BlogPost from './BlogPost';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPage from './MainPage';
 import ROUTES from './routes';
+import theme from './theme';
+import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
 import {
 	Switch,
@@ -32,16 +34,15 @@ export default function App() {
 	}
 
 	return (
-		<Switch>
-			<Route path={blogRoutes} exact>
-				<BlogPost />
-			</Route>
-			<Route path={[ROUTES.home, ROUTES.page]} exact>
-				<MainPage />
-			</Route>
-			<Route>
-				404
-			</Route>
-		</Switch>
+		<ThemeProvider theme={theme}>
+			<Switch>
+				<Route path={blogRoutes} exact>
+					<BlogPost />
+				</Route>
+				<Route path={[ROUTES.home, ROUTES.page]} exact>
+					<MainPage />
+				</Route>
+			</Switch>
+		</ThemeProvider>
 	);
 }
