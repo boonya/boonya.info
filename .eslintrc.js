@@ -6,7 +6,8 @@ module.exports = {
 		jest: true,
 	},
 	globals: {
-		BLOG: 'readonly',
+		POSTS: 'readonly',
+		REDIRECTS: 'readonly',
 	},
 	extends: [
 		'bluedrop',

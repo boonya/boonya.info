@@ -11,9 +11,9 @@ export function useGlobalContext() {
 	return context;
 }
 
-export default function GlobalContextProvider({children, blog}) {
+export default function GlobalContextProvider({children, posts, redirects}) {
 	return (
-		<GlobalContext.Provider value={{blog}}>
+		<GlobalContext.Provider value={{posts, redirects}}>
 			{children}
 		</GlobalContext.Provider>
 	);
@@ -21,15 +21,13 @@ export default function GlobalContextProvider({children, blog}) {
 
 const POST_PROP_TYPES = {
 	filename: PropTypes.string.isRequired,
-	name: PropTypes.string.isRequired,
-	date: PropTypes.instanceOf(Date).isRequired,
-	title: PropTypes.string.isRequired,
+	// name: PropTypes.string.isRequired,
+	// date: PropTypes.instanceOf(Date).isRequired,
 	route: PropTypes.string.isRequired,
-	html: PropTypes.string.isRequired,
-	redirectFrom: PropTypes.arrayOf(PropTypes.string),
 };
 
 GlobalContextProvider.propTypes = {
-	blog: PropTypes.arrayOf(PropTypes.shape(POST_PROP_TYPES)).isRequired,
 	children: PropTypes.node.isRequired,
+	posts: PropTypes.arrayOf(PropTypes.shape(POST_PROP_TYPES)).isRequired,
+	redirects: PropTypes.instanceOf(Map).isRequired,
 };

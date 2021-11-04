@@ -9,14 +9,14 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
-const blog = BLOG.map(({date, ...rest}) => ({date: new Date(date), ...rest}));
 const root = document.getElementById('root');
+// root.style = 'transition: opacity 1s; opacity: 1';
 
 ReactDOM.render(
 	<React.StrictMode>
 		<CssBaseline />
 		<Router>
-			<GlobalContextProvider blog={blog}>
+			<GlobalContextProvider posts={POSTS} redirects={new Map(REDIRECTS)}>
 				<App />
 			</GlobalContextProvider>
 		</Router>

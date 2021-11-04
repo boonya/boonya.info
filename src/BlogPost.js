@@ -6,30 +6,24 @@ import React from 'react';
 import {useParams} from 'react-router-dom';
 
 export default function BlogPost() {
-	const {blog} = useGlobalContext();
+	const {posts} = useGlobalContext();
 	const params = useParams();
 
-	const {filename, title, date, html} = React.useMemo(() => {
-		return blog.find((post) => post.name === params.name);
-	}, [blog, params.name]);
+	const {filename, ...rest} = React.useMemo(() => {
+		return posts.find((post) => post.name === params.name);
+	}, [posts, params.name]);
 
 	return (
 		<PostLayout id={filename}>
-			<Article
-				id={filename}
-				title={title}
-				date={date}
-			>
-				{html}
-			</Article>
-			<DiscussionEmbed
+			<Article id={filename} fullText {...rest} />
+			{/* <DiscussionEmbed
 				shortname="comments"
 				config={{
 					identifier: filename,
-					title,
+					// title,
 					url: location.pathname,
 				}}
-			/>
+			/> */}
 		</PostLayout>
 	);
 }

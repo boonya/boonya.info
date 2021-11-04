@@ -2,21 +2,21 @@
 <html lang="ru">
 	<head>
 		<meta charset="utf-8" />
-		<base href="/">
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" href="<%= APP_BASE_PATH %>favicon.ico" />
 		<link rel="manifest" href="<%= APP_BASE_PATH %>manifest.json" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<title><%= htmlWebpackPlugin.options.title %></title>
 		<style>
 			html, body, #root {
 				height: 100%;
 			}
 		</style>
-		<%= htmlWebpackPlugin.options.head %>
 	</head>
 	<body>
 		<noscript>You need to enable JavaScript to run this app.</noscript>
-		<div id="root"><%= htmlWebpackPlugin.options.bodyHTML %></div>
-		<script>document.getElementById('root').style = 'opacity: 0'</script>
+		<div id="root">
+			<%= htmlWebpackPlugin.options.body %>
+		</div>
+		<script>document.getElementById('root').style = 'opacity: 0';</script>
 	</body>
 </html>

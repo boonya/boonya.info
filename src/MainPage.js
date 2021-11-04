@@ -1,31 +1,23 @@
 import Article from './Article';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPageLayout from './Layout/MainPage';
+import Pagination, {usePagination} from './Pagination';
 import React from 'react';
 
 export default function MainPage() {
-	const {blog} = useGlobalContext();
+	const globals = useGlobalContext();
+	const [posts, {paginate, count, page}] = usePagination(globals.posts);
 
 	const items = React.useMemo(() => {
-		return blog.map(({filename, route, title, date, html}) => {
-			const short = html.split(/<!--\s*more\s*-->/um)[0];
-			return (
-				<Article
-					key={filename}
-					id={filename}
-					link={route}
-					title={title}
-					date={date}
-				>
-					{short}
-				</Article>
-			);
+		return posts.map(({filename, ...rest}) => {
+			return <Article key={filename} id={filename} {...rest} />;
 		});
-	}, [blog]);
+	}, [posts]);
 
 	return (
 		<MainPageLayout>
 			{items}
+			{paginate && <Pagination count={count} page={page} />}
 		</MainPageLayout>
 	);
 }
