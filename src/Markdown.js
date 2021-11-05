@@ -21,17 +21,6 @@ export default function Markdown({children, options, ...props}) {
 		return <Typography component="div" className={classes.root} {...args} />;
 	}, [classes.root]);
 
-	const hr = React.useCallback((args) => <Divider {...args} />, []);
-	const a = React.useCallback((args) => {
-		const href = args.href || '#';
-		const onClick = (e) => {
-			e.preventDefault();
-			// eslint-disable-next-line no-alert
-			alert('The link is broken');
-		};
-		return <Link {...args} href={href} onClick={args.href ? undefined : onClick} />;
-	}, []);
-
 	const Text = React.useCallback(({children: value}) => value, []);
 
 	const headingsOverrides = React.useMemo(() => {
@@ -46,11 +35,11 @@ export default function Markdown({children, options, ...props}) {
 	}, [Text]);
 
 	const overrides = React.useMemo(() => ({
-		hr,
-		a,
+		hr: Divider,
+		a: Link,
 		...headingsOverrides,
 		...options.overrides,
-	}), [hr, a, headingsOverrides, options.overrides]);
+	}), [headingsOverrides, options.overrides]);
 
 	if (!children) {
 		return null;

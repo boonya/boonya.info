@@ -12,7 +12,16 @@ RouterLink.propTypes = {
 	href: PropTypes.string.isRequired,
 };
 
+const onClick = (e) => {
+	e.preventDefault();
+	// eslint-disable-next-line no-alert
+	alert('The link is broken');
+};
+
 export default function Link({href, ...props}) {
+	if (!href) {
+		return <MuiLink {...props} href="#" onClick={onClick} />;
+	}
 	if (href.indexOf('/') === 0) {
 		return <RouterLink {...props} href={href} />;
 	}
