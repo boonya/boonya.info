@@ -1,7 +1,7 @@
 {
-	"short_name": "${META_NAME}",
-	"name": "${META_TITLE}",
-	"description": "${META_DESCRIPTION}",
+	"short_name": "${NAME}",
+	"name": "${TITLE}",
+	"description": "${DESCRIPTION}",
 	"icons": [
 		{
 			"src": "/android-chrome-192x192.png",
@@ -15,7 +15,7 @@
 		}
 	],
 	"start_url": "${APP_BASE_PATH}",
-	"theme_color": "${META_THEME_COLOR}",
-	"background_color": "${META_BG_COLOR}",
+	"theme_color": "${THEME_COLOR}",
+	"background_color": "${BG_COLOR}",
 	"display": "standalone"
 }

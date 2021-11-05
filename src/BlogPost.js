@@ -16,14 +16,14 @@ export default function BlogPost() {
 	return (
 		<PostLayout id={filename}>
 			<Article id={filename} fullText {...rest} />
-			{/* <DiscussionEmbed
+			<DiscussionEmbed
 				shortname="comments"
 				config={{
 					identifier: filename,
 					// title,
 					url: location.pathname,
 				}}
-			/> */}
+			/>
 		</PostLayout>
 	);
 }
