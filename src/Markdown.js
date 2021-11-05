@@ -1,3 +1,4 @@
+import ErrorBoundary from './ErrorBoundary';
 import Link from './Link';
 import {Typography, Divider} from '@mui/material';
 import {makeStyles} from '@mui/styles';
@@ -20,7 +21,16 @@ export default function Markdown({children, options, ...props}) {
 		return <Typography component="div" className={classes.root} {...args} />;
 	}, [classes.root]);
 
-	const HR = React.useCallback((args) => <Divider {...args} />, []);
+	const hr = React.useCallback((args) => <Divider {...args} />, []);
+	const a = React.useCallback((args) => {
+		const href = args.href || '#';
+		const onClick = (e) => {
+			e.preventDefault();
+			// eslint-disable-next-line no-alert
+			alert('The link is broken');
+		};
+		return <Link {...args} href={href} onClick={args.href ? undefined : onClick} />;
+	}, []);
 
 	const Text = React.useCallback(({children: value}) => value, []);
 
@@ -36,29 +46,31 @@ export default function Markdown({children, options, ...props}) {
 	}, [Text]);
 
 	const overrides = React.useMemo(() => ({
-		hr: HR,
-		a: Link,
+		hr,
+		a,
 		...headingsOverrides,
 		...options.overrides,
-	}), [HR, headingsOverrides, options.overrides]);
+	}), [hr, a, headingsOverrides, options.overrides]);
 
 	if (!children) {
 		return null;
 	}
 
 	return (
-		<MarkdownToJsx
-			options={{
-				forceWrapper: true,
-				wrapper: Wrapper,
-				overrides,
-				disableParsingRawHTML: true,
-				...options,
-			}}
-			{...props}
-		>
-			{children}
-		</MarkdownToJsx>
+		<ErrorBoundary>
+			<MarkdownToJsx
+				options={{
+					forceWrapper: true,
+					wrapper: Wrapper,
+					overrides,
+					disableParsingRawHTML: false,
+					...options,
+				}}
+				{...props}
+			>
+				{children}
+			</MarkdownToJsx>
+		</ErrorBoundary>
 	);
 }
 

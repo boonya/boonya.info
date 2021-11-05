@@ -1,4 +1,4 @@
-import ErrorPage from './ErrorPage';
+import {Typography} from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -19,7 +19,7 @@ export default class ErrorBoundary extends React.Component {
 
 	render() {
 		if (this.state.hasError) {
-			return <ErrorPage />;
+			return this.props.fallback;
 		}
 		return this.props.children;
 	}
@@ -28,4 +28,10 @@ export default class ErrorBoundary extends React.Component {
 // eslint-disable-next-line react/static-property-placement
 ErrorBoundary.propTypes = {
 	children: PropTypes.node.isRequired,
+	fallback: PropTypes.node,
+};
+
+// eslint-disable-next-line react/static-property-placement
+ErrorBoundary.defaultProps = {
+	fallback: <Typography paragraph textAlign="center">An error occurred</Typography>,
 };

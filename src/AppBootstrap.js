@@ -1,4 +1,5 @@
 import ErrorBoundary from './ErrorBoundary';
+import ErrorPage from './ErrorPage';
 import GlobalContextProvider from './GlobalContextProvider';
 import createTheme from './theme';
 import {ThemeProvider} from '@mui/material/styles';
@@ -34,7 +35,7 @@ export default function AppBootstrap({children}) {
 			<HelmetProvider>
 				<ThemeProvider theme={theme}>
 					<Router basename={basePath}>
-						<ErrorBoundary>
+						<ErrorBoundary fallback={<ErrorPage />}>
 							<Helmet>
 								<title>{ENV.TITLE}</title>
 							</Helmet>
