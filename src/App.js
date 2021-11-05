@@ -2,10 +2,7 @@ import BlogPost from './BlogPost';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPage from './MainPage';
 import ROUTES from './routes';
-import createTheme from './theme';
-import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
-import {Helmet} from 'react-helmet-async';
 import {
 	Switch,
 	Route,
@@ -14,7 +11,7 @@ import {
 } from 'react-router-dom';
 
 export default function App() {
-	const {env, posts, redirects} = useGlobalContext();
+	const {posts, redirects} = useGlobalContext();
 	const location = useLocation();
 	const history = useHistory();
 
@@ -34,24 +31,14 @@ export default function App() {
 		return null;
 	}
 
-	const theme = createTheme({
-		color: env.THEME_COLOR,
-		background: env.BG_COLOR,
-	});
-
 	return (
-		<ThemeProvider theme={theme}>
-			<Helmet>
-				<title>{env.TITLE}</title>
-			</Helmet>
-			<Switch>
-				<Route path={blogRoutes} exact>
-					<BlogPost />
-				</Route>
-				<Route path={[ROUTES.home, ROUTES.page]} exact>
-					<MainPage />
-				</Route>
-			</Switch>
-		</ThemeProvider>
+		<Switch>
+			<Route path={blogRoutes} exact>
+				<BlogPost />
+			</Route>
+			<Route path={[ROUTES.home, ROUTES.page]} exact>
+				<MainPage />
+			</Route>
+		</Switch>
 	);
 }
