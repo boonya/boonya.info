@@ -5,7 +5,7 @@ import {makeStyles} from '@mui/styles';
 import {DiscussionEmbed} from 'disqus-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import YAML from 'yaml';
 
 async function fetchPost(id) {

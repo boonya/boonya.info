@@ -5,7 +5,7 @@ import ROUTES from './routes';
 import createTheme from './theme';
 import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import {
 	Switch,
 	Route,
