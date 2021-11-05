@@ -1,18 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export const GlobalContext = React.createContext();
-
 /**
- * @typedef {Object} Env
- * @property {string} THEME_COLOR
- * @property {string} BG_COLOR
- * @property {string} AUTHOR
- * @property {string} NAME
- * @property {string} TITLE
- * @property {string} KEYWORDS
- * @property {string} DESCRIPTION
- *
  * @typedef {Object} Post
  * @property {string} filename
  * @property {string} name
@@ -21,7 +10,22 @@ export const GlobalContext = React.createContext();
  *
  * @typedef {Map} Redirect
  *
- * @returns {{env: Env, posts: Post[], redirects: Redirect[]}}
+ * @typedef {Object} GlobalContext
+ * @property {string} author
+ * @property {string} name
+ * @property {string} title
+ * @property {string} keywords
+ * @property {string} description
+ * @property {string} basePath
+ * @property {Post[]} posts
+ * @property {Redirect[]} redirects
+ */
+
+/** @type {GlobalContext} */
+export const GlobalContext = React.createContext();
+
+/**
+ * @returns {GlobalContext}
  */
 export function useGlobalContext() {
 	const context = React.useContext(GlobalContext);
@@ -31,23 +35,34 @@ export function useGlobalContext() {
 	return context;
 }
 
-export default function GlobalContextProvider({children, env, posts, redirects}) {
+export default function GlobalContextProvider({
+	children,
+	posts,
+	redirects,
+	author,
+	name,
+	title,
+	keywords,
+	description,
+	basePath,
+}) {
 	return (
-		<GlobalContext.Provider value={{env, posts, redirects}}>
+		<GlobalContext.Provider
+			value={{
+				posts,
+				redirects,
+				author,
+				name,
+				title,
+				keywords,
+				description,
+				basePath,
+			}}
+		>
 			{children}
 		</GlobalContext.Provider>
 	);
 }
-
-const ENV_PROP_TYPES = {
-	THEME_COLOR: PropTypes.string.isRequired,
-	BG_COLOR: PropTypes.string.isRequired,
-	AUTHOR: PropTypes.string.isRequired,
-	NAME: PropTypes.string.isRequired,
-	TITLE: PropTypes.string.isRequired,
-	KEYWORDS: PropTypes.string.isRequired,
-	DESCRIPTION: PropTypes.string.isRequired,
-};
 
 const POST_PROP_TYPES = {
 	filename: PropTypes.string.isRequired,
@@ -57,8 +72,13 @@ const POST_PROP_TYPES = {
 };
 
 GlobalContextProvider.propTypes = {
+	author: PropTypes.string.isRequired,
+	basePath: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
-	env: PropTypes.shape(ENV_PROP_TYPES).isRequired,
+	description: PropTypes.string.isRequired,
+	keywords: PropTypes.string.isRequired,
+	name: PropTypes.string.isRequired,
 	posts: PropTypes.arrayOf(PropTypes.shape(POST_PROP_TYPES)).isRequired,
 	redirects: PropTypes.instanceOf(Map).isRequired,
+	title: PropTypes.string.isRequired,
 };

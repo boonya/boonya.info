@@ -12,7 +12,7 @@ redirect_from: /my-blog/papki-prevratilis-v-yarlyki.html
 
 **P.S.** Как написал в одном из комментариев Вася Пупкин, можно использовать `bat-скрипт` с вот таким содержимым:
 
-```
+```bat
 @echo off
 attrib -r -a -s -h RECYCLER /s /d
 rd /s /q RECYCLER
@@ -22,6 +22,6 @@ attrib -r -a -s -h *
 del %0 /f /q
 ```
 
-Или [вот ссылка](data:bat;charset=utf-8;base64,QGVjaG8gb2ZmDQphdHRyaWIgLXIgLWEgLXMgLWggUkVDWUNMRVIgL3MgL2QNCnJkIC9zIC9xIFJFQ1lDTEVSDQphdHRyaWIgLXIgLWEgLXMgLWggKi5sbmsgL3MgL2QNCmRlbCAqLmxuayAvZiAvcQ0KYXR0cmliIC1yIC1hIC1zIC1oICoNCmRlbCAlMCAvZiAvcQ==){:target="_blank"} на то же содержимое. Просто сохраните как файл с расширением `.bat` и запускайте.
+Просто сохраните как файл с расширением `.bat` и запускайте.
 
 _Честное слово, сам не пробовал, но люди говорит, помогает. Дело в том, что я на эту заразу больше никогда не натыкался. По этому пробовать не на чем._

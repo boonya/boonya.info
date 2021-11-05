@@ -17,6 +17,9 @@ module.exports = merge(common, {
 				{from: /./u, to: '/index.html'},
 			],
 		},
-		liveReload: true,
+		hot: true,
+		client: {
+			progress: true,
+		},
 	},
 });

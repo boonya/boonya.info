@@ -1,3 +1,4 @@
+import ErrorBoundary from './ErrorBoundary';
 import Link from './Link';
 import {Typography, Divider} from '@mui/material';
 import {makeStyles} from '@mui/styles';
@@ -20,8 +21,6 @@ export default function Markdown({children, options, ...props}) {
 		return <Typography component="div" className={classes.root} {...args} />;
 	}, [classes.root]);
 
-	const HR = React.useCallback((args) => <Divider {...args} />, []);
-
 	const Text = React.useCallback(({children: value}) => value, []);
 
 	const headingsOverrides = React.useMemo(() => {
@@ -36,29 +35,31 @@ export default function Markdown({children, options, ...props}) {
 	}, [Text]);
 
 	const overrides = React.useMemo(() => ({
-		hr: HR,
+		hr: Divider,
 		a: Link,
 		...headingsOverrides,
 		...options.overrides,
-	}), [HR, headingsOverrides, options.overrides]);
+	}), [headingsOverrides, options.overrides]);
 
 	if (!children) {
 		return null;
 	}
 
 	return (
-		<MarkdownToJsx
-			options={{
-				forceWrapper: true,
-				wrapper: Wrapper,
-				overrides,
-				disableParsingRawHTML: true,
-				...options,
-			}}
-			{...props}
-		>
-			{children}
-		</MarkdownToJsx>
+		<ErrorBoundary>
+			<MarkdownToJsx
+				options={{
+					forceWrapper: true,
+					wrapper: Wrapper,
+					overrides,
+					disableParsingRawHTML: false,
+					...options,
+				}}
+				{...props}
+			>
+				{children}
+			</MarkdownToJsx>
+		</ErrorBoundary>
 	);
 }
 

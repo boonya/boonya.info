@@ -5,7 +5,7 @@ import {makeStyles} from '@mui/styles';
 import {DiscussionEmbed} from 'disqus-react';
 import PropTypes from 'prop-types';
 import React from 'react';
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import YAML from 'yaml';
 
 async function fetchPost(id) {
@@ -26,18 +26,24 @@ function parsePost(content) {
 }
 
 function useArticle(id, fullText) {
-	const [content, setContent] = React.useState();
+	const [article, setArticle] = React.useState();
+	const [error, setError] = React.useState();
 
 	React.useEffect(() => {
 		(async () => {
-			const response = await fetchPost(id);
-			const post = fullText ? response : trim(response);
-			const {markdown, meta} = parsePost(post);
-			setContent({title: meta.title, markdown});
+			try {
+				const response = await fetchPost(id);
+				const post = fullText ? response : trim(response);
+				const {markdown, meta} = parsePost(post);
+				setArticle({title: meta.title, markdown});
+			}
+			catch (err) {
+				setError(err);
+			}
 		})();
 	}, [id, fullText]);
 
-	return content;
+	return {article, error};
 }
 
 const useStyles = makeStyles(() => ({
@@ -53,7 +59,7 @@ const useStyles = makeStyles(() => ({
 
 export default function Article({id, route, name, date, fullText, comments, ...props}) {
 	const classes = useStyles(props);
-	const article = useArticle(id, fullText);
+	const {article, error} = useArticle(id, fullText);
 
 	const title = React.useMemo(() => {
 		if (!article?.title) {
@@ -76,6 +82,10 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 	const formattedDate = React.useMemo(() => {
 		return new Intl.DateTimeFormat('ru-UA').format(new Date(date));
 	}, [date]);
+
+	if (error) {
+		return <Typography paragraph textAlign="center">An error occurred</Typography>;
+	}
 
 	if (!article) {
 		return (
