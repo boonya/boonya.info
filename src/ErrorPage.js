@@ -2,7 +2,7 @@ import MainPageLayout from './Layout/MainPage';
 import {Typography} from '@mui/material';
 import React from 'react';
 
-export default function NotFoundPage() {
+export default function ErrorPage() {
 	return (
 		<MainPageLayout
 			ContentProps={{
@@ -11,7 +11,7 @@ export default function NotFoundPage() {
 				alignContent: 'center',
 			}}
 		>
-			<Typography variant="h1">404 | Not Found</Typography>
+			<Typography variant="h1">An error occurred</Typography>
 		</MainPageLayout>
 	);
 }

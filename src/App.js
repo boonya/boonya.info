@@ -1,6 +1,7 @@
 import BlogPost from './BlogPost';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPage from './MainPage';
+import NotFoundPage from './NotFoundPage';
 import ROUTES from './routes';
 import React from 'react';
 import {
@@ -38,6 +39,9 @@ export default function App() {
 			</Route>
 			<Route path={[ROUTES.home, ROUTES.page]} exact>
 				<MainPage />
+			</Route>
+			<Route>
+				<NotFoundPage />
 			</Route>
 		</Switch>
 	);

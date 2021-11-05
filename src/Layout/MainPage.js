@@ -3,9 +3,9 @@ import {Grid} from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function MainPage({children}) {
+export default function MainPage({children, ContentProps, ...props}) {
 	return (
-		<Root>
+		<Root {...props}>
 			<Grid
 				item
 				xs={11}
@@ -13,6 +13,7 @@ export default function MainPage({children}) {
 				xl={7}
 				component="main"
 				id="content"
+				{...ContentProps}
 			>
 				{children}
 			</Grid>
@@ -22,4 +23,10 @@ export default function MainPage({children}) {
 
 MainPage.propTypes = {
 	children: PropTypes.node.isRequired,
+	// eslint-disable-next-line react/forbid-prop-types
+	ContentProps: PropTypes.object,
+};
+
+MainPage.defaultProps = {
+	ContentProps: undefined,
 };

@@ -1,3 +1,4 @@
+import ErrorBoundary from './ErrorBoundary';
 import GlobalContextProvider from './GlobalContextProvider';
 import createTheme from './theme';
 import {ThemeProvider} from '@mui/material/styles';
@@ -31,14 +32,16 @@ export default function AppBootstrap({children}) {
 			redirects={new Map(REDIRECTS)}
 		>
 			<HelmetProvider>
-				<Router basename={basePath}>
-					<ThemeProvider theme={theme}>
-						<Helmet>
-							<title>{ENV.TITLE}</title>
-						</Helmet>
-						{children}
-					</ThemeProvider>
-				</Router>
+				<ThemeProvider theme={theme}>
+					<Router basename={basePath}>
+						<ErrorBoundary>
+							<Helmet>
+								<title>{ENV.TITLE}</title>
+							</Helmet>
+							{children}
+						</ErrorBoundary>
+					</Router>
+				</ThemeProvider>
 			</HelmetProvider>
 		</GlobalContextProvider>
 	);
