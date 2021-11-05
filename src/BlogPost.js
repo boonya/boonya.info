@@ -17,7 +17,7 @@ export default function BlogPost() {
 		<PostLayout id={filename}>
 			<Article id={filename} fullText {...rest} />
 			<DiscussionEmbed
-				shortname="comments"
+				shortname="boonya"
 				config={{
 					identifier: filename,
 					// title,
