@@ -1,9 +1,11 @@
 import Link from './Link';
 import Markdown from './Markdown';
+import {Divider} from '@mui/material';
 import Card from '@mui/material/Card';
 import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import {DiscussionEmbed} from 'disqus-react';
 import PropTypes from 'prop-types';
 import React from 'react';
 import YAML from 'yaml';
@@ -40,7 +42,7 @@ function useArticle(id, fullText) {
 	return content;
 }
 
-export default function Article({id, route, name, date, fullText, ...props}) {
+export default function Article({id, route, name, date, fullText, comments, ...props}) {
 	const article = useArticle(id, fullText);
 
 	const title = React.useMemo(() => {
@@ -82,6 +84,19 @@ export default function Article({id, route, name, date, fullText, ...props}) {
 			<Typography variant="h1" htmlFor={id}>{title}</Typography>
 			<Typography component="time" htmlFor={id} dateTime={dateTime}>{formattedDate}</Typography>
 			<Markdown component="article" id={id}>{article.markdown}</Markdown>
+			{comments && (
+				<>
+					<Divider />
+					<DiscussionEmbed
+						shortname="boonya"
+						config={{
+							identifier: id,
+							title,
+							url: location.href,
+						}}
+					/>
+				</>
+			)}
 			{!fullText && (
 				<Link href={route} aria-label={`Читать полностью про ${article?.title}`}>
 					Читать полностью
@@ -92,6 +107,7 @@ export default function Article({id, route, name, date, fullText, ...props}) {
 }
 
 Article.propTypes = {
+	comments: PropTypes.bool,
 	date: PropTypes.string.isRequired,
 	fullText: PropTypes.bool,
 	id: PropTypes.string.isRequired,
@@ -100,5 +116,6 @@ Article.propTypes = {
 };
 
 Article.defaultProps = {
+	comments: false,
 	fullText: false,
 };

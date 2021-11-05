@@ -1,7 +1,6 @@
 import Article from './Article';
 import {useGlobalContext} from './GlobalContextProvider';
 import PostLayout from './Layout/Post';
-import {DiscussionEmbed} from 'disqus-react';
 import React from 'react';
 import {useParams} from 'react-router-dom';
 
@@ -15,15 +14,7 @@ export default function BlogPost() {
 
 	return (
 		<PostLayout id={filename}>
-			<Article id={filename} fullText {...rest} />
-			<DiscussionEmbed
-				shortname="boonya"
-				config={{
-					identifier: filename,
-					// title,
-					url: location.pathname,
-				}}
-			/>
+			<Article id={filename} fullText comments {...rest} />
 		</PostLayout>
 	);
 }
