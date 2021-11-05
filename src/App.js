@@ -5,6 +5,7 @@ import ROUTES from './routes';
 import createTheme from './theme';
 import {ThemeProvider} from '@mui/material/styles';
 import React from 'react';
+import {Helmet} from 'react-helmet';
 import {
 	Switch,
 	Route,
@@ -40,6 +41,9 @@ export default function App() {
 
 	return (
 		<ThemeProvider theme={theme}>
+			<Helmet>
+				<title>{env.TITLE}</title>
+			</Helmet>
 			<Switch>
 				<Route path={blogRoutes} exact>
 					<BlogPost />

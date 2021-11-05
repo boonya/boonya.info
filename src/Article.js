@@ -1,13 +1,11 @@
 import Link from './Link';
 import Markdown from './Markdown';
-import {Divider} from '@mui/material';
-import Card from '@mui/material/Card';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import {Stack, Skeleton, Card, Divider, Typography} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import {DiscussionEmbed} from 'disqus-react';
 import PropTypes from 'prop-types';
 import React from 'react';
+import {Helmet} from 'react-helmet';
 import YAML from 'yaml';
 
 async function fetchPost(id) {
@@ -42,7 +40,19 @@ function useArticle(id, fullText) {
 	return content;
 }
 
+const useStyles = makeStyles(() => ({
+	'@keyframes smooth': {
+		from: {opacity: 0},
+		to: {opacity: 1},
+	},
+	smooth: {
+		animationDuration: 500,
+		animationName: '$smooth',
+	},
+}));
+
 export default function Article({id, route, name, date, fullText, comments, ...props}) {
+	const classes = useStyles(props);
 	const article = useArticle(id, fullText);
 
 	const title = React.useMemo(() => {
@@ -69,7 +79,7 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 
 	if (!article) {
 		return (
-			<Card id={id} {...props}>
+			<Card id={id} {...props} classes={{root: classes.smooth}}>
 				<Stack>
 					<Skeleton animation="wave" height={40} />
 					<Skeleton animation="wave" height={40} width={200} />
@@ -80,7 +90,12 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 	}
 
 	return (
-		<Card {...props}>
+		<Card {...props} classes={{root: classes.smooth}}>
+			{fullText && (
+				<Helmet>
+					<title>{title}</title>
+				</Helmet>
+			)}
 			<Typography variant="h1" htmlFor={id}>{title}</Typography>
 			<Typography component="time" htmlFor={id} dateTime={dateTime}>{formattedDate}</Typography>
 			<Markdown component="article" id={id}>{article.markdown}</Markdown>

@@ -1,13 +1,24 @@
 import Link from './Link';
 import {Typography, Divider} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import MarkdownToJsx from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+const useStyles = makeStyles(() => ({
+	root: {
+		'& img': {
+			maxWidth: '100%',
+		},
+	},
+}));
+
 export default function Markdown({children, options, ...props}) {
+	const classes = useStyles(props);
+
 	const Wrapper = React.useCallback((args) => {
-		return <Typography component="div" {...args} />;
-	}, []);
+		return <Typography component="div" className={classes.root} {...args} />;
+	}, [classes.root]);
 
 	const HR = React.useCallback((args) => <Divider {...args} />, []);
 

@@ -12,7 +12,11 @@ module.exports = merge(common, {
 		static: outputPath,
 		compress: true,
 		port: DEV_SERVER_PORT,
-		historyApiFallback: true,
+		historyApiFallback: {
+			rewrites: [
+				{from: /./u, to: '/index.html'},
+			],
+		},
 		liveReload: true,
 	},
 });
