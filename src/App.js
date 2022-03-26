@@ -2,47 +2,26 @@ import BlogPost from './BlogPost';
 import {useGlobalContext} from './GlobalContextProvider';
 import MainPage from './MainPage';
 import NotFoundPage from './NotFoundPage';
-import ROUTES from './routes';
-import React from 'react';
-import {
-	Switch,
-	Route,
-	useLocation,
-	useHistory,
-} from 'react-router-dom';
+import React, {useMemo} from 'react';
+import {Routes, Route, useLocation, Navigate} from 'react-router-dom';
 
 export default function App() {
-	const {posts, redirects} = useGlobalContext();
+	const {redirects} = useGlobalContext();
 	const location = useLocation();
-	const history = useHistory();
 
-	const blogRoutes = React.useMemo(() => {
-		const routes = posts.map(({name, route}) => route.replace(name, ':name'));
-		return routes.filter((value, index) => routes.indexOf(value) === index);
-	}, [posts]);
+	const redirectTo = useMemo(() => {
+		return redirects.get(location.pathname);
+	}, [redirects, location.pathname]);
 
-	React.useEffect(() => {
-		const to = redirects.get(location.pathname);
-		if (to) {
-			history.replace(to);
-		}
-	}, [posts, history, location.pathname, redirects]);
-
-	if (redirects.get(location.pathname)) {
-		return null;
+	if (redirectTo) {
+		return <Navigate to={redirectTo} replace />;
 	}
 
 	return (
-		<Switch>
-			<Route path={blogRoutes} exact>
-				<BlogPost />
-			</Route>
-			<Route path={[ROUTES.home, ROUTES.page]} exact>
-				<MainPage />
-			</Route>
-			<Route>
-				<NotFoundPage />
-			</Route>
-		</Switch>
+		<Routes>
+			<Route path="/" element={<MainPage />} />
+			<Route path="/blog/:name.html" element={<BlogPost />} />
+			<Route path="*" element={<NotFoundPage />} />
+		</Routes>
 	);
 }
