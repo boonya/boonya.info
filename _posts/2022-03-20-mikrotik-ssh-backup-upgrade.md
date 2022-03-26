@@ -23,13 +23,13 @@ ssh $MIKROTIK_ADDRESS
 
 Власне, робимо бекап
 
-```sh
+```routeros
 /system backup save dont-encrypt=yes
 ```
 
 Перевіряємо, що файл бекапу створено
 
-```sh
+```routeros
 /file print
 ```
 
@@ -41,25 +41,25 @@ scp $MIKROTIK_ADDRESS:/flash/hostname-20220320-1838.backup ./
 
 Змінюємо канал оновлення, якщо потрібно
 
-```sh
+```routeros
 /system package update set channel=testing
 ```
 
 Перевіряємо наявність оновлень
 
-```sh
+```routeros
 /system package update check-for-updates
 ```
 
 Завантажуємо пакет оновлення
 
-```sh
+```routeros
 /system package update download
 ```
 
 Встановлюємо, після чого пристрій автоматично перезавантажується
 
-```sh
+```routeros
 /system package update install
 ```
 
@@ -71,7 +71,7 @@ ssh $MIKROTIK_ADDRESS
 
 Кожен девайс має власну прошивку, тож ця прошивка має бути оновлена після оновлення RouterOS (операційної системи)
 
-```sh
+```routeros
 /system routerboard upgrade
 ```
 

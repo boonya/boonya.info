@@ -14,11 +14,13 @@ redirect_from:
 <!--more-->
 Сниппет:
 
-`javascript:(function(){var msg;if (window.jQuery) {msg = 'You are running jQuery version: ' + jQuery.fn.jquery;} else {msg = 'jQuery is not installed';}alert(msg);})();;`
+```js
+javascript:(function(){var msg;if (window.jQuery) {msg = 'You are running jQuery version: ' + jQuery.fn.jquery;} else {msg = 'jQuery is not installed';}alert(msg);})();;
+```
 
 Код, который нужно выполнить в консоли:
 
-<pre>
+```js
 var msg;
 if (window.jQuery) {
     msg = 'You are running jQuery version: ' + jQuery.fn.jquery;
@@ -26,4 +28,4 @@ if (window.jQuery) {
     msg = 'jQuery is not installed';
 }
 alert(msg);
-</pre>
+```

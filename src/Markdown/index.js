@@ -1,30 +1,17 @@
-import ErrorBoundary from './ErrorBoundary';
-import Link from './Link';
+import ErrorBoundary from '../ErrorBoundary';
+import Link from '../Link';
+import Code from './Code';
 import {Typography, Divider} from '@mui/material';
-import {alpha} from '@mui/material/styles';
 import {makeStyles} from '@mui/styles';
 import MarkdownToJsx from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useCallback, useMemo} from 'react';
 import slugify from 'slugify';
 
-const useStyles = makeStyles(({typography, palette, spacing, shape}) => ({
+const useStyles = makeStyles(() => ({
 	root: {
 		'& img': {
 			maxWidth: '100%',
-		},
-		'& code': {
-			fontFamily: typography.fontFamilyCode,
-			color: palette.text.secondary,
-			padding: spacing(0.5, 1),
-			borderRadius: shape.borderRadius,
-			backgroundColor: alpha(palette.primary.dark, 0.25),
-		},
-		'& pre > code': {
-			display: 'block',
-			padding: spacing(2),
-			overflowX: 'auto',
-			border: `1px solid ${palette.primary.dark}`,
 		},
 	},
 }));
@@ -32,24 +19,14 @@ const useStyles = makeStyles(({typography, palette, spacing, shape}) => ({
 export default function Markdown({children, options, ...props}) {
 	const classes = useStyles(props);
 
-	const Wrapper = React.useCallback((args) => {
+	const Wrapper = useCallback((args) => {
 		return <Typography component="div" classes={{root: classes.root}} {...args} />;
 	}, [classes.root]);
 
-	// function Code({className, children}) {
-	// 	const language = className.replace('lang-', '');
-
-	// 	return (
-	// 		<SyntaxHighlighter language={language}>
-	// 			<code>{children}</code>
-	// 		</SyntaxHighlighter>
-	// 	);
-	// }
-
-	const overrides = React.useMemo(() => ({
+	const overrides = useMemo(() => ({
 		hr: Divider,
 		a: Link,
-		// code: Code,
+		code: Code,
 		...options.overrides,
 	}), [options.overrides]);
 

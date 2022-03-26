@@ -1,3 +1,4 @@
+import {useGlobalContext} from './GlobalContextProvider';
 import Link from './Link';
 import Markdown from './Markdown';
 import {Stack, Skeleton, Card, Divider, Typography} from '@mui/material';
@@ -8,8 +9,8 @@ import React from 'react';
 import {Helmet} from 'react-helmet-async';
 import YAML from 'yaml';
 
-async function fetchPost(id) {
-	const response = await fetch(`/_posts/${id}`);
+async function fetchPost(basePath, id) {
+	const response = await fetch(`${basePath}_posts/${id}`);
 	return response.text();
 }
 
@@ -28,11 +29,12 @@ function parsePost(content) {
 function useArticle(id, fullText) {
 	const [article, setArticle] = React.useState();
 	const [error, setError] = React.useState();
+	const {basePath} = useGlobalContext();
 
 	React.useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetchPost(id);
+				const response = await fetchPost(basePath, id);
 				const post = fullText ? response : trim(response);
 				const {markdown, meta} = parsePost(post);
 				setArticle({title: meta.title, markdown});
@@ -41,7 +43,7 @@ function useArticle(id, fullText) {
 				setError(err);
 			}
 		})();
-	}, [id, fullText]);
+	}, [id, fullText, basePath]);
 
 	return {article, error};
 }
