@@ -65,5 +65,6 @@ launchctl load ~/Library/LaunchAgents/local.hidutilKeyMapping.plist
 launchctl start local.hidutilKeyMapping
 ```
 
--_Джерела:_-
+_Джерела:_
+
 - https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/
