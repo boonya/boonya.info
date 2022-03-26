@@ -1,24 +1,25 @@
 ---
 layout: post
 title: Віддалений бекап та оновлення RouterOS (Mikrotik) через ssh
-permalink: /blog/ssh-remote-backup-upgrade-router-os-mikrotik.html
+permalink: /blog/mikrotik-ssh-backup-upgrade.html
 ---
 
-Перш за все, для того щоб взаємодіяти з пристроєм **Mikrotik** на базі **RouterOS**, ми маємо встановити на нього публічний ssh ключ того пристрою, з якого будемо виконувати команди.
+Перш за все, для того щоб взаємодіяти з пристроєм **Mikrotik** на базі **RouterOS**, ми маємо встановити на нього публічний ssh ключ того пристрою, з якого будемо виконувати команди. Та проасоціювати цей ключ з обліковим записом вашого користувача на пристрої.
 
 ```sh
-ssh <mikrotik-address> "/file print file=id_rsa.pub; file set id_rsa.pub contents=\"`cat ~/.ssh/id_rsa.pub`\"; /user ssh-keys import public-key-file=id_rsa.pub.txt user=admin;"
+MIKROTIK_ADDRESS=<mikrotik-address>
+ssh $MIKROTIK_ADDRESS "/file print file=id_rsa.pub; file set id_rsa.pub contents=\"`cat ~/.ssh/id_rsa.pub`\"; /user ssh-keys import public-key-file=id_rsa.pub.txt user=admin;"
 ```
 
 Де `<mikrotik-address>` - адреса вашого mikrotik пристрою.
 
 Після цього підключаємось до mikrotik пристрою за допомогою ключа
 
-<!--more-->
-
 ```sh
-ssh <mikrotik-address>
+ssh $MIKROTIK_ADDRESS
 ```
+
+<!--more-->
 
 Власне, робимо бекап
 
@@ -35,7 +36,7 @@ ssh <mikrotik-address>
 Завантажуємо файл бекапу
 
 ```sh
-scp <mikrotik-address>:/flash/hostname-20220320-1838.backup ./
+scp $MIKROTIK_ADDRESS:/flash/hostname-20220320-1838.backup ./
 ```
 
 Змінюємо канал оновлення, якщо потрібно
@@ -65,7 +66,7 @@ scp <mikrotik-address>:/flash/hostname-20220320-1838.backup ./
 Чекаємо деякий час та заходимо на пристрій знову
 
 ```sh
-ssh <mikrotik-address>
+ssh $MIKROTIK_ADDRESS
 ```
 
 Кожен девайс має власну прошивку, тож ця прошивка має бути оновлена після оновлення RouterOS (операційної системи)
