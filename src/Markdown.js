@@ -18,7 +18,7 @@ export default function Markdown({children, options, ...props}) {
 	const classes = useStyles(props);
 
 	const Wrapper = React.useCallback((args) => {
-		return <Typography component="div" className={classes.root} {...args} />;
+		return <Typography component="div" classes={{root: classes.root}} {...args} />;
 	}, [classes.root]);
 
 	const Text = React.useCallback(({children: value}) => value, []);

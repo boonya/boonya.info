@@ -51,10 +51,11 @@ const useStyles = makeStyles(() => ({
 		from: {opacity: 0},
 		to: {opacity: 1},
 	},
-	smooth: {
+	root: {
 		animationDuration: 500,
 		animationName: '$smooth',
 	},
+	content: {},
 }));
 
 export default function Article({id, route, name, date, fullText, comments, ...props}) {
@@ -100,7 +101,7 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 	}
 
 	return (
-		<Card {...props} classes={{root: classes.smooth}}>
+		<Card {...props} classes={{root: classes.root}}>
 			{fullText && (
 				<Helmet>
 					<title>{title}</title>
@@ -108,7 +109,9 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 			)}
 			<Typography variant="h1" htmlFor={id}>{title}</Typography>
 			<Typography component="time" htmlFor={id} dateTime={dateTime}>{formattedDate}</Typography>
-			<Markdown component="article" id={id}>{article.markdown}</Markdown>
+			<Markdown component="article" id={id} className={classes.content}>
+				{article.markdown}
+			</Markdown>
 			{comments && (
 				<>
 					<Divider />
@@ -123,8 +126,8 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 				</>
 			)}
 			{!fullText && (
-				<Link href={route} aria-label={`Читать полностью про ${article?.title}`}>
-					Читать полностью
+				<Link href={route} aria-label={`Детальніше про ${article?.title}`}>
+					Детальніше
 				</Link>
 			)}
 		</Card>
