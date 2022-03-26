@@ -77,6 +77,7 @@ module.exports = {
 			xhtml: true,
 			filename: 'index.html',
 			title: ENV.TITLE,
+			base: ENV.APP_BASE_PATH,
 		}),
 	],
 	module: {

@@ -7,7 +7,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {HelmetProvider, Helmet} from 'react-helmet-async';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
 export default function AppBootstrap({children}) {
 	const author = ENV.AUTHOR;
@@ -33,14 +33,14 @@ export default function AppBootstrap({children}) {
 			<HelmetProvider>
 				<ThemeProvider theme={theme}>
 					<CssBaseline />
-					<Router basename={basePath}>
+					<BrowserRouter basename={basePath}>
 						<ErrorBoundary fallback={<ErrorPage />}>
 							<Helmet>
 								<title>{ENV.TITLE}</title>
 							</Helmet>
 							{children}
 						</ErrorBoundary>
-					</Router>
+					</BrowserRouter>
 				</ThemeProvider>
 			</HelmetProvider>
 		</GlobalContextProvider>

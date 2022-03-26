@@ -4,7 +4,7 @@ import ROUTES from '../routes';
 import {AppBar, Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
 import React from 'react';
-import {useRouteMatch} from 'react-router-dom';
+// import {useRouteMatch} from 'react-router-dom';
 
 const useStyles = makeStyles(({spacing}) => ({
 	root: {
@@ -15,7 +15,9 @@ const useStyles = makeStyles(({spacing}) => ({
 export default function Header() {
 	const classes = useStyles();
 	const globals = useGlobalContext();
-	const {isExact} = useRouteMatch({path: ROUTES.home});
+	// FIXME: Do not forget!
+	// const {isExact} = useRouteMatch({path: ROUTES.home});
+	const isExact = false;
 
 	const name = React.useMemo(() => {
 		if (isExact) {
