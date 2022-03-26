@@ -3,8 +3,8 @@ import Link from '../Link';
 import ROUTES from '../routes';
 import {AppBar, Typography} from '@mui/material';
 import {makeStyles} from '@mui/styles';
-import React from 'react';
-// import {useRouteMatch} from 'react-router-dom';
+import React, {useMemo} from 'react';
+import {useMatch, useSearchParams} from 'react-router-dom';
 
 const useStyles = makeStyles(({spacing}) => ({
 	root: {
@@ -15,16 +15,15 @@ const useStyles = makeStyles(({spacing}) => ({
 export default function Header() {
 	const classes = useStyles();
 	const globals = useGlobalContext();
-	// FIXME: Do not forget!
-	// const {isExact} = useRouteMatch({path: ROUTES.home});
-	const isExact = false;
+	const match = useMatch(ROUTES.home);
+	const [searchParams] = useSearchParams();
 
-	const name = React.useMemo(() => {
-		if (isExact) {
+	const name = useMemo(() => {
+		if (match && !searchParams.get('page')) {
 			return globals.name;
 		}
 		return <Link href={ROUTES.home} color="inherit">{globals.name}</Link>;
-	}, [globals.name, isExact]);
+	}, [globals.name, match, searchParams]);
 
 	return (
 		<AppBar position="relative" className={classes.root}>
