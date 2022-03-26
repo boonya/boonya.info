@@ -70,7 +70,6 @@ module.exports = {
 			templateParameters: ENV,
 			publicPath: ENV.APP_BASE_PATH,
 			meta: {
-				'theme-color': ENV.THEME_COLOR,
 				keywords: ENV.KEYWORDS,
 				description: ENV.DESCRIPTION,
 				author: ENV.AUTHOR,

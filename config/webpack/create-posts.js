@@ -15,6 +15,7 @@ function parseFilename(filename) {
 }
 
 function processFile(directory, {filename, date, name}) {
+	// eslint-disable-next-line node/no-sync
 	const content = fs.readFileSync(path.join(directory, filename));
 	const post = parsePost(content);
 	return {
@@ -36,6 +37,7 @@ function sort(a, b) {
 }
 
 module.exports = function (directory) {
+	// eslint-disable-next-line node/no-sync
 	return fs.readdirSync(directory)
 		.map(parseFilename)
 		.filter((v) => v)

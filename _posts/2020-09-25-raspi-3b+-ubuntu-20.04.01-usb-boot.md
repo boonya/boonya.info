@@ -43,6 +43,6 @@ sudo dd if=vmlinuz bs=1 | zcat > vmlinux
 Ждем...
 Готово.
 
-### Подключаем диск к “малине”, ждем пару минут, profit
+Подключаем диск к “малине”, ждем пару минут, profit
 
 [Источник - askubuntu.com](https://askubuntu.com/a/1255649/790519)

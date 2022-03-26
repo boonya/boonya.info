@@ -1,15 +1,30 @@
 import ErrorBoundary from './ErrorBoundary';
 import Link from './Link';
 import {Typography, Divider} from '@mui/material';
+import {alpha} from '@mui/material/styles';
 import {makeStyles} from '@mui/styles';
 import MarkdownToJsx from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
 import React from 'react';
+import slugify from 'slugify';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({typography, palette, spacing, shape}) => ({
 	root: {
 		'& img': {
 			maxWidth: '100%',
+		},
+		'& code': {
+			fontFamily: typography.fontFamilyCode,
+			color: palette.text.secondary,
+			padding: spacing(0.5, 1),
+			borderRadius: shape.borderRadius,
+			backgroundColor: alpha(palette.primary.dark, 0.25),
+		},
+		'& pre > code': {
+			display: 'block',
+			padding: spacing(2),
+			overflowX: 'auto',
+			border: `1px solid ${palette.primary.dark}`,
 		},
 	},
 }));
@@ -21,25 +36,22 @@ export default function Markdown({children, options, ...props}) {
 		return <Typography component="div" classes={{root: classes.root}} {...args} />;
 	}, [classes.root]);
 
-	const Text = React.useCallback(({children: value}) => value, []);
+	// function Code({className, children}) {
+	// 	const language = className.replace('lang-', '');
 
-	const headingsOverrides = React.useMemo(() => {
-		return {
-			h1: Text,
-			h2: Text,
-			h3: Text,
-			h4: Text,
-			h5: Text,
-			h6: Text,
-		};
-	}, [Text]);
+	// 	return (
+	// 		<SyntaxHighlighter language={language}>
+	// 			<code>{children}</code>
+	// 		</SyntaxHighlighter>
+	// 	);
+	// }
 
 	const overrides = React.useMemo(() => ({
 		hr: Divider,
 		a: Link,
-		...headingsOverrides,
+		// code: Code,
 		...options.overrides,
-	}), [headingsOverrides, options.overrides]);
+	}), [options.overrides]);
 
 	if (!children) {
 		return null;
@@ -52,6 +64,7 @@ export default function Markdown({children, options, ...props}) {
 					forceWrapper: true,
 					wrapper: Wrapper,
 					overrides,
+					slugify: (value) => slugify(value, {lower: true}),
 					disableParsingRawHTML: false,
 					...options,
 				}}

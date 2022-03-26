@@ -46,7 +46,7 @@ function useArticle(id, fullText) {
 	return {article, error};
 }
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(({spacing}) => ({
 	'@keyframes smooth': {
 		from: {opacity: 0},
 		to: {opacity: 1},
@@ -54,6 +54,7 @@ const useStyles = makeStyles(() => ({
 	root: {
 		animationDuration: 500,
 		animationName: '$smooth',
+		padding: spacing(3, 2),
 	},
 	content: {},
 }));
@@ -90,7 +91,7 @@ export default function Article({id, route, name, date, fullText, comments, ...p
 
 	if (!article) {
 		return (
-			<Card id={id} {...props} classes={{root: classes.smooth}}>
+			<Card id={id} {...props} classes={{root: classes.root}}>
 				<Stack>
 					<Skeleton animation="wave" height={40} />
 					<Skeleton animation="wave" height={40} width={200} />
