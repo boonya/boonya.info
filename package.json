@@ -19,6 +19,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/fira-sans-extra-condensed": "^4.5.6",
     "@fontsource/ubuntu-mono": "^4.5.6",
+    "@mui/icons-material": "^5.5.1",
     "@mui/material": "^5.0.6",
     "@mui/styles": "^5.0.2",
     "clsx": "^1.1.1",

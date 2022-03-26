@@ -1,3 +1,6 @@
+import useClipboard from '../hooks/useClipboard';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import IconButton from '@mui/material/IconButton';
 import {alpha} from '@mui/material/styles';
 import {makeStyles} from '@mui/styles';
 import clsx from 'clsx';
@@ -23,6 +26,12 @@ const useStyles = makeStyles(({typography, palette, spacing, shape}) => ({
 		borderRadius: shape.borderRadius,
 		border: `1px solid ${palette.primary.dark}`,
 	},
+	copy: {
+		position: 'absolute  !important',
+		right: spacing(1),
+		top: spacing(1),
+		backgroundColor: `${alpha(palette.primary.main, 0.25)} !important`,
+	},
 }));
 
 function useLanguage(className) {
@@ -41,21 +50,32 @@ export default function Code({className, children, ...props}) {
 	const classes = useStyles(props);
 	const lang = useLanguage(className);
 	const PreTag = useCallback(({children: v}) => v, []);
+	const copy = useClipboard(children);
 
 	if (!lang) {
 		return <code className={clsx(classes.code, classes.inlineCode)}>{children}</code>;
 	}
 
 	return (
-		<SyntaxHighlighter
-			language={lang}
-			codeTagProps={{className: clsx(classes.code, classes.codeBlock, `lang-${lang}`)}}
-			PreTag={PreTag}
-			// useInlineStyles={false}
-			style={dark}
-		>
-			{children}
-		</SyntaxHighlighter>
+		<>
+			<SyntaxHighlighter
+				language={lang}
+				codeTagProps={{className: clsx(classes.code, classes.codeBlock, `lang-${lang}`)}}
+				PreTag={PreTag}
+				// useInlineStyles={false}
+				style={dark}
+			>
+				{children}
+			</SyntaxHighlighter>
+			<IconButton
+				onClick={copy}
+				color="primary"
+				aria-label="Copy source to the clipboard"
+				className={classes.copy}
+			>
+				<ContentCopyIcon />
+			</IconButton>
+		</>
 	);
 }
 

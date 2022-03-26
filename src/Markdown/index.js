@@ -11,6 +11,9 @@ import slugify from 'slugify';
 
 const useStyles = makeStyles(() => ({
 	root: {},
+	pre: {
+		position: 'relative',
+	},
 }));
 
 export default function Markdown({children, options, ...props}) {
@@ -25,6 +28,7 @@ export default function Markdown({children, options, ...props}) {
 		a: Link,
 		img: Image,
 		code: Code,
+		pre: {props: {className: classes.pre}},
 		...options.overrides,
 	}), [options.overrides]);
 
