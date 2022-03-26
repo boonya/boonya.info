@@ -23,8 +23,7 @@ export default function MainPage({children, ContentProps, ...props}) {
 
 MainPage.propTypes = {
 	children: PropTypes.node.isRequired,
-	// eslint-disable-next-line react/forbid-prop-types
-	ContentProps: PropTypes.object,
+	ContentProps: PropTypes.shape({}),
 };
 
 MainPage.defaultProps = {

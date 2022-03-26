@@ -11,7 +11,9 @@ permalink: /blog/site-backup-command.html
 
 Команда представляет из себя на самом деле последовательность разных комманд, но благодаря тому, что они запускаются по очереди, единственное, что от вас потребуется, это вставить её в консоль, нажать enter и ввести пароль для чтения вашей базы данных.
 
-```mysqldump -u {mysql-username} -p {mysql-database} > {mysql-filename}.sql && tar czpvf {backup-filename}-`date +%d.%m.%Y-%H.%M`.tar.gz {site-dir} --exclude=cache/* --exclude=tmp/* --exclude=logs/* {mysql-filename}.sql && rm {mysql-filename}.sql```
+```bash
+mysqldump -u {mysql-username} -p {mysql-database} > {mysql-filename}.sql && tar czpvf {backup-filename}-`date +%d.%m.%Y-%H.%M`.tar.gz {site-dir} --exclude=cache/* --exclude=tmp/* --exclude=logs/* {mysql-filename}.sql && rm {mysql-filename}.sql
+```
 
 А теперь разберем её подробнее, чтобы вы понимали как она работает и, соответственно, могли её кастомизировать.
 
@@ -23,11 +25,29 @@ permalink: /blog/site-backup-command.html
 * backup-filename - имя файла архива в который будет всё запаковано
 * site-dir - путь к корневой директории файлов сайта
 
-Первая часть - ```mysqldump -u {mysql-username} -p {mysql-database} > {mysql-filename}.sql``` читает указанную БД и возвращаемый результат сохраняет в файл.
+Первая часть
 
-Вторая часть: ```tar czpvf {backup-filename}-`date +%d.%m.%Y-%H.%M`.tar.gz {site-dir} --exclude=cache/* --exclude=tmp/* --exclude=logs/* {mysql-filename}.sql``` упаковывает, а затем сжимает все файлы из директории `{site-dir}` *(кроме содержимого всех подпапок с именами cache, tmp и logs)* и туда же упаковывает ранее созданный файл дампа БД. Результат сохраняется в файл с именем {backup-filename}-\`date +%d.%m.%Y-%H.%M\`.tar.gz, где `date +%d.%m.%Y-%H.%M` будет преобразовано в текущую дату и время в формате день.месяц.год-час.минута.
+```bash
+mysqldump -u {mysql-username} -p {mysql-database} > {mysql-filename}.sql
+```
 
-Третья часть: ```rm {mysql-filename}.sql``` просто удаляет файл дампа БД, т.к. он уже упакован в архив.
+читает указанную БД и возвращаемый результат сохраняет в файл.
+
+Вторая часть:
+
+```bash
+tar czpvf {backup-filename}-`date +%d.%m.%Y-%H.%M`.tar.gz {site-dir} --exclude=cache/* --exclude=tmp/* --exclude=logs/* {mysql-filename}.sql
+```
+
+упаковывает, а затем сжимает все файлы из директории `{site-dir}` *(кроме содержимого всех подпапок с именами cache, tmp и logs)* и туда же упаковывает ранее созданный файл дампа БД. Результат сохраняется в файл с именем `{backup-filename}-``date +%d.%m.%Y-%H.%M``.tar.gz`, где `date +%d.%m.%Y-%H.%M` будет преобразовано в текущую дату и время в формате день.месяц.год-час.минута.
+
+Третья часть:
+
+```bash
+rm {mysql-filename}.sql
+```
+
+просто удаляет файл дампа БД, т.к. он уже упакован в архив.
 
 При запуске, терминал сначала попросит вас ввести пароль пользователя БД и, в случае успешного подключения, вы увидите "ковер" строк. Поздравляю, ваш бэкап выполняется.
 

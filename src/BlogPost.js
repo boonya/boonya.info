@@ -2,10 +2,22 @@ import Article from './Article';
 import {useGlobalContext} from './GlobalContextProvider';
 import PostLayout from './Layout/Post';
 import NotFoundPage from './NotFoundPage';
+import {makeStyles} from '@mui/styles';
 import React from 'react';
 import {useParams} from 'react-router-dom';
 
-export default function BlogPost() {
+const useStyles = makeStyles(() => ({
+	content: {
+		'& img': {
+			maxHeight: 500,
+			display: 'block',
+			margin: '0 auto',
+		},
+	},
+}));
+
+export default function BlogPost(props) {
+	const classes = useStyles(props);
 	const {posts} = useGlobalContext();
 	const params = useParams();
 
@@ -19,7 +31,7 @@ export default function BlogPost() {
 
 	return (
 		<PostLayout id={filename}>
-			<Article id={filename} fullText comments {...rest} />
+			<Article id={filename} fullText comments {...rest} classes={{content: classes.content}} />
 		</PostLayout>
 	);
 }

@@ -3,9 +3,9 @@ import {Grid} from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function Post({children}) {
+export default function Post({children, ContentProps, ...props}) {
 	return (
-		<Root>
+		<Root {...props}>
 			<Grid
 				item
 				xs={11}
@@ -13,6 +13,7 @@ export default function Post({children}) {
 				xl={7}
 				component="main"
 				id="content"
+				{...ContentProps}
 			>
 				{children}
 			</Grid>
@@ -22,4 +23,9 @@ export default function Post({children}) {
 
 Post.propTypes = {
 	children: PropTypes.node.isRequired,
+	ContentProps: PropTypes.shape({}),
+};
+
+Post.defaultProps = {
+	ContentProps: undefined,
 };

@@ -1,10 +1,12 @@
-import ErrorBoundary from './ErrorBoundary';
-import Link from './Link';
+import ErrorBoundary from '../ErrorBoundary';
+import Link from '../Link';
+import Code from './Code';
 import {Typography, Divider} from '@mui/material';
 import {makeStyles} from '@mui/styles';
 import MarkdownToJsx from 'markdown-to-jsx';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, {useCallback, useMemo} from 'react';
+import slugify from 'slugify';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -17,29 +19,16 @@ const useStyles = makeStyles(() => ({
 export default function Markdown({children, options, ...props}) {
 	const classes = useStyles(props);
 
-	const Wrapper = React.useCallback((args) => {
-		return <Typography component="div" className={classes.root} {...args} />;
+	const Wrapper = useCallback((args) => {
+		return <Typography component="div" classes={{root: classes.root}} {...args} />;
 	}, [classes.root]);
 
-	const Text = React.useCallback(({children: value}) => value, []);
-
-	const headingsOverrides = React.useMemo(() => {
-		return {
-			h1: Text,
-			h2: Text,
-			h3: Text,
-			h4: Text,
-			h5: Text,
-			h6: Text,
-		};
-	}, [Text]);
-
-	const overrides = React.useMemo(() => ({
+	const overrides = useMemo(() => ({
 		hr: Divider,
 		a: Link,
-		...headingsOverrides,
+		code: Code,
 		...options.overrides,
-	}), [headingsOverrides, options.overrides]);
+	}), [options.overrides]);
 
 	if (!children) {
 		return null;
@@ -52,6 +41,7 @@ export default function Markdown({children, options, ...props}) {
 					forceWrapper: true,
 					wrapper: Wrapper,
 					overrides,
+					slugify: (value) => slugify(value, {lower: true}),
 					disableParsingRawHTML: false,
 					...options,
 				}}

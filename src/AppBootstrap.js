@@ -2,6 +2,7 @@ import ErrorBoundary from './ErrorBoundary';
 import ErrorPage from './ErrorPage';
 import GlobalContextProvider from './GlobalContextProvider';
 import createTheme from './theme';
+import CssBaseline from '@mui/material/CssBaseline';
 import {ThemeProvider} from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -16,10 +17,7 @@ export default function AppBootstrap({children}) {
 	const description = ENV.DESCRIPTION;
 	const basePath = ENV.APP_BASE_PATH;
 
-	const theme = createTheme({
-		color: ENV.THEME_COLOR,
-		background: ENV.BG_COLOR,
-	});
+	const theme = createTheme();
 
 	return (
 		<GlobalContextProvider
@@ -34,6 +32,7 @@ export default function AppBootstrap({children}) {
 		>
 			<HelmetProvider>
 				<ThemeProvider theme={theme}>
+					<CssBaseline />
 					<Router basename={basePath}>
 						<ErrorBoundary fallback={<ErrorPage />}>
 							<Helmet>

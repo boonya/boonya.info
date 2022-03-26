@@ -4,8 +4,6 @@ require('dotenv').config();
 
 const {
 	APP_BASE_PATH,
-	THEME_COLOR,
-	BG_COLOR,
 	AUTHOR,
 	NAME,
 	TITLE,
@@ -18,8 +16,6 @@ const basePath = value ? `/${value}/` : '/';
 
 module.exports = {
 	APP_BASE_PATH: basePath,
-	THEME_COLOR,
-	BG_COLOR,
 	AUTHOR,
 	NAME,
 	TITLE,

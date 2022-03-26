@@ -15,7 +15,5 @@
 		}
 	],
 	"start_url": "${APP_BASE_PATH}",
-	"theme_color": "${THEME_COLOR}",
-	"background_color": "${BG_COLOR}",
 	"display": "standalone"
 }
