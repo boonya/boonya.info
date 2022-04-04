@@ -31,6 +31,11 @@ const useStyles = makeStyles(({typography, palette, spacing, shape}) => ({
 		right: spacing(1),
 		top: spacing(1),
 		backgroundColor: `${alpha(palette.primary.main, 0.25)} !important`,
+		opacity: 0.3,
+		transition: 'opacity 150ms ease-out',
+		'&:hover': {
+			opacity: 1,
+		},
 	},
 }));
 
