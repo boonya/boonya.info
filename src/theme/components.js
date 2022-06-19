@@ -1,16 +1,56 @@
 /**
- * https://fonts.google.com/share?selection.family=Fira%20Sans%20Extra%20Condensed%7CUbuntu%20Mono
+ * https://fonts.google.com/share?selection.family=Pangolin%7CUbuntu%20Mono
  */
-import FiraSans from '@fontsource/fira-sans-extra-condensed';
+import Pangolin from '@fontsource/pangolin';
 import UbuntuMono from '@fontsource/ubuntu-mono';
 
-export default {
+export default () => ({
 	MuiCssBaseline: {
-		styleOverrides: `${FiraSans.toString()}\n${UbuntuMono.toString()}`,
+		styleOverrides: `${Pangolin.toString()}\n${UbuntuMono.toString()}`,
 	},
-	MuiPaper: {
+	// MuiCssBaseline: {
+	// 	styleOverrides: {
+	// 		'html, body, #root': {
+	// 			padding: 0,
+	// 			margin: 0,
+	// 			height: '100%',
+	// 		},
+	// 	},
+	// },
+	MuiButton: {
 		defaultProps: {
-			elevation: 0,
+			variant: 'contained',
 		},
 	},
-};
+	MuiLoadingButton: {
+		defaultProps: {
+			variant: 'contained',
+		},
+	},
+	MuiIconButton: {
+		defaultProps: {
+			color: 'primary',
+		},
+	},
+	MuiFab: {
+		defaultProps: {
+			color: 'primary',
+		},
+	},
+	MuiTextField: {
+		defaultProps: {
+			fullWidth: true,
+			margin: 'none',
+		},
+	},
+	MuiTooltip: {
+		defaultProps: {
+			arrow: true,
+		},
+	},
+	// MuiPaper: {
+	// 	defaultProps: {
+	// 		elevation: 0,
+	// 	},
+	// },
+});
