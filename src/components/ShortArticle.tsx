@@ -15,7 +15,7 @@ export default function ShortArticle({permalink, title, date, md}: Props) {
     <article>
       <h1><Link href={permalink}>{title}</Link></h1>
       <Time value={date} withDistance />
-      <Markdown value={intro} topLevelHeading={2} />
+      <Markdown value={intro} topLevelHeading={2} noImages />
     </article>
   );
 }

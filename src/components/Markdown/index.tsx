@@ -8,13 +8,19 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 type MarkdownProps = HTMLAttributes<HTMLDivElement> & {
   value: string;
   topLevelHeading?: HeadingLevel;
+  noImages?: boolean;
 };
 
-export default function Markdown({value, topLevelHeading: _topLevelHeading}: MarkdownProps) {
+export default function Markdown({
+  value,
+  topLevelHeading: _topLevelHeading,
+  noImages
+}: MarkdownProps) {
   const topLevelHeading = _topLevelHeading || 1;
 
   const heading = useCallback((level: number) => {
     const Component = `h${level}`;
+    // eslint-disable-next-line react/display-name
     return (props: HTMLAttributes<HTMLHeadingElement>) => {
       return <Component {...props} />;
     }
@@ -22,7 +28,7 @@ export default function Markdown({value, topLevelHeading: _topLevelHeading}: Mar
 
   const overrides = {
     a: Link,
-    img: Image,
+    img: noImages ? () => null : Image,
     h1: heading(topLevelHeading),
     h2: heading(topLevelHeading + 1),
     h3: heading(topLevelHeading + 2),

@@ -9,7 +9,7 @@
   --background-color: #fbf7ea;
   --primary-color: #443627;
   --text-color: var(--primary-color);
-  --font-size: 20px;
+  --font-size: 25px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,14 +45,16 @@ a:hover {
   text-decoration: none;
 }
 
+p {
+  margin-bottom: 1em;
+}
+
 pre {
   font-family: 'Ubuntu Mono', monospace;
   overflow-y: hidden;
   overflow-x: auto;
   padding: 0.5em 1em;
-
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid var(--text-color);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
 }
 
@@ -60,16 +62,14 @@ code {
   font-family: 'Ubuntu Mono', monospace;
   padding: 0.2em 0.5em;
   font-size: 0.8em;
-  background: rgba(255, 255, 255, 0.5);
-  border: 1px solid var(--text-color);
+  background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
-  white-space: nowrap;
+  white-space: pre;
 }
 
 pre > code {
   padding: 0;
   background: none;
-  border: none;
 }
 
 #__next {
