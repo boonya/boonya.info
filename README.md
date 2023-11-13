@@ -1,4 +1,3 @@
-boonya.github.io -> boonya.info
-================
+# boonya.info
 
-Here is gonna be my personal blog
+## Усього потроху про інтернет та залізяччя
