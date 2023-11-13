@@ -1,0 +1,24 @@
+name: Publishing
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout to "${{ github.ref }}".
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+      - run: npm ci
+      - run: npm run build
+      - name: Save artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          name: bundle
+          path: out
