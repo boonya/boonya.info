@@ -1,9 +1,0 @@
-paginate: 20
-excerpt_separator: "<!--more-->"
-
-name: Простые решения. Заметки зеленого программиста.
-url: boonya.info
-author: Serhii [boonya] Buinytskyi <me@boonya.info>
-
-gems:
-    - jekyll-redirect-from
