@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 import Head from 'next/head';
 import pkg from '../../package.json';
-import formatDate from '@/utils/formatDate'
+import formatDate from '@/utils/formatDate';
 
 type Props = PropsWithChildren<{
   title?: string;
@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
   author?: string;
 }>;
 
-export default function RootLayout({children, ...props}: Props) {
+export default function RootLayout({ children, ...props }: Props) {
   const title = props.title || `${pkg.name} :: ${pkg.description}`;
   const description = props.description || pkg.description;
   const keywords = props.keywords || pkg.keywords.join(', ');
@@ -18,14 +18,14 @@ export default function RootLayout({children, ...props}: Props) {
 
   return (
     <>
-        <Head>
-          <title>{title}</title>
-          <meta name="description" content={description} />
-          <meta name="keywords" content={keywords} />
-          <meta name="author" content={author} />
-        </Head>
-        {children}
-        <footer>(c) boonya.info {formatDate('yyyy')}</footer>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="author" content={author} />
+      </Head>
+      {children}
+      <footer>(c) boonya.info {formatDate('yyyy')}</footer>
     </>
   );
 }

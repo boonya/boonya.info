@@ -3,6 +3,7 @@ layout: post
 title: Создаем email aliases в вашем домене.
 permalink: /blog/email-aliases.html
 ---
+
 Допустим, вы являетесь счастливым обладателем доменного имени `john.name` и
 вам захотелось принимать почту на адрес `me@john.name`. Но читать вы её хотите
 в ящике `john@gmail.com`.

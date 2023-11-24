@@ -1,10 +1,4 @@
-import {
-  format as formatDate,
-  formatRelative,
-  formatDistance,
-  isDate,
-  Locale,
-} from 'date-fns';
+import { format as formatDate, formatRelative, formatDistance, isDate, Locale } from 'date-fns';
 
 function sanitizeDateValue(value?: Date) {
   if (value !== undefined && !isDate(value)) {
@@ -17,8 +11,8 @@ function sanitizeDateValue(value?: Date) {
 }
 
 const PATTERNS = {
-  'relative': 'relative',
-  'distance': 'distance',
+  relative: 'relative',
+  distance: 'distance',
   'date.long': 'PPP',
   'date.short': 'P',
   'time.short': 'p',
@@ -31,13 +25,16 @@ export default function date(format: Format, value?: Date, locale?: Locale) {
   const dateObject = sanitizeDateValue(value);
   switch (format) {
     case 'relative':
-      return formatRelative(dateObject, new Date(), {locale});
+      return formatRelative(dateObject, new Date(), { locale });
     case 'distance':
-      return formatDistance(dateObject, new Date(), {locale, addSuffix: true});
+      return formatDistance(dateObject, new Date(), {
+        locale,
+        addSuffix: true,
+      });
     default:
       // TODO: To figure out why
       // @ts-ignore
       const pattern = PATTERNS[format] || format;
-      return formatDate(dateObject, pattern, {locale});
+      return formatDate(dateObject, pattern, { locale });
   }
 }

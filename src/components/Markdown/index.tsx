@@ -1,7 +1,7 @@
 import MarkdownToJsx from 'markdown-to-jsx';
 import Image from './Image';
 import Link from 'next/link';
-import {HTMLAttributes, PropsWithChildren, useCallback} from 'react';
+import { HTMLAttributes, PropsWithChildren, useCallback } from 'react';
 import slugify from 'slugify';
 import Code from './Code';
 
@@ -13,11 +13,7 @@ type MarkdownProps = HTMLAttributes<HTMLDivElement> & {
   noImages?: boolean;
 };
 
-export default function Markdown({
-  value,
-  topLevelHeading: _topLevelHeading,
-  noImages
-}: MarkdownProps) {
+export default function Markdown({ value, topLevelHeading: _topLevelHeading, noImages }: MarkdownProps) {
   const topLevelHeading = _topLevelHeading || 1;
 
   const heading = useCallback((level: number) => {
@@ -25,13 +21,13 @@ export default function Markdown({
     // eslint-disable-next-line react/display-name
     return (props: HTMLAttributes<HTMLHeadingElement>) => {
       return <Component {...props} />;
-    }
+    };
   }, []);
 
   const overrides = {
     a: Link,
     img: noImages ? () => null : Image,
-    pre: ({children}: PropsWithChildren) => children,
+    pre: ({ children }: PropsWithChildren) => children,
     code: Code,
     h1: heading(topLevelHeading),
     h2: heading(topLevelHeading + 1),
@@ -44,7 +40,7 @@ export default function Markdown({
   return (
     <MarkdownToJsx
       options={{
-        slugify: (value) => slugify(value, {lower: true}),
+        slugify: (value) => slugify(value, { lower: true }),
         disableParsingRawHTML: true,
         overrides,
       }}

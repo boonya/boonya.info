@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import {getArticles, getPages, getRedirects} from '@/utils/read-articles';
+import { getArticles, getPages, getRedirects } from '@/utils/read-articles';
 import Link from 'next/link';
 import FullArticle from '@/components/FullArticle';
 import RootLayout from '@/components/RootLayout';
 import ListingPage from '@/pages/index';
 import pkg from '../../package.json';
 
-function Article({title, md, ...props}: ReturnType<typeof getArticles>[number]) {
+function Article({ title, md, ...props }: ReturnType<typeof getArticles>[number]) {
   const pageTitle = `${pkg.name} :: ${title}`;
   const date = new Date(props.date);
 
@@ -23,7 +23,7 @@ function Article({title, md, ...props}: ReturnType<typeof getArticles>[number]) 
   );
 }
 
-function Redirect({to, title}: ReturnType<typeof getRedirects>[number]) {
+function Redirect({ to, title }: ReturnType<typeof getRedirects>[number]) {
   return (
     <RootLayout title={title}>
       <Head>
@@ -39,7 +39,7 @@ function Redirect({to, title}: ReturnType<typeof getRedirects>[number]) {
 
 type Props = Awaited<ReturnType<typeof getStaticProps>>['props'];
 
-export default function Page({article, redirect, currentPage, totalPages}: Props) {
+export default function Page({ article, redirect, currentPage, totalPages }: Props) {
   if (currentPage) {
     return <ListingPage articles={currentPage} totalPages={totalPages} />;
   }
@@ -60,10 +60,12 @@ export async function getStaticPaths() {
   const pages = getPages().map((_, index) => createSlug(`/page/${index + 1}`));
   pages.pop();
 
-  const articles = getArticles().map(({permalink}) => createSlug(permalink));
-  const redirects = getRedirects().map(({from}) => createSlug(from));
+  const articles = getArticles().map(({ permalink }) => createSlug(permalink));
+  const redirects = getRedirects().map(({ from }) => createSlug(from));
 
-  const paths = [...pages, ...articles, ...redirects].map((slug) => ({params: {slug}}));
+  const paths = [...pages, ...articles, ...redirects].map((slug) => ({
+    params: { slug },
+  }));
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
@@ -77,11 +79,11 @@ export async function getStaticProps({ params }: GetStaticPropsArgs) {
   const currentRoute = '/' + params.slug.join('/');
 
   const pages = getPages();
-  const [, number] = currentRoute.match(/^\/page\/(\d+)/ui) || [];
-  const currentPage = (number) ? pages[Number(number) - 1] : null;
+  const [, number] = currentRoute.match(/^\/page\/(\d+)/iu) || [];
+  const currentPage = number ? pages[Number(number) - 1] : null;
 
-  const article = getArticles().find(({permalink}) => permalink === currentRoute) || null;
-  const redirect = getRedirects().find(({from}) => from === currentRoute) || null;
+  const article = getArticles().find(({ permalink }) => permalink === currentRoute) || null;
+  const redirect = getRedirects().find(({ from }) => from === currentRoute) || null;
 
   if (!article && !redirect && !currentPage) {
     throw new Error('No article, no page, no redirect found.');
@@ -94,6 +96,6 @@ export async function getStaticProps({ params }: GetStaticPropsArgs) {
       redirect,
       currentPage,
       totalPages: pages.length,
-    }
+    },
   };
 }

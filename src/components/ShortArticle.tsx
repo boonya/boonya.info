@@ -9,11 +9,13 @@ type Props = {
   md: string;
 };
 
-export default function ShortArticle({permalink, title, date, md}: Props) {
-  const [intro] = md.split(/<!--\s*more\s*-->/um);
+export default function ShortArticle({ permalink, title, date, md }: Props) {
+  const [intro] = md.split(/<!--\s*more\s*-->/mu);
   return (
     <article>
-      <h1><Link href={permalink}>{title}</Link></h1>
+      <h1>
+        <Link href={permalink}>{title}</Link>
+      </h1>
       <Time value={date} withDistance />
       <Markdown value={intro} topLevelHeading={2} noImages />
     </article>

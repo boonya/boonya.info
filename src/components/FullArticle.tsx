@@ -1,4 +1,4 @@
-import Markdown from '@/components//Markdown';
+import Markdown from '@/components/Markdown';
 import Time from './Time';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   md: string;
 };
 
-export default function FullArticle({date, md}: Props) {
+export default function FullArticle({ date, md }: Props) {
   return (
     <article>
       <Time value={date} withDistance />
