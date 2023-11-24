@@ -33,12 +33,12 @@ export default function Code({ className, children, ...rest }: Props) {
         language={lang}
         showLineNumbers
         useInlineStyles={false}
-        className={clsx('mt-4 mb-4 overflow-auto bg-slate-100 rounded-md', className)}
+        className={clsx('mb-4 mt-4 overflow-auto rounded-md bg-slate-100', className)}
       >
         {children}
       </SyntaxHighlighter>
       <button
-        className="btn absolute top-0 right-0 text-sm"
+        className="btn absolute right-0 top-0 text-sm"
         aria-label="Copy source to the clipboard"
         onClick={() => navigator.clipboard.writeText(children)}
       >

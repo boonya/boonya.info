@@ -1,6 +1,6 @@
 .hljs {
   .linenumber {
-    @apply inline-block min-w-fit p-0.5 pr-4 text-right select-none text-yellow-300;
+    @apply inline-block min-w-fit select-none p-0.5 pr-4 text-right text-yellow-300;
   }
 
   .comment {
