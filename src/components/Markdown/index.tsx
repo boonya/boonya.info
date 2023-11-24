@@ -1,7 +1,9 @@
 import MarkdownToJsx from 'markdown-to-jsx';
 import Image from './Image';
 import Link from 'next/link';
-import {HTMLAttributes, useCallback} from 'react';
+import {HTMLAttributes, PropsWithChildren, useCallback} from 'react';
+import slugify from 'slugify';
+import Code from './Code';
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
@@ -29,6 +31,8 @@ export default function Markdown({
   const overrides = {
     a: Link,
     img: noImages ? () => null : Image,
+    pre: ({children}: PropsWithChildren) => children,
+    code: Code,
     h1: heading(topLevelHeading),
     h2: heading(topLevelHeading + 1),
     h3: heading(topLevelHeading + 2),
@@ -40,8 +44,7 @@ export default function Markdown({
   return (
     <MarkdownToJsx
       options={{
-        // forceWrapper: true,
-        // wrapper,
+        slugify: (value) => slugify(value, {lower: true}),
         disableParsingRawHTML: true,
         overrides,
       }}

@@ -2,102 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/pangolin';
-@import '@fontsource/ubuntu-mono';
+@layer base {
+  @import '@fontsource/pangolin';
+  @import '@fontsource/ubuntu-mono';
 
-:root {
-  --background-color: #fbf7ea;
-  --primary-color: #443627;
-  --text-color: var(--primary-color);
-  --font-size: 25px;
-}
+  html {
+    font-size: 25px;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #3d251b;
-    --primary-color: #fbf7ea;
-    --text-color: var(--primary-color);
+  html,
+  body,
+  #__next {
+    @apply h-full;
+  }
+
+  body {
+    @apply bg-white text-amber-950 dark:bg-amber-950 dark:text-amber-100;
+  }
+
+  #__next {
+    @apply h-full p-4 flex flex-col gap-8;
+  }
+
+  #__next>main {
+    @apply flex-grow flex flex-col gap-8;
+  }
+
+  a {
+    @apply text-amber-500 hover:text-amber-600 underline hover:no-underline aria-[current=true]:no-underline;
   }
 }
 
-html {
-  font-size: var(--font-size);
+@layer components {
+  .btn {
+    @apply p-1 text-gray-500 bg-gray-100 rounded-md hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  }
 }
 
-html, body, #__next {
-  height: 100%;
-}
-
-body {
-  font-family: 'Pangolin', serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--background-color);
-  color: var(--text-color);
-}
-
-a {
-  color: var(--primary-color);
-  text-decoration: underline;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-p {
-  margin-bottom: 1em;
-}
-
-pre {
-  font-family: 'Ubuntu Mono', monospace;
-  overflow-y: hidden;
-  overflow-x: auto;
-  padding: 0.5em 1em;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-}
-
-code {
-  font-family: 'Ubuntu Mono', monospace;
-  padding: 0.2em 0.5em;
-  font-size: 0.8em;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  white-space: pre;
-}
-
-pre > code {
-  padding: 0;
-  background: none;
-}
-
-#__next {
-  @apply h-full p-4 flex flex-col gap-8;
-}
-
-#__next > header > h1 {
-  font-size: 2.5rem;
-}
-
-#__next > main {
-  @apply flex-grow flex flex-col gap-8;
-}
-
-@import './article.css';
-
-nav.pagination {
-  text-align: center;
-}
-
-nav.pagination > ul {
-  @apply inline-flex -space-x-px text-sm;
-}
-
-nav.pagination > ul > li > a {
-  @apply flex items-center justify-center px-3 h-8;
-}
-
-nav.pagination > ul > li > a[aria-current="true"] {
-  text-decoration: none;
-}
+@import './syntax-highliter.css'

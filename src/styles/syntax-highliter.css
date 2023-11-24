@@ -1,0 +1,23 @@
+.hljs {
+  .linenumber {
+    @apply inline-block min-w-fit p-0.5 pr-4 text-right select-none text-yellow-300;
+  }
+
+  .comment {
+    @apply text-gray-400;
+  }
+
+  .hljs-keyword {
+    @apply text-blue-600;
+  }
+
+  .hljs-built_in {
+    @apply text-purple-500;
+  }
+
+  .hljs-string {
+    @apply text-green-600;
+  }
+
+  >.language-javascript {}
+}
