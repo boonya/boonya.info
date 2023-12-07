@@ -12,5 +12,9 @@ export default function Time({ value, format, withDistance }: Props) {
 
   const children = [date, distance].filter(Boolean).join(' ');
 
-  return <time dateTime={formatDate('yyyy-MM-dd', value)}>{children}</time>;
+  return (
+    <time dateTime={formatDate('yyyy-MM-dd', value)} className="text-xs">
+      {children}
+    </time>
+  );
 }

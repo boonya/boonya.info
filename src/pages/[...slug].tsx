@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { getArticles, getPages, getRedirects } from '@/utils/read-articles';
-import Link from 'next/link';
 import FullArticle from '@/components/FullArticle';
 import RootLayout from '@/components/RootLayout';
 import ListingPage from '@/pages/index';
@@ -12,12 +11,8 @@ function Article({ title, md, ...props }: ReturnType<typeof getArticles>[number]
 
   return (
     <RootLayout title={pageTitle}>
-      <header>
-        <h1>{title}</h1>
-        <Link href={'/'}>Go to main page</Link>
-      </header>
       <main>
-        <FullArticle date={date} md={md} />
+        <FullArticle title={title} date={date} md={md} />
       </main>
     </RootLayout>
   );

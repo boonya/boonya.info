@@ -43,6 +43,7 @@ export default function Markdown({ value, topLevelHeading: _topLevelHeading, noI
         slugify: (value) => slugify(value, { lower: true }),
         disableParsingRawHTML: true,
         overrides,
+        wrapper: ({ children }) => <div className="overflow-hidden">{children}</div>,
       }}
     >
       {value}

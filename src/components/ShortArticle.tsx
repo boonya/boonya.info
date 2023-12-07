@@ -11,6 +11,7 @@ type Props = {
 
 export default function ShortArticle({ permalink, title, date, md }: Props) {
   const [intro] = md.split(/<!--\s*more\s*-->/mu);
+
   return (
     <article>
       <h1>

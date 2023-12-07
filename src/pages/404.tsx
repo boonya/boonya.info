@@ -1,6 +1,6 @@
-import Link from 'next/link';
 import RootLayout from '@/components/RootLayout';
 import pkg from '../../package.json';
+import GoToMainPage from '@/components/GoToMainPage';
 
 export default function Page() {
   return (
@@ -11,7 +11,7 @@ export default function Page() {
       <main>
         <section>
           <h1>Nothing found</h1>
-          <Link href={'/'}>Go to main page</Link>
+          <GoToMainPage />
         </section>
       </main>
     </RootLayout>

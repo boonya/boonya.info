@@ -33,7 +33,7 @@ export default function Code({ className, children, ...rest }: Props) {
         language={lang}
         showLineNumbers
         useInlineStyles={false}
-        className={clsx('mb-4 mt-4 overflow-auto rounded-md bg-slate-100', className)}
+        className={clsx('mb-4 mt-4 overflow-auto rounded-md bg-slate-100 dark:bg-cyan-950', className)}
       >
         {children}
       </SyntaxHighlighter>

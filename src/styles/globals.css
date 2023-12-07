@@ -24,12 +24,17 @@
     @apply flex h-full flex-col gap-8 p-4;
   }
 
-  #__next > main {
+  #__next>main {
     @apply flex flex-grow flex-col gap-8;
   }
 
   a {
     @apply text-amber-500 underline hover:text-amber-600 hover:no-underline aria-[current=true]:no-underline;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 1em;
   }
 }
 

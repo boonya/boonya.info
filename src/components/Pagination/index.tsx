@@ -20,7 +20,7 @@ export default function Pagination({ length }: Props) {
 
   return (
     <nav aria-label="Page navigation" className="flex justify-center">
-      <ul className="flex justify-center gap-8">
+      <ul className="flex list-none justify-center gap-8 p-0">
         {prev && <Item index current={current} number={prev} label={'<'} />}
         {array.map((number, index) => (
           <Item key={number} index={index === 0} current={current} number={number} label={number} />
