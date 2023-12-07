@@ -1,19 +1,19 @@
 import Link from 'next/link';
+import React from 'react';
 
 type Props = {
-  index: boolean;
+  isCurrent?: boolean;
+  isFirst?: boolean;
+  label: React.ReactNode;
   number: number;
-  label: string | number;
-  current: number | null;
 };
 
-export default function Item({ index, number, label, current }: Props) {
-  const ariaCurrent = (index && !current) || current === number;
-  const href = index ? `/` : `/page/${number}`;
+export default function Item({ isFirst, isCurrent, number, label }: Props) {
+  const href = isFirst ? `/` : `/page/${number}`;
 
   return (
     <li>
-      <Link aria-current={ariaCurrent} href={href}>
+      <Link aria-current={isCurrent} href={href}>
         {label}
       </Link>
     </li>

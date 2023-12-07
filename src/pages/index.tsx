@@ -18,7 +18,7 @@ export default function Page({ articles, totalPages }: Props) {
       </header>
       <main>
         {children}
-        {totalPages > 1 && <Pagination length={totalPages} />}
+        {totalPages > 1 && <Pagination total={totalPages} />}
       </main>
     </RootLayout>
   );
