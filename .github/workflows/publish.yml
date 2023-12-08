@@ -17,18 +17,7 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      GOOGLE_ANALYTICS_ID: 396647624
-  # build:
-  #   runs-on: ubuntu-latest
-  #   environment: production
-  #   steps:
-  #     # - name: Debug 2
-  #     #   run: |
-  #     #     echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
-  #     # - uses: actions/checkout@v3
-  #     - uses: ./.github/workflows/build.yml
-  #       with:
-  #         GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+      environment: production
 
   deploy:
     needs: build

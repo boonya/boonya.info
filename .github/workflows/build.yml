@@ -4,8 +4,10 @@ on:
   workflow_dispatch:
   workflow_call:
     inputs:
-      GOOGLE_ANALYTICS_ID:
+      environment:
         type: string
+        required: true
+        description: 'Environment to deploy to'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,8 +15,9 @@ concurrency:
 
 jobs:
   build:
+    name: 'Build from ${{ inputs.environment }} env.'
     runs-on: ubuntu-latest
-    environment: production
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout to "${{ github.ref }}".
         uses: actions/checkout@v3
