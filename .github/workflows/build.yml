@@ -9,8 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
-  GOOGLE_ANALYTICS_ID_HC: 396647624
+  gavar: ${{ vars.GOOGLE_ANALYTICS_ID }}
+  GOOGLE_ANALYTICS_ID: 396647624
 
 jobs:
   build:
@@ -24,8 +24,8 @@ jobs:
       - run: npm ci
       - name: Build
         run: |
-          echo "GOOGLE_ANALYTICS_ID_HC: ${{ env.GOOGLE_ANALYTICS_ID_HC }};"
-          echo "GOOGLE_ANALYTICS_ID: ${{ env.GOOGLE_ANALYTICS_ID }};"
+          echo "gavar: ${{ env.gavar }};"
+          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
 
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ env.GOOGLE_ANALYTICS_ID }} \
           npm run build
