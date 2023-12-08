@@ -6,7 +6,14 @@ import ReactGA from 'react-ga4';
 
 export default function App({ Component, pageProps }: AppProps<Record<string, unknown>>) {
   useEffect(() => {
-    ReactGA.initialize('396647624');
+    const GOOGLE_ANALYTICS_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
+
+    console.log('GOOGLE_ANALYTICS_ID:', GOOGLE_ANALYTICS_ID);
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+
+    if (GOOGLE_ANALYTICS_ID) {
+      ReactGA.initialize(GOOGLE_ANALYTICS_ID);
+    }
   }, []);
   return <Component {...pageProps} />;
 }
