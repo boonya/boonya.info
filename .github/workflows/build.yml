@@ -24,7 +24,8 @@ jobs:
       - run: npm ci
       - name: Build
         run: |
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ env.GOOGLE_ANALYTICS_ID }}
+          # NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ env.GOOGLE_ANALYTICS_ID }}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=396647624
           npm run build
       - uses: actions/upload-pages-artifact@v2
         with:
