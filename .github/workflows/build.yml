@@ -15,7 +15,6 @@ concurrency:
 
 jobs:
   build:
-    name: 'Build from ${{ inputs.environment }} env.'
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
@@ -25,17 +24,9 @@ jobs:
         with:
           node-version-file: '.nvmrc'
       - run: npm ci
-      - name: Build
-        run: |
-          echo "gavar: ${{ env.gavar }};"
-          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
-          echo "env.GOOGLE_ANALYTICS_ID: ${{ env.GOOGLE_ANALYTICS_ID }};"
-          echo "inputs.GOOGLE_ANALYTICS_ID: ${{ inputs.GOOGLE_ANALYTICS_ID }};"
-          echo "env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
-
-          npm run build
+      - run: npm run build
         env:
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ inputs.GOOGLE_ANALYTICS_ID }}
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       - uses: actions/upload-pages-artifact@v2
         with:
           name: bundle
