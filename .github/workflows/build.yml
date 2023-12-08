@@ -3,6 +3,9 @@ name: Build
 on:
   workflow_dispatch:
   workflow_call:
+    inputs:
+      GOOGLE_ANALYTICS_ID:
+        type: string
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -23,6 +26,7 @@ jobs:
           echo "gavar: ${{ env.gavar }};"
           echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
           echo "env.GOOGLE_ANALYTICS_ID: ${{ env.GOOGLE_ANALYTICS_ID }};"
+          echo "inputs.GOOGLE_ANALYTICS_ID: ${{ inputs.GOOGLE_ANALYTICS_ID }};"
           echo "env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
 
           npm run build

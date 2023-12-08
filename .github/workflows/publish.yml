@@ -16,14 +16,25 @@ concurrency:
 jobs:
   vars:
     runs-on: ubuntu-latest
+    permissions:
+      pages: read
+    environment:
+      name: production
     steps:
-      - name: Debug
+      - name: Debug 1
         run: |
           echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
 
   build:
-    uses: ./.github/workflows/build.yml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Debug 2
+        run: |
+          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
+      - uses: ./.github/workflows/build.yml
+        with:
+          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
   deploy:
     needs: build
@@ -32,16 +43,15 @@ jobs:
     permissions:
       pages: write # to deploy to Pages
       id-token: write # to verify the deployment originates from an appropriate source
-    environment:
-      name: production
+    environment: production
     steps:
-      - name: Debug
+      - name: Debug 3
         run: |
           echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
           artifact_name: bundle
-      - name: Debug
+      - name: Debug 4
         run: |
           echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
