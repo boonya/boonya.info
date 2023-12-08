@@ -26,9 +26,12 @@ jobs:
         run: |
           echo "gavar: ${{ env.gavar }};"
           echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
+          echo "env.GOOGLE_ANALYTICS_ID: ${{ env.GOOGLE_ANALYTICS_ID }};"
+          echo "env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
 
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID=${{ env.GOOGLE_ANALYTICS_ID }} \
           npm run build
+        env:
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: 396647624
       - uses: actions/upload-pages-artifact@v2
         with:
           name: bundle
