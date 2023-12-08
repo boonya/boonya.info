@@ -14,6 +14,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Debug
+        run: |
+          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
+
   build:
     uses: ./.github/workflows/build.yml
     secrets: inherit
@@ -28,8 +35,13 @@ jobs:
     environment:
       name: production
     steps:
+      - name: Debug
+        run: |
+          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
         with:
           artifact_name: bundle
+      - name: Debug
+        run: |
+          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"

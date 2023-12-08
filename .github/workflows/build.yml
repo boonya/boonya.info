@@ -8,10 +8,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  gavar: ${{ vars.GOOGLE_ANALYTICS_ID }}
-  GOOGLE_ANALYTICS_ID: 396647624
-
 jobs:
   build:
     runs-on: ubuntu-latest
