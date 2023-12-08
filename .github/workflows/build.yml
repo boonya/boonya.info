@@ -31,7 +31,7 @@ jobs:
 
           npm run build
         env:
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: 396647624
+          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ inputs.GOOGLE_ANALYTICS_ID }}
       - uses: actions/upload-pages-artifact@v2
         with:
           name: bundle

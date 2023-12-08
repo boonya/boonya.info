@@ -17,7 +17,7 @@ jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      GOOGLE_ANALYTICS_ID: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      GOOGLE_ANALYTICS_ID: 396647624
   # build:
   #   runs-on: ubuntu-latest
   #   environment: production
