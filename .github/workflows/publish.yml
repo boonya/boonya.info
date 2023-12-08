@@ -15,16 +15,20 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - name: Debug 2
-        run: |
-          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/build.yml
-        with:
-          GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+    uses: ./.github/workflows/build.yml
+    with:
+      GOOGLE_ANALYTICS_ID: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+  # build:
+  #   runs-on: ubuntu-latest
+  #   environment: production
+  #   steps:
+  #     # - name: Debug 2
+  #     #   run: |
+  #     #     echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
+  #     # - uses: actions/checkout@v3
+  #     - uses: ./.github/workflows/build.yml
+  #       with:
+  #         GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
 
   deploy:
     needs: build
@@ -35,13 +39,7 @@ jobs:
       id-token: write # to verify the deployment originates from an appropriate source
     environment: production
     steps:
-      - name: Debug 3
-        run: |
-          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
           artifact_name: bundle
-      - name: Debug 4
-        run: |
-          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
