@@ -20,10 +20,13 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-env:
-  environment: ${{ inputs.environment || 'production' }}
-
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "environment: ${{ inputs.environment || 'production' }};"
+
   build:
     uses: ./.github/workflows/build.yml
     with:

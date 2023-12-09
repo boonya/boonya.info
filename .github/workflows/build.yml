@@ -14,9 +14,15 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  debug:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "environment: ${{ inputs.environment || 'production' }};"
+
   build:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
+    environment: ${{ inputs.environment || 'production' }}
     steps:
       - name: Checkout to "${{ github.ref }}".
         uses: actions/checkout@v3
