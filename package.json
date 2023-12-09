@@ -34,7 +34,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fontsource/pangolin": "^5.0.8",
+    "@fontsource/shantell-sans": "^5.0.18",
     "@fontsource/ubuntu-mono": "^5.0.17",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",

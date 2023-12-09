@@ -3,11 +3,13 @@
 @tailwind utilities;
 
 @layer base {
-  @import '@fontsource/pangolin';
+  @import '@fontsource/shantell-sans';
+  @import '@fontsource/shantell-sans/latin.css';
+  @import '@fontsource/shantell-sans/cyrillic.css';
   @import '@fontsource/ubuntu-mono';
 
   html {
-    font-size: 25px;
+    @apply md:text-lg lg:text-xl xl:text-2xl;
   }
 
   html,
@@ -41,6 +43,14 @@
 @layer components {
   .btn {
     @apply rounded-md bg-gray-100 p-1 text-gray-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+  }
+
+  article p {
+    @apply mb-4;
+  }
+
+  article header h1 {
+    @apply font-bold;
   }
 }
 
