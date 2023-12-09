@@ -45,12 +45,35 @@
     @apply rounded-md bg-gray-100 p-1 text-gray-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
   }
 
-  article p {
+  article p,
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6 {
     @apply mb-4;
   }
 
+  article time {
+    @apply opacity-50 dark:opacity-70;
+  }
+
   article header h1 {
-    @apply font-bold;
+    @apply text-2xl font-bold;
+  }
+
+  article img {
+    max-width: 80%;
+    margin: auto;
+    border-radius: 5px;
+  }
+
+  article h6:last-of-type+ul>li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    list-style-position: inside;
   }
 }
 
