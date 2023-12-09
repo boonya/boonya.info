@@ -15,7 +15,7 @@ on:
       - debug
 
 env:
-  environment: ${{ inputs.environment }}
+  environment: ${{ inputs.environment || 'production' }}
 
 jobs:
   debug:
