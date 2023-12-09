@@ -31,7 +31,9 @@ jobs:
     permissions:
       pages: write # to deploy to Pages
       id-token: write # to verify the deployment originates from an appropriate source
-    environment: ${{ inputs.environment || 'production' }}
+    environment:
+      name: ${{ inputs.environment || 'production' }}
+      url: ${{ inputs.environment == 'staging' && 'https://staging.boonya.info' || 'https://boonya.info' }}
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
