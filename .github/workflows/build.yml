@@ -6,7 +6,6 @@ on:
     inputs:
       environment:
         type: string
-        required: true
         description: "Environment to deploy to"
 
 concurrency:
@@ -14,15 +13,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  debug:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          echo "environment: ${{ inputs.environment || 'production' }};"
-
   build:
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment || 'production' }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: Checkout to "${{ github.ref }}".
         uses: actions/checkout@v3
