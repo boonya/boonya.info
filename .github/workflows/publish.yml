@@ -2,6 +2,14 @@ name: Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        options:
+          - production
+          - staging
+        required: true
+        description: "Environment to deploy to"
   push:
     branches:
       - main
@@ -12,11 +20,14 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+env:
+  environment: ${{ inputs.environment || 'production' }}
+
 jobs:
   build:
     uses: ./.github/workflows/build.yml
     with:
-      environment: production
+      environment: ${{ inputs.environment || 'production' }}
 
   deploy:
     needs: build
@@ -25,7 +36,7 @@ jobs:
     permissions:
       pages: write # to deploy to Pages
       id-token: write # to verify the deployment originates from an appropriate source
-    environment: production
+    environment: ${{ inputs.environment || 'production' }}
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
