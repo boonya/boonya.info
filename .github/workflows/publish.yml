@@ -33,7 +33,7 @@ jobs:
       id-token: write # to verify the deployment originates from an appropriate source
     environment:
       name: ${{ inputs.environment || 'production' }}
-      url: ${{ inputs.environment == 'staging' && 'https://staging.boonya.info' || 'https://boonya.info' }}
+      url: "https://boonya.info"
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
