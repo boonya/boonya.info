@@ -20,8 +20,9 @@ env:
 jobs:
   debug:
     runs-on: ubuntu-latest
-    environment: ${{ env.environment }}
+    # environment: ${{ inputs.environment || 'production' }}
     steps:
       - run: |
           echo "env.environment: ${{ env.environment }};"
           echo "inputs.environment: ${{ inputs.environment }};"
+          echo "vars.environment: ${{ vars.environment }};"
