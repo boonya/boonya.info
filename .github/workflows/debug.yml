@@ -20,6 +20,7 @@ env:
 jobs:
   debug:
     runs-on: ubuntu-latest
+    environment: ${{ env.environment }}
     steps:
       - run: |
           echo "env.environment: ${{ env.environment }};"
