@@ -15,7 +15,7 @@ on:
       - main
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: "pages-${{ inputs.environment || 'production' }}"
   cancel-in-progress: true
 
 jobs:
