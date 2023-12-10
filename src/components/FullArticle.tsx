@@ -18,7 +18,7 @@ export default function FullArticle({ title, date, md }: Props) {
         </p>
         <Time value={date} withDistance />
       </header>
-      <Markdown value={md} topLevelHeading={2} />
+      <Markdown value={md} />
     </article>
   );
 }

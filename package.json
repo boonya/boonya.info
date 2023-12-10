@@ -31,7 +31,11 @@
   "scripts": {
     "start": "next dev",
     "build": "next build",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "code-style": "prettier -c .",
+    "format": "prettier --write .",
+    "verify": "npm run code-style && npm run lint && npm run type-check"
   },
   "dependencies": {
     "@fontsource/shantell-sans": "^5.0.18",

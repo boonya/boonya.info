@@ -26,7 +26,7 @@
     @apply flex h-full flex-col gap-8 p-4;
   }
 
-  #__next>main {
+  #__next > main {
     @apply flex flex-grow flex-col gap-8;
   }
 
@@ -45,12 +45,48 @@
     @apply rounded-md bg-gray-100 p-1 text-gray-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
   }
 
-  article p {
+  article p,
+  article h1,
+  article h2,
+  article h3,
+  article h4,
+  article h5,
+  article h6 {
     @apply mb-4;
   }
 
+  article time {
+    @apply opacity-50 dark:opacity-70;
+  }
+
   article header h1 {
-    @apply font-bold;
+    @apply text-2xl font-bold;
+  }
+
+  article :not(pre) > code {
+    background-color: rgb(255 217 64 / 18%);
+    padding: 0.2em 0.3em;
+    border-radius: 0.3em;
+  }
+
+  article a[target="_blank"]::after {
+    content: "↗";
+    margin-left: 0.2em;
+    font-size: 0.5em;
+    vertical-align: bottom;
+  }
+
+  article img {
+    max-width: 80%;
+    margin: auto;
+    border-radius: 5px;
+  }
+
+  article h6:last-of-type + ul > li {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-wrap: nowrap;
+    list-style-position: inside;
   }
 }
 
