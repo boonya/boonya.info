@@ -69,6 +69,13 @@
     border-radius: 0.3em;
   }
 
+  article a[target="_blank"]::after {
+    content: "↗";
+    margin-left: 0.2em;
+    font-size: 0.5em;
+    vertical-align: bottom;
+  }
+
   article img {
     max-width: 80%;
     margin: auto;

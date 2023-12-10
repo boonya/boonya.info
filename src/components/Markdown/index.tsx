@@ -1,9 +1,9 @@
 import MarkdownToJsx from 'markdown-to-jsx';
 import Image from './Image';
-import Link from 'next/link';
 import { HTMLAttributes, PropsWithChildren } from 'react';
 import slugify from 'slugify';
 import Code from './Code';
+import Anchor from './Anchor';
 
 type MarkdownProps = HTMLAttributes<HTMLDivElement> & {
   value: string;
@@ -12,7 +12,7 @@ type MarkdownProps = HTMLAttributes<HTMLDivElement> & {
 
 export default function Markdown({ value, noImages }: MarkdownProps) {
   const overrides = {
-    a: Link,
+    a: Anchor,
     img: noImages ? () => null : Image,
     pre: ({ children }: PropsWithChildren) => children,
     code: Code,

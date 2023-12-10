@@ -1,4 +1,5 @@
 .hljs {
+  line-height: 1.2;
   .linenumber {
     @apply inline-block min-w-fit select-none p-0.5 pr-4 text-right text-yellow-300;
   }
