@@ -18,7 +18,9 @@ export default function FullArticle({ title, date, md }: Props) {
         </p>
         <Time value={date} withDistance />
       </header>
-      <Markdown value={md} />
+      <section className="overflow-hidden">
+        <Markdown value={md} />
+      </section>
     </article>
   );
 }

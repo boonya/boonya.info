@@ -4,6 +4,8 @@ overrides:
   - files:
       - "*.yml"
       - "*.yaml"
+      - "*.css"
+      - "*.html"
     options:
       singleQuote: false
 plugins:
