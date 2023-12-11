@@ -11,7 +11,7 @@ type Props = PropsWithChildren<{
 }>;
 
 export default function RootLayout({ children, ...props }: Props) {
-  const title = props.title || `${pkg.name} :: ${pkg.description}`;
+  const title = props.title || pkg.description;
   const description = props.description || pkg.description;
   const keywords = props.keywords || pkg.keywords.join(', ');
   const author = props.author || pkg.author;

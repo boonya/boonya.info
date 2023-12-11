@@ -3,14 +3,12 @@ import { getArticles, getPages, getRedirects } from '@/utils/read-articles';
 import FullArticle from '@/components/FullArticle';
 import RootLayout from '@/components/RootLayout';
 import ListingPage from '@/pages/index';
-import pkg from '../../package.json';
 
 function Article({ title, md, ...props }: ReturnType<typeof getArticles>[number]) {
-  const pageTitle = `${pkg.name} :: ${title}`;
   const date = new Date(props.date);
 
   return (
-    <RootLayout title={pageTitle}>
+    <RootLayout title={title}>
       <main>
         <FullArticle title={title} date={date} md={md} />
       </main>
