@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Root доступ на пилосос Xiaomi STYTJ02YM (Viomi V8) Vacuum Robot
+title: Root доступ до пилососа Xiaomi STYTJ02YM (Viomi V8) Vacuum Robot
 permalink: /blog/root-styj02ym-robot-vacuum.html
 ---
 
@@ -11,13 +11,13 @@ permalink: /blog/root-styj02ym-robot-vacuum.html
 <!-- more -->
 
 Для початку перекидаємо вашого dust sucker'а пузом догори. Бачимо наклєєчку.
-![stiker](assets/IMG_20231209_214843.jpg)
+![stiker](assets/vacuum-stytj02ym/IMG_20231209_214843.jpg)
 
 Знімаємо рамку головної щітки, саму щітку і знаходимо чотири гвинта що потрібно викрутити малою хрестовою викруткою.
-![screws](assets/IMG_20231209_214652.jpg)
+![screws](assets/vacuum-stytj02ym/IMG_20231209_214652.jpg)
 
 Знімаємо кришку, витягаємо батарейку, відключаємо її розʼєм (1) і підключаємо дріт microUSB (2), але ще не підключаємо компʼютер.
-![socket](assets/IMG_20231209_214910.jpg)
+![socket](assets/vacuum-stytj02ym/IMG_20231209_214910.jpg)
 
 Справа в тому, що підключення до [ADB](https://en.wikipedia.org/wiki/Android_Debug_Bridge) сервера на девайсі можливе лише впродовж однієї-двох секунд з моменту завантаження операційної системи. Після цього робот закриває доступ до [ADB](https://en.wikipedia.org/wiki/Android_Debug_Bridge). До того ж підключення до shell нічого тобі не дасть тому, що попередньо потрібно замінити або відредагувати файл `/bin/adb_shell`. Наразі він має наступний контент:
 
@@ -71,9 +71,9 @@ while true; do (adb shell rm /etc/rc.d/S90robotManager && echo "Done") 2>&1 | gr
 Чекаємо на успішне виконання попередньої інструкції (якщо не вдалось відключаємо USB і повторюєм усе з початку).
 Після цього вже можна спокійно підключатись за допомогою `adb shell`. Якщо ти бачиш шось отаке, то це успіх.
 
-![Welcome Shell](assets/welcome-shell.jpg)
+![Welcome Shell](assets/vacuum-stytj02ym/welcome-shell.jpg)
 
-Тепер потрібно встановити [Dropbear](https://en.wikipedia.org/wiki/Dropbear_(software)) щоб уможливити підключення через [ssh](https://en.wikipedia.org/wiki/Secure_Shell). Звісно можна [зібрати його із сирців](https://github.com/mkj/dropbear) але простіше [скачати готовий бінарник](assets/dropbear_2015.71-2_sunxi.ipk) і встановити його.
+Тепер потрібно встановити [Dropbear](https://en.wikipedia.org/wiki/Dropbear_(software)) щоб уможливити підключення через [ssh](https://en.wikipedia.org/wiki/Secure_Shell). Звісно можна [зібрати його із сирців](https://github.com/mkj/dropbear) але простіше [скачати готовий бінарник](assets/vacuum-stytj02ym/dropbear_2015.71-2_sunxi.ipk) і встановити його.
 
 ```bash
 adb push dropbear_2015.71-2_sunxi.ipk /tmp

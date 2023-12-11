@@ -38,7 +38,7 @@ export default function Code({ className, children, ...rest }: Props) {
         {children}
       </SyntaxHighlighter>
       <button
-        className="btn absolute right-0 top-0 text-sm"
+        className="btn absolute right-0 top-0 text-xs"
         aria-label="Copy source to the clipboard"
         onClick={() => navigator.clipboard.writeText(children)}
       >
