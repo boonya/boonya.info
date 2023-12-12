@@ -65,6 +65,14 @@ launchctl load ~/Library/LaunchAgents/local.hidutilKeyMapping.plist
 launchctl start local.hidutilKeyMapping
 ```
 
-_Джерела:_
+##### Update at 2023-12-12
+Оновився сьогодні до MacOS версії Sonoma 14.2 і всьо... Ворекераунд більше не працює. Наразі рішення не маю. Додано лінки про все що знайшов по темі, щоб слідкувати.
+
+###### Джерела:
 
 - https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/
+- https://github.com/amarsyla/hidutil-key-remapping-generator
+- https://hidutil-generator.netlify.app/
+- https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/
+- https://developer.apple.com/library/archive/technotes/tn2450/_index.html
+- https://www.usb.org/sites/default/files/hut1_4.pdf
