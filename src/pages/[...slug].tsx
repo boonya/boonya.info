@@ -7,8 +7,9 @@ import ListingPage from '@/pages/index';
 function Article({title, md, ...props}: ReturnType<typeof getArticles>[number]) {
   const date = new Date(props.date);
 
+  // TODO: Description and keywords metatags [#24](https://github.com/boonya/boonya.info/issues/24)
   return (
-    <RootLayout title={title}>
+    <RootLayout title={title} description={`${md.slice(0, 160)}...`} keywords={''}>
       <main>
         <FullArticle title={title} date={date} md={md} />
       </main>

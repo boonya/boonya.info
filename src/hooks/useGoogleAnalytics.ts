@@ -13,10 +13,10 @@ export default function useGoogleAnalytics() {
   const value = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
 
   useEffect(() => {
-    // @ts-expect-error This is where we set the value.
-    window.__APP_GOOGLE_ANALYTICS_ID = value;
-    Object.freeze(window.__APP_GOOGLE_ANALYTICS_ID);
-
+    Object.defineProperty(window, '__APP_GOOGLE_ANALYTICS_ID', {
+      writable: false,
+      value,
+    });
     if (value) {
       ReactGA.initialize(value);
     }

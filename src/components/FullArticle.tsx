@@ -1,6 +1,7 @@
 import Markdown from '@/components/Markdown';
 import Time from './Time';
 import GoToMainPage from '@/components/GoToMainPage';
+import Comments from '@/components/Comments';
 
 type Props = {
   date: Date;
@@ -18,8 +19,9 @@ export default function FullArticle({title, date, md}: Props) {
         </p>
         <Time value={date} withDistance />
       </header>
-      <section className="overflow-hidden">
+      <section className="overflow-hidden grid gap-8">
         <Markdown value={md} />
+        <Comments />
       </section>
     </article>
   );
