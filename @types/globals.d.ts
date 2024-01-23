@@ -1,9 +1,6 @@
 import '@total-typescript/ts-reset';
 
 declare global {
-  interface Window {
-    __APP_GOOGLE_ANALYTICS_ID: string;
-  }
   /**
    * A really nice little type helper if you are trying to debug some
    * really complicated inheritance based inference.
