@@ -8,7 +8,7 @@ type Props = {
   title: string;
 };
 
-export default function FullArticle({ title, date, md }: Props) {
+export default function FullArticle({title, date, md}: Props) {
   return (
     <article className="grid gap-5">
       <header>

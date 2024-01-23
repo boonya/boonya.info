@@ -5,7 +5,7 @@ type Props = {
   total: number;
 };
 
-export default function Pagination({ total }: Props) {
+export default function Pagination({total}: Props) {
   const current = useCurrentNumber(total);
 
   const numbers = Object.keys(Array<null>(total).fill(null))

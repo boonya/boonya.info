@@ -8,7 +8,7 @@ type Props = {
   number: number;
 };
 
-export default function Item({ isFirst, isCurrent, number, label }: Props) {
+export default function Item({isFirst, isCurrent, number, label}: Props) {
   const href = isFirst ? `/` : `/page/${number}`;
 
   return (

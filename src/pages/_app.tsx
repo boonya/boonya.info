@@ -1,15 +1,10 @@
 // These styles apply to every route in the application
+import useGoogleAnalytics from '@/hooks/useGoogleAnalytics';
 import '@/styles/globals.css';
-import type { AppProps } from 'next/app';
-import { useEffect } from 'react';
-import ReactGA from 'react-ga4';
+import type {AppProps} from 'next/app';
 
-export default function App({ Component, pageProps }: AppProps<Record<string, unknown>>) {
-  useEffect(() => {
-    const GOOGLE_ANALYTICS_ID = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
-    if (GOOGLE_ANALYTICS_ID) {
-      ReactGA.initialize(GOOGLE_ANALYTICS_ID);
-    }
-  }, []);
+export default function App({Component, pageProps}: AppProps<Record<string, unknown>>) {
+  useGoogleAnalytics();
+
   return <Component {...pageProps} />;
 }

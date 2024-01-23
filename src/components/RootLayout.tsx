@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react';
+import React, {PropsWithChildren} from 'react';
 import Head from 'next/head';
 import pkg from '../../package.json';
 import formatDate from '@/utils/formatDate';
@@ -10,7 +10,7 @@ type Props = PropsWithChildren<{
   author?: string;
 }>;
 
-export default function RootLayout({ children, ...props }: Props) {
+export default function RootLayout({children, ...props}: Props) {
   const title = props.title || pkg.description;
   const description = props.description || pkg.description;
   const keywords = props.keywords || pkg.keywords.join(', ');
