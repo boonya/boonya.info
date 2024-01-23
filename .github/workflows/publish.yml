@@ -25,6 +25,7 @@ jobs:
     steps:
       - run: |
           echo "env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
+          echo "env.production.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ env.production.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
           echo "vars.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID }};"
           echo "NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${NEXT_PUBLIC_GOOGLE_ANALYTICS_ID};"
 
