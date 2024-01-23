@@ -1,21 +1,43 @@
-'use client';
-
 import Giscus from '@giscus/react';
+import {z} from 'zod';
+
+const schema = z.object({
+  repo: z.custom<`${string}/${string}`>((v) => {
+    return typeof v === 'string' ? /^[^\/]+\/[^\/]+$/iu.test(v) : false;
+  }),
+  repoId: z.string(),
+  category: z.string(),
+  categoryId: z.string(),
+});
 
 export default function Comments() {
-  // FIXME: Avoid hardcoded values [#25](https://github.com/boonya/boonya.info/issues/25)
-  return (
-    <Giscus
-      repo={'boonya/boonya.info'} // 👈 should be env var
-      repoId={'MDEwOlJlcG9zaXRvcnkyODMxMjkyNg=='} // 👈 should be env var
-      category={'Blog'} // 👈 should be env var
-      categoryId={'DIC_kwDOAbAFXs4CcpKP'} // 👈 should be env var
-      mapping="title"
-      reactionsEnabled="1"
-      emitMetadata="0"
-      inputPosition="bottom"
-      theme="preferred_color_scheme"
-      lang="uk"
-    />
-  );
+  try {
+    const env = {
+      repo: process.env.NEXT_PUBLIC_REPO,
+      repoId: process.env.NEXT_PUBLIC_REPO_ID,
+      category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
+      categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
+    };
+    const {repo, repoId, category, categoryId} = schema.parse(env);
+
+    return (
+      <Giscus
+        repo={repo}
+        repoId={repoId}
+        category={category}
+        categoryId={categoryId}
+        mapping="title"
+        reactionsEnabled="1"
+        emitMetadata="0"
+        inputPosition="bottom"
+        theme="preferred_color_scheme"
+        lang="uk"
+      />
+    );
+  } catch (err) {
+    console.groupCollapsed('Failed to load "giscus" comments.');
+    console.error(err);
+    console.groupEnd();
+    return null;
+  }
 }
