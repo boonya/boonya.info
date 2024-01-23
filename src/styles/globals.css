@@ -85,7 +85,11 @@
     @apply m-auto w-full xl:w-2/3;
   }
 
-  article h6:last-of-type + ul > li {
+  article #dzherela::after {
+    content: ":";
+  }
+
+  article #dzherela + ul > li {
     text-overflow: ellipsis;
     overflow: hidden;
     text-wrap: nowrap;

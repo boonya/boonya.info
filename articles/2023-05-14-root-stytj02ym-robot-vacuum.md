@@ -110,7 +110,7 @@ ln -s ../init.d/robotManager S90robotManager
 
 Всьо, можна збирати і перезавантажувати робота. Тепер можна спокійно підключатись до нього по ssh у разі потреби.
 
-###### Джерела
+## Джерела
 
 - https://itooktheredpill.irgendwo.org/2020/rooting-xiaomi-vacuum-robot/
 - https://blog.lupin.rocks/fixing-xiaomi-styj02ym-update-stuck-on-80/

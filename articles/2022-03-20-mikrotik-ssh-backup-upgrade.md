@@ -75,7 +75,7 @@ ssh $MIKROTIK_ADDRESS
 /system routerboard upgrade
 ```
 
-_Джерела:_
+## Джерела
 
 - https://mivilisnet.wordpress.com/2020/03/31/updating-mikrotik-router-from-the-command-line/
 - https://interface31.ru/tech_it/2020/02/bezopasnyy-rezhim-v-mikrotik-ili-kak-vsegda-ostavatsya-na-svyazi.html
