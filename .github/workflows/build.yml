@@ -23,11 +23,7 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
-      - run: |
-          echo "env.GOOGLE_ANALYTICS_ID: ${{ env.GOOGLE_ANALYTICS_ID }};"
-          echo "vars.GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }};"
-          echo "GOOGLE_ANALYTICS_ID: ${GOOGLE_ANALYTICS_ID};"
-          npm run build
+      - run: npm run build
         env:
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
       - uses: actions/upload-pages-artifact@v2
