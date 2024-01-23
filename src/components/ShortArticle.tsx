@@ -9,7 +9,7 @@ type Props = {
   md: string;
 };
 
-export default function ShortArticle({ permalink, title, date, md }: Props) {
+export default function ShortArticle({permalink, title, date, md}: Props) {
   const [intro] = md.split(/<!--\s*more\s*-->/mu);
 
   return (

@@ -1,6 +1,6 @@
-import { HTMLAttributes } from 'react';
+import {HTMLAttributes} from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { clsx } from 'clsx';
+import {clsx} from 'clsx';
 
 function parseLang(className?: string) {
   const lang = className?.replace('lang-', '');
@@ -14,9 +14,9 @@ function parseLang(className?: string) {
   }
 }
 
-type Props = HTMLAttributes<HTMLSpanElement> & { children: string };
+type Props = HTMLAttributes<HTMLSpanElement> & {children: string};
 
-export default function Code({ className, children, ...rest }: Props) {
+export default function Code({className, children, ...rest}: Props) {
   const lang = parseLang(className);
 
   if (!className) {

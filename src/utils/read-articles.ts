@@ -1,7 +1,7 @@
 import YAML from 'yaml';
 import path from 'path';
 import fs from 'fs';
-import { z } from 'zod';
+import {z} from 'zod';
 
 function transformRedirects(value: string | string[]) {
   if (typeof value === 'string') {
@@ -12,14 +12,14 @@ function transformRedirects(value: string | string[]) {
 
 function parseContent(raw: string) {
   const match = raw.match(/^-{3,}\n(?<meta>[.\s\S]+?)(?=-{3,}\n)-{3,}\n(?<md>[.\s\S]+)/mu);
-  const { meta, md } = match?.groups || {};
+  const {meta, md} = match?.groups || {};
   if (!meta || !md) {
     throw new Error('There is no valid content in this file.', {
-      cause: { raw, match },
+      cause: {raw, match},
     });
   }
 
-  const { permalink, title, redirect_from } = z
+  const {permalink, title, redirect_from} = z
     .object({
       permalink: z.string().trim(),
       title: z.string().trim(),
@@ -27,7 +27,7 @@ function parseContent(raw: string) {
     })
     .parse(YAML.parse(meta));
 
-  return { permalink, title, redirect_from, md };
+  return {permalink, title, redirect_from, md};
 }
 
 function processFile(filename: string, baseDir: string) {
@@ -40,9 +40,9 @@ function processFile(filename: string, baseDir: string) {
 
     const file = path.join(baseDir, filename);
     const rawContent = fs.readFileSync(file).toString();
-    return { date, ...parseContent(rawContent) };
+    return {date, ...parseContent(rawContent)};
   } catch (cause) {
-    throw new Error(`"${filename}" processing has failed.`, { cause });
+    throw new Error(`"${filename}" processing has failed.`, {cause});
   }
 }
 
@@ -59,7 +59,7 @@ function sortByDate(a: Article, b: Article) {
 }
 
 function normalize(data: Article) {
-  const { redirect_from, date, ...rest } = data;
+  const {redirect_from, date, ...rest} = data;
   return {
     ...rest,
     redirectFrom: redirect_from?.join(',') || '',
@@ -80,9 +80,9 @@ export function getArticles() {
 }
 
 export function getRedirects() {
-  type FromTo = { from: string; to: string; title: string };
+  type FromTo = {from: string; to: string; title: string};
   return readArticles().reduce<FromTo[]>(
-    (acc, { redirect_from, permalink, title }) => [
+    (acc, {redirect_from, permalink, title}) => [
       ...acc,
       ...(redirect_from?.reduce<FromTo[]>(
         (acc2, from) => [

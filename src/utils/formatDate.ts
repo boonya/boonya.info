@@ -1,4 +1,4 @@
-import { format as formatDate, formatRelative, formatDistance, isDate, Locale } from 'date-fns';
+import {format as formatDate, formatRelative, formatDistance, isDate, Locale} from 'date-fns';
 
 function sanitizeDateValue(value?: Date) {
   if (value !== undefined && !isDate(value)) {
@@ -25,7 +25,7 @@ export default function date(format: Format, value?: Date, locale?: Locale) {
   const dateObject = sanitizeDateValue(value);
   switch (format) {
     case 'relative':
-      return formatRelative(dateObject, new Date(), { locale });
+      return formatRelative(dateObject, new Date(), {locale});
     case 'distance':
       return formatDistance(dateObject, new Date(), {
         locale,
@@ -35,6 +35,6 @@ export default function date(format: Format, value?: Date, locale?: Locale) {
       // TODO: To figure out why
       // @ts-ignore
       const pattern = PATTERNS[format] || format;
-      return formatDate(dateObject, pattern, { locale });
+      return formatDate(dateObject, pattern, {locale});
   }
 }
