@@ -8,8 +8,8 @@ export default function Comments() {
     <Giscus
       repo={'boonya/boonya.info'} // 👈 should be env var
       repoId={'MDEwOlJlcG9zaXRvcnkyODMxMjkyNg=='} // 👈 should be env var
-      category={'Announcements'} // 👈 should be env var
-      categoryId={'DIC_kwDOAbAFXs4Cco9c'} // 👈 should be env var
+      data-category="Blog" // 👈 should be env var
+      data-category-id="DIC_kwDOAbAFXs4CcpKP" // 👈 should be env var
       mapping="title"
       reactionsEnabled="1"
       emitMetadata="0"
