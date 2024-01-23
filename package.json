@@ -40,6 +40,7 @@
   "dependencies": {
     "@fontsource/shantell-sans": "^5.0.18",
     "@fontsource/ubuntu-mono": "^5.0.17",
+    "@giscus/react": "^2.4.0",
     "clsx": "^2.0.0",
     "date-fns": "^2.30.0",
     "deepmerge": "^4.3.1",

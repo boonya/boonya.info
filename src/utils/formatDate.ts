@@ -32,8 +32,7 @@ export default function date(format: Format, value?: Date, locale?: Locale) {
         addSuffix: true,
       });
     default:
-      // TODO: To figure out why
-      // @ts-ignore
+      // @ts-expect-error It's okay. It gonna work.
       const pattern = PATTERNS[format] || format;
       return formatDate(dateObject, pattern, {locale});
   }
