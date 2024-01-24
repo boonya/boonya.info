@@ -1,15 +1,19 @@
 import Head from 'next/head';
 import {getArticles, getPages, getRedirects} from '@/utils/read-articles';
 import FullArticle from '@/components/FullArticle';
+import mdToTxt from 'markdown-to-txt';
 import RootLayout from '@/components/RootLayout';
 import ListingPage from '@/pages/index';
 
 function Article({title, md, ...props}: ReturnType<typeof getArticles>[number]) {
   const date = new Date(props.date);
+  const text = mdToTxt(md).replace(/\n/giu, '');
+  const description = `${text.slice(0, 160)}...`;
+  const keywords = '';
 
   // TODO: Description and keywords metatags [#24](https://github.com/boonya/boonya.info/issues/24)
   return (
-    <RootLayout title={title} description={`${md.slice(0, 160)}...`} keywords={''}>
+    <RootLayout title={title} description={description} keywords={keywords}>
       <main>
         <FullArticle title={title} date={date} md={md} />
       </main>
