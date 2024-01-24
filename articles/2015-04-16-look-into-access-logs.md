@@ -27,7 +27,7 @@ cat access.log | cut -d' ' -f1,7 | sort | uniq -c | sort -n
 
 В итоге имеем примерно такой вывод:
 
-```
+```txt
 5 72.46.135.146 /.7z
 5 72.46.135.146 /backup.tar.bz2
 5 72.46.135.146 /site.com.rar
