@@ -1,6 +1,6 @@
 import React, {PropsWithChildren} from 'react';
 import Head from 'next/head';
-import pkg from '../../package.json';
+import pkg from '@/../package.json';
 import formatDate from '@/utils/formatDate';
 
 type Props = PropsWithChildren<{

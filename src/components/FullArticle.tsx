@@ -19,7 +19,7 @@ export default function FullArticle({title, date, md}: Props) {
         </p>
         <Time value={date} withDistance />
       </header>
-      <section className="overflow-hidden grid gap-8">
+      <section className="grid gap-8 overflow-hidden">
         <Markdown value={md} />
         <Comments />
       </section>

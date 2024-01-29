@@ -30,6 +30,8 @@ jobs:
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           NEXT_PUBLIC_REPO_ID: ${{ github.repository_id }}
           NEXT_PUBLIC_REPO: ${{ github.repository }}
+          NEXT_PUBLIC_FARO_COLLECTOR_URL: ${{ vars.FARO_COLLECTOR_URL }}
+          NEXT_PUBLIC_ENVIRONMENT: ${{ inputs.environment }}
       - uses: actions/upload-pages-artifact@v2
         with:
           name: bundle

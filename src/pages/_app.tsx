@@ -2,9 +2,16 @@
 import useGoogleAnalytics from '@/hooks/useGoogleAnalytics';
 import '@/styles/globals.css';
 import type {AppProps} from 'next/app';
+import {FaroErrorBoundary} from '@grafana/faro-react';
+import useFaroCollector from '@/hooks/useFaroCollector';
 
 export default function App({Component, pageProps}: AppProps<Record<string, unknown>>) {
+  useFaroCollector();
   useGoogleAnalytics();
 
-  return <Component {...pageProps} />;
+  return (
+    <FaroErrorBoundary>
+      <Component {...pageProps} />
+    </FaroErrorBoundary>
+  );
 }
