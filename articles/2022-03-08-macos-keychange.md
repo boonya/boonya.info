@@ -73,6 +73,16 @@ launchctl start local.hidutilKeyMapping
 
 Оновився до Sonoma 14.3, після чого виконав `hidutil property --set ...` із **sudo** привілеями і, о чудо, кнопки свапнулися. Залишається порішати чого воно при завантаженні системи не спрацювало.
 
+## Update at 2024-02-19
+
+```sh
+sudo mv ~/Library/LaunchAgents/local.KeyRemapping.plist /Library/LaunchDaemons/
+sudo chown root:wheel /Library/LaunchDaemons/local.KeyRemapping.plist
+sudo launchctl load /Library/LaunchDaemons/local.KeyRemapping.plist
+```
+
+Порішало проблєму 👆
+
 ## Джерела
 
 - https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/
