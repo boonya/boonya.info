@@ -10,6 +10,7 @@
 
   html {
     @apply md:text-lg lg:text-xl xl:text-2xl;
+    color-scheme: light dark;
   }
 
   html,
@@ -18,20 +19,26 @@
     @apply h-full;
   }
 
-  body {
-    @apply bg-white text-amber-950 dark:bg-amber-950 dark:text-amber-100;
+  img,
+  picture,
+  svg {
+    max-width: 100%;
+    display: block;
   }
 
-  #__next {
-    @apply flex h-full flex-col gap-8 p-4;
+  main {
+    width: min(100ch, 100% - 4rem);
+    margin-inline: auto;
   }
 
-  #__next > main {
-    @apply flex flex-grow flex-col gap-8;
+  header,
+  footer {
+    text-align: center;
+    margin-block: 2rem;
   }
 
   a {
-    @apply text-amber-500 underline hover:text-amber-600 hover:no-underline aria-[current=true]:no-underline;
+    @apply text-slate-900 underline hover:text-slate-600 hover:no-underline aria-[current=true]:no-underline dark:text-slate-400 hover:dark:text-slate-500;
   }
 
   ul {
@@ -42,7 +49,7 @@
 
 @layer components {
   .btn {
-    @apply rounded-md bg-gray-100 p-1 text-gray-500 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
+    @apply rounded-md bg-gray-100 p-1 text-gray-600 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none;
   }
 
   article p,
@@ -56,10 +63,10 @@
   }
 
   article time {
-    @apply opacity-50 dark:opacity-70;
+    @apply text-slate-600 dark:text-slate-400;
   }
 
-  article header h1 {
+  article h1 {
     @apply text-2xl font-bold;
   }
 
@@ -73,11 +80,10 @@
     content: "↗";
     margin-left: 0.2em;
     font-size: 0.5em;
-    vertical-align: bottom;
+    vertical-align: top;
   }
 
   article img {
-    @apply m-auto max-w-full lg:max-w-lg;
     border-radius: 10px;
   }
 
