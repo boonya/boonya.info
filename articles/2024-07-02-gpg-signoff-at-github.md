@@ -1,12 +1,12 @@
 
 ---
 layout: post
-title: Як автоматично підписувати коміти та бачити це github
+title: GitHub commit "Verified"
 permalink: /blog/2024-07-02-gpg-signoff-at-github.html
 tags: #gpg #gpg-signoff #gpg-suite #macos
 ---
 
-Ти можеш підписувати власні коміти і теги щоб інші люди моглу бути певними, що зробив їх саме ти.
+Ти можеш підписувати власні коміти і теги, щоб інші люди могли бути певними, що зробив їх саме ти.
 Якщо коміт або тег містить GPG, SSH, або S/MIME підпис, GitHub помічає такі обʼєкти як "Verified" або "Partially verified."
 
 ![Приклад підписаного коміту в інтерфейсі GitHub](https://docs.github.com/assets/cb-17614/mw-1440/images/help/commits/verified-commit.webp)
