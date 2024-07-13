@@ -32,10 +32,11 @@
     "start": "next dev",
     "build": "next build",
     "lint": "next lint",
+    "test": "echo Not implemented yet",
     "typecheck": "tsc --noEmit",
     "codestyle": "prettier -c .",
     "format": "prettier --write",
-    "verify": "concurrently -c auto npm:codestyle npm:typecheck npm:lint"
+    "verify": "concurrently -c auto npm:codestyle npm:typecheck npm:lint npm:test"
   },
   "dependencies": {
     "@fontsource/shantell-sans": "^5.0.18",
