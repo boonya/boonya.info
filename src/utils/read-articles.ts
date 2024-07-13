@@ -2,6 +2,7 @@ import YAML from 'yaml';
 import path from 'path';
 import fs from 'fs';
 import {z} from 'zod';
+import mdToTxt from 'markdown-to-txt';
 
 function transformRedirects(value: string | string[]) {
   if (typeof value === 'string') {
@@ -19,15 +20,24 @@ function parseContent(raw: string) {
     });
   }
 
-  const {permalink, title, redirect_from} = z
+  const [intro] = md.split(/<!--\s*more\s*-->/mu);
+
+  const metadata = z
     .object({
       permalink: z.string().trim(),
       title: z.string().trim(),
+      description: z
+        .string()
+        .trim()
+        .optional()
+        .default(`${mdToTxt(md).replace(/\n/giu, ' ').slice(0, 160)}...`),
+      // TODO: Description and keywords metatags [#24](https://github.com/boonya/boonya.info/issues/24)
+      keywords: z.string().array().optional(),
       redirect_from: z.union([z.string(), z.string().array()]).transform(transformRedirects).optional(),
     })
     .parse(YAML.parse(meta));
 
-  return {permalink, title, redirect_from, md};
+  return {...metadata, intro: mdToTxt(intro), md};
 }
 
 function processFile(filename: string, baseDir: string) {

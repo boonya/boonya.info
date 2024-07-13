@@ -5,6 +5,7 @@ import {getWebInstrumentations, initializeFaro} from '@grafana/faro-web-sdk';
 import {TracingInstrumentation} from '@grafana/faro-web-tracing';
 import {type Faro} from '@grafana/faro-react';
 import pkg from '@/../package.json';
+import {ENVIRONMENT, FARO_COLLECTOR_URL} from '@/utils/constants';
 
 declare global {
   interface Window {
@@ -14,8 +15,8 @@ declare global {
 }
 
 export default function useFaroCollector() {
-  const url = process.env.NEXT_PUBLIC_FARO_COLLECTOR_URL?.trim();
-  const environment = process.env.NEXT_PUBLIC_ENVIRONMENT?.trim() || 'production';
+  const url = FARO_COLLECTOR_URL;
+  const environment = ENVIRONMENT;
 
   const faro = useRef<Faro | null>(null);
 
