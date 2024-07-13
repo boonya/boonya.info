@@ -3,7 +3,7 @@ import ShortArticle from '@/components/ShortArticle';
 import RootLayout from '@/components/RootLayout';
 import Pagination from '@/components/Pagination';
 import generateRssFeed from '@/utils/rss';
-import pkg from '../../package.json';
+import pkg from '@/../package.json';
 
 type Props = Awaited<ReturnType<typeof getStaticProps>>['props'];
 

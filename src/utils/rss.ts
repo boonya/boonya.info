@@ -1,7 +1,7 @@
 import fs from 'fs';
 import RSS from 'rss';
 import {ORIGIN} from '@/utils/constants';
-import pkg from '../../package.json';
+import pkg from '@/../package.json';
 
 type Article = {
   title: string;

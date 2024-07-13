@@ -1,5 +1,5 @@
 import RootLayout from '@/components/RootLayout';
-import pkg from '../../package.json';
+import pkg from '@/../package.json';
 import GoToMainPage from '@/components/GoToMainPage';
 
 export default function Page() {
