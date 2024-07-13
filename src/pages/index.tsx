@@ -1,7 +1,8 @@
-import {getPages} from '@/utils/read-articles';
+import {getArticles, getPages} from '@/utils/read-articles';
 import ShortArticle from '@/components/ShortArticle';
 import RootLayout from '@/components/RootLayout';
 import Pagination from '@/components/Pagination';
+import generateRssFeed from '@/utils/rss';
 import pkg from '../../package.json';
 
 type Props = Awaited<ReturnType<typeof getStaticProps>>['props'];
@@ -26,6 +27,14 @@ export default function Page({articles, totalPages}: Props) {
 
 // This function gets called at build time
 export async function getStaticProps() {
+  const allArticles = getArticles().map(({title, description, md, permalink, date}) => ({
+    title,
+    description: description ?? md.slice(0, 100),
+    url: permalink,
+    publishedAt: date,
+  }));
+  await generateRssFeed(allArticles);
+
   const pages = getPages();
   const articles = [...pages].pop()!;
 

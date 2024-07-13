@@ -1,5 +1,6 @@
 'use client';
 
+import {GOOGLE_ANALYTICS_ID} from '@/utils/constants';
 import {useEffect} from 'react';
 import ReactGA from 'react-ga4';
 
@@ -10,7 +11,7 @@ declare global {
 }
 
 export default function useGoogleAnalytics() {
-  const value = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID?.trim();
+  const value = GOOGLE_ANALYTICS_ID;
 
   useEffect(() => {
     Object.defineProperty(window, '__APP_GOOGLE_ANALYTICS_ID', {

@@ -19,15 +19,16 @@ function parseContent(raw: string) {
     });
   }
 
-  const {permalink, title, redirect_from} = z
+  const {permalink, title, redirect_from, description} = z
     .object({
       permalink: z.string().trim(),
       title: z.string().trim(),
+      description: z.string().trim().nullish().default(null),
       redirect_from: z.union([z.string(), z.string().array()]).transform(transformRedirects).optional(),
     })
     .parse(YAML.parse(meta));
 
-  return {permalink, title, redirect_from, md};
+  return {permalink, title, description, redirect_from, md};
 }
 
 function processFile(filename: string, baseDir: string) {

@@ -1,3 +1,4 @@
+import {GISCUS_CATEGORY_ID, REPO, REPO_ID, GISCUS_CATEGORY} from '@/utils/constants';
 import Giscus from '@giscus/react';
 import {z} from 'zod';
 
@@ -13,10 +14,10 @@ const schema = z.object({
 export default function Comments() {
   try {
     const env = {
-      repo: process.env.NEXT_PUBLIC_REPO,
-      repoId: process.env.NEXT_PUBLIC_REPO_ID,
-      category: process.env.NEXT_PUBLIC_GISCUS_CATEGORY,
-      categoryId: process.env.NEXT_PUBLIC_GISCUS_CATEGORY_ID,
+      repo: REPO,
+      repoId: REPO_ID,
+      category: GISCUS_CATEGORY,
+      categoryId: GISCUS_CATEGORY_ID,
     };
     const {repo, repoId, category, categoryId} = schema.parse(env);
 
