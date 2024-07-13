@@ -32,10 +32,10 @@
     "start": "next dev",
     "build": "next build",
     "lint": "next lint",
-    "type-check": "tsc --noEmit",
-    "code-style": "prettier -c .",
-    "format": "prettier --write .",
-    "verify": "npm run code-style && npm run lint && npm run type-check"
+    "typecheck": "tsc --noEmit",
+    "codestyle": "prettier -c .",
+    "format": "prettier --write",
+    "verify": "concurrently -c auto npm:codestyle npm:typecheck npm:lint"
   },
   "dependencies": {
     "@fontsource/shantell-sans": "^5.0.18",
@@ -67,6 +67,7 @@
     "@types/react-syntax-highlighter": "^15.5.10",
     "@types/rss": "^0.0.32",
     "autoprefixer": "^10.0.1",
+    "concurrently": "^8.2.2",
     "eslint": "^8.53.0",
     "eslint-config-next": "14.0.2",
     "postcss": "^8.4.31",
