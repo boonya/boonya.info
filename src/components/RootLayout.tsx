@@ -24,6 +24,7 @@ export default function RootLayout({children, ...props}: Props) {
         <meta name="description" content={description} />
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS 2.0" />
       </Head>
       {children}
       <footer className="flex w-full items-center gap-4 px-4">
