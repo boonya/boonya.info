@@ -5,9 +5,10 @@ import pkg from '../../package.json';
 
 type Article = {
   title: string;
-  description: string;
-  url: string;
-  publishedAt: string;
+  intro: string;
+  keywords?: string[];
+  permalink: string;
+  date: string;
 };
 
 export default async function generateRssFeed(articles: Article[]) {
@@ -17,17 +18,19 @@ export default async function generateRssFeed(articles: Article[]) {
     site_url: ORIGIN,
     feed_url: `${ORIGIN}/rss.xml`,
     // image_url: `${ORIGIN}/logo.jpeg`,
+    generator: 'boonya.info',
     pubDate: new Date(),
     copyright: `All rights reserved ${new Date().getFullYear()}`,
   });
 
   // Add each individual post to the feed.
-  articles.map(({title, description, url, publishedAt}) => {
+  articles.map(({title, intro, keywords, permalink, date}) => {
     feed.item({
+      url: ORIGIN + permalink,
       title,
-      description,
-      url: ORIGIN + url,
-      date: publishedAt,
+      description: intro,
+      categories: keywords,
+      date,
     });
   });
 

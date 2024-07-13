@@ -27,13 +27,7 @@ export default function Page({articles, totalPages}: Props) {
 
 // This function gets called at build time
 export async function getStaticProps() {
-  const allArticles = getArticles().map(({title, description, md, permalink, date}) => ({
-    title,
-    description: description ?? md.slice(0, 100),
-    url: permalink,
-    publishedAt: date,
-  }));
-  await generateRssFeed(allArticles);
+  await generateRssFeed(getArticles());
 
   const pages = getPages();
   const articles = [...pages].pop()!;
