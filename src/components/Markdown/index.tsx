@@ -22,7 +22,7 @@ export default function Markdown({value, noImages}: MarkdownProps) {
     <MarkdownToJsx
       options={{
         slugify: (value) => slugify(value, {lower: true}),
-        disableParsingRawHTML: true,
+        disableParsingRawHTML: false,
         overrides,
         wrapper: ({children}) => <div className="overflow-hidden">{children}</div>,
       }}
