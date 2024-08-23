@@ -1,0 +1,65 @@
+<html>
+	<head>
+		<title>SVG path playground</title>
+		<style>
+			body {
+				padding: 20px;
+				margin: 0;
+			}
+			h1 {
+				text-align: center;
+			}
+			textarea {
+				position: absolute;
+				top: 5;
+				left: 5;
+			}
+			.container {
+				max-height: 70vh;
+				display: flex;
+			}
+		</style>
+		<script>
+			window.defaultPath = [
+				'M 50 0',
+				'A 50 50 0 0 1 50 100',
+				'A 50 50 0 0 1 0 50',
+				'L 20 50',
+				'A 30 30 0 0 0 50 80',
+				'A 30 30 0 0 0 50 20',
+			].map((v) => v.trim()).join('\n');
+
+			window.onload = () => {
+				const container = document.querySelector('.container');
+				const svg = container.querySelector('svg');
+				const path = svg.querySelector('path');
+				const textfield = document.getElementById('textfield');
+				textfield.value = defaultPath;
+				path.setAttribute('d', defaultPath);
+				textfield.addEventListener('input', () => {
+					path.setAttribute('d', textfield.value.split('\n').join(' ').trim());
+				});
+			};
+		</script>
+	</head>
+	<body>
+		<h1>SVG path playground</h1>
+		<textarea id="textfield"></textarea>
+		<div class="container">
+			<svg viewBox="0 0 100 100">
+				<path d="M 50 0 L 100 100 L 0 100" fill="black" />
+			</svg>
+		</div>
+		<div>
+			<h2>To draw the slices we need only three commands:</h2>
+			<ul>
+				<li><b>M [x] [y]</b>: Move to the x,y position</li>
+				<li><b>L [x] [y]</b>: Draw line from the previous position to the x,y position</li>
+				<li><b>A [x radius] [y radius] [x-axis-rotation] [large-arc-flag] [sweep-flag] [x] [y]</b>: Draw an arc from the previous position to the x,y position</li>
+		</ul>
+		</div>
+		<footer>
+			Inspired by <a href="https://medium.com/@theAngularGuy/how-to-create-an-interactive-donut-chart-using-svg-107cbf0b5b6" target="_blank">this article</a>
+		</footer>
+	</body>
+</html>
