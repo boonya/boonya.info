@@ -70,7 +70,6 @@
 
       /**
        * @param {string[]} path
-       * @retruns {string}
        */
       function processPathTuple(path) {
         return path.map((v) => v.trim()).join("\n");
@@ -78,10 +77,13 @@
 
       /**
        * @param {string} value
-       * @retruns {string}
        */
       function cleanUpInput(value) {
-        return value.split("\n").trim().join(" ").trim();
+        return value
+          .split("\n")
+          .map((v) => v?.trim())
+          .join(" ")
+          .trim();
       }
 
       window.onload = () => {
