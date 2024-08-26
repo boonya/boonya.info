@@ -18,6 +18,7 @@ public/rss.xml
 
 # production
 /build
+public/rss.xml
 
 # misc
 .DS_Store

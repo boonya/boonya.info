@@ -1,65 +1,156 @@
 <html>
-	<head>
-		<title>SVG path playground</title>
-		<style>
-			body {
-				padding: 20px;
-				margin: 0;
-			}
-			h1 {
-				text-align: center;
-			}
-			textarea {
-				position: absolute;
-				top: 5;
-				left: 5;
-			}
-			.container {
-				max-height: 70vh;
-				display: flex;
-			}
-		</style>
-		<script>
-			window.defaultPath = [
-				'M 50 0',
-				'A 50 50 0 0 1 50 100',
-				'A 50 50 0 0 1 0 50',
-				'L 20 50',
-				'A 30 30 0 0 0 50 80',
-				'A 30 30 0 0 0 50 20',
-			].map((v) => v.trim()).join('\n');
+  <head>
+    <title>SVG path playground</title>
+    <style>
+      body {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        margin: 0 20px;
+      }
+      header h1 {
+        text-align: center;
+      }
+      main {
+        position: relative;
+      }
+      .controls {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 350px;
+      }
+      .controls textarea {
+        height: 200px;
+      }
+      .container {
+        max-height: 70vh;
+        display: flex;
+        opacity: 0;
+        transition: all 0.5s;
+      }
+      footer {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+    <script>
+      const variants = new Map([
+        ["circle", ["M 50 0", "A 50 50 0 0 1 50 100", "A 50 50 0 0 1 0 50", "A 50 50 0 0 1 50 0"]],
+        ["square", ["M 50 0", "L 100 50", "L 50 100", "L 0 50", "Z"]],
+        ["triangle", ["M 50 0", "L 100 100", "L 0 100", "Z"]],
+        [
+          "star",
+          [
+            "M 50 0",
+            "L 60 40",
+            "L 100 40",
+            "L 70 60",
+            "L 80 100",
+            "L 50 80",
+            "L 20 100",
+            "L 30 60",
+            "L 0 40",
+            "L 40 40",
+          ],
+        ],
+        [
+          "three-quater-donut",
+          [
+            "M 50 0",
+            "A 50 50 0 0 1 50 100",
+            "A 50 50 0 0 1 0 50",
+            "L 20 50",
+            "A 30 30 0 0 0 50 80",
+            "A 30 30 0 0 0 50 20",
+          ],
+        ],
+      ]);
+      const DEFAULT_VARIANT = "three-quater-donut";
 
-			window.onload = () => {
-				const container = document.querySelector('.container');
-				const svg = container.querySelector('svg');
-				const path = svg.querySelector('path');
-				const textfield = document.getElementById('textfield');
-				textfield.value = defaultPath;
-				path.setAttribute('d', defaultPath);
-				textfield.addEventListener('input', () => {
-					path.setAttribute('d', textfield.value.split('\n').join(' ').trim());
-				});
-			};
-		</script>
-	</head>
-	<body>
-		<h1>SVG path playground</h1>
-		<textarea id="textfield"></textarea>
-		<div class="container">
-			<svg viewBox="0 0 100 100">
-				<path d="M 50 0 L 100 100 L 0 100" fill="black" />
-			</svg>
-		</div>
-		<div>
-			<h2>To draw the slices we need only three commands:</h2>
-			<ul>
-				<li><b>M [x] [y]</b>: Move to the x,y position</li>
-				<li><b>L [x] [y]</b>: Draw line from the previous position to the x,y position</li>
-				<li><b>A [x radius] [y radius] [x-axis-rotation] [large-arc-flag] [sweep-flag] [x] [y]</b>: Draw an arc from the previous position to the x,y position</li>
-		</ul>
-		</div>
-		<footer>
-			Inspired by <a href="https://medium.com/@theAngularGuy/how-to-create-an-interactive-donut-chart-using-svg-107cbf0b5b6" target="_blank">this article</a>
-		</footer>
-	</body>
+      /**
+       * @param {string[]} path
+       * @retruns {string}
+       */
+      function processPathTuple(path) {
+        return path.map((v) => v.trim()).join("\n");
+      }
+
+      /**
+       * @param {string} value
+       * @retruns {string}
+       */
+      function cleanUpInput(value) {
+        return value.split("\n").trim().join(" ").trim();
+      }
+
+      window.onload = () => {
+        const svgPath = document.querySelector("svg > path");
+        const textField = document.getElementById("textfield");
+        const shapeSelector = document.getElementById("shape-selector");
+
+        const defaultPath = processPathTuple(variants.get(DEFAULT_VARIANT));
+        textField.value = defaultPath;
+        svgPath.setAttribute("d", defaultPath);
+
+        textField.addEventListener("input", ({target}) => {
+          svgPath.setAttribute("d", cleanUpInput(target.value));
+        });
+
+        shapeSelector.addEventListener("change", ({target}) => {
+          const variant = variants.get(target.value);
+          const path = processPathTuple(variant);
+          textField.value = path;
+          svgPath.setAttribute("d", path);
+        });
+
+        const container = document.querySelector(".container");
+        container.style = "opacity: 1";
+      };
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>SVG path playground</h1>
+    </header>
+    <main>
+      <div class="controls">
+        <select id="shape-selector">
+          <option value="circle">Circle</option>
+          <option value="square">Square</option>
+          <option value="triangle">Triangle</option>
+          <option value="star">Star</option>
+          <option value="three-quater-donut" selected>Three quater donut</option>
+        </select>
+        <textarea id="textfield"></textarea>
+      </div>
+      <div class="container">
+        <svg viewBox="0 0 100 100">
+          <path d="M 50 0 L 100 100 L 0 100" fill="black" />
+        </svg>
+      </div>
+      <div>
+        <h2>To draw the slices we need only three commands:</h2>
+        <ul>
+          <li><b>M [x] [y]</b>: Move to the x,y position</li>
+          <li><b>L [x] [y]</b>: Draw line from the previous position to the x,y position</li>
+          <li>
+            <b>A [x radius] [y radius] [x-axis-rotation] [large-arc-flag] [sweep-flag] [x] [y]</b>: Draw an arc from the
+            previous position to the x,y position
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Inspired by
+        <a
+          href="https://medium.com/@theAngularGuy/how-to-create-an-interactive-donut-chart-using-svg-107cbf0b5b6"
+          target="_blank"
+          >this article</a
+        >
+      </p>
+      <p>©️ boonya</p>
+    </footer>
+  </body>
 </html>
