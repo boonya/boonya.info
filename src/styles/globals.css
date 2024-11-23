@@ -26,6 +26,15 @@
     display: block;
   }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 500;
+  }
+
   main {
     width: min(100ch, 100% - 4rem);
     margin-inline: auto;
@@ -74,6 +83,17 @@
     background-color: rgb(255 217 64 / 18%);
     padding: 0.2em 0.3em;
     border-radius: 0.3em;
+  }
+
+  article pre:has(> code) {
+    @apply p-1;
+  }
+
+  article pre > code {
+    white-space: pre;
+    overflow: auto;
+    width: 100%;
+    display: block;
   }
 
   article a[target="_blank"]::after {
