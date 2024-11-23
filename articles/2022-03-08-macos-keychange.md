@@ -83,9 +83,21 @@ sudo launchctl load /Library/LaunchDaemons/local.KeyRemapping.plist
 
 Порішало проблєму 👆
 
-## 👎 Update at 2024-11-22
+## 👎 Update at 2024-11-20
 
 Оновився до **Sequoia 15.1**, знову не працює. Шукаю рішення.
+
+## 👍 Update at 2024-11-23
+
+[Знайшов](https://apple.stackexchange.com/questions/467341/hidutil-stopped-working-on-macos-14-2-update#answer-470622:~:text=Edit%20for%20MacOS%2015%20Sequoia%20Update) 🚀
+
+У відповіді на питання під заголовком **Edit for MacOS 15 Sequoia Update** [Kemal Erbakirci](https://apple.stackexchange.com/users/383122/kemal-erbakirci) радить додати **hidutil** до спика додатків яким дозволено моніторити пристрої вводу.
+
+Для цього необхідно відкрити меню **Системні параметри 👉 Приватність і безпека 👉 Контроль вводу**, натиснути "**+**" та знайти утіліту hidutil яка знаходиться за адресою `/usr/bin/hidutil`. Після цього увімкнути тоглік навпроти.
+
+❕ Увімнути відображення прихованих файлів у Finder можна за допомогою комбінації `Cmd` + `Shift` + `.`
+
+![Системні параметри -> Приватність і безпека -> Контроль вводу](/assets/2024-11-23-16.39.21.gif)
 
 ## Джерела
 
@@ -95,3 +107,5 @@ sudo launchctl load /Library/LaunchDaemons/local.KeyRemapping.plist
 - [Cannot remap keys on Macbook Pro with hidutils in macos sonoma @reddit.com](https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/)
 - [Remapping Keys in macOS 10.12 Sierra @developer.apple.com](https://developer.apple.com/library/archive/technotes/tn2450/_index.html)
 - [HID Usage Tables for Universal Serial Bus (USB) Version 1.4 @usb.org](https://www.usb.org/sites/default/files/hut1_4.pdf)
+- [launchctl broken? @reddit.com](https://www.reddit.com/r/MacOS/comments/kbko61/comment/gpv2to1/)
+- [hidutil stopped working on macOS 14.2 update @apple.stackexchange.com](https://apple.stackexchange.com/questions/467341/hidutil-stopped-working-on-macos-14-2-update)
