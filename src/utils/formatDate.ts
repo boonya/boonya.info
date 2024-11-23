@@ -1,4 +1,5 @@
 import {format as formatDate, formatRelative, formatDistance, isDate, Locale} from 'date-fns';
+import {uk} from 'date-fns/locale/uk';
 
 function sanitizeDateValue(value?: Date) {
   if (value !== undefined && !isDate(value)) {
@@ -21,7 +22,7 @@ const PATTERNS = {
 
 export type Format = keyof typeof PATTERNS | (string & {});
 
-export default function date(format: Format, value?: Date, locale?: Locale) {
+export default function date(format: Format, value?: Date, locale: Locale = uk) {
   const dateObject = sanitizeDateValue(value);
   switch (format) {
     case 'relative':
