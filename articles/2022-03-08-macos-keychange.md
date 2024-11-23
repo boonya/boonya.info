@@ -89,9 +89,9 @@ sudo launchctl load /Library/LaunchDaemons/local.KeyRemapping.plist
 
 ## Джерела
 
-- https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/
-- https://github.com/amarsyla/hidutil-key-remapping-generator
-- https://hidutil-generator.netlify.app/
-- https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/
-- https://developer.apple.com/library/archive/technotes/tn2450/_index.html
-- https://www.usb.org/sites/default/files/hut1_4.pdf
+- [Using hidutil to map macOS keyboard keys @rakhesh.com](https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/)
+- [Simple tool to generate HIDUTIL key remapping configurations for MacOS](https://hidutil-generator.netlify.app/)
+- [HIDUTIL key remapping generator for MacOS @github.com/amarsyla](https://github.com/amarsyla/hidutil-key-remapping-generator)
+- [Cannot remap keys on Macbook Pro with hidutils in macos sonoma @reddit.com](https://www.reddit.com/r/MacOS/comments/18g4vxn/cannot_remap_keys_on_macbook_pro_with_hidutils_in/)
+- [Remapping Keys in macOS 10.12 Sierra @developer.apple.com](https://developer.apple.com/library/archive/technotes/tn2450/_index.html)
+- [HID Usage Tables for Universal Serial Bus (USB) Version 1.4 @usb.org](https://www.usb.org/sites/default/files/hut1_4.pdf)
