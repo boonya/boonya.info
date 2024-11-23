@@ -1,4 +1,4 @@
-import {format as formatDate, formatRelative, formatDistance, isDate, Locale} from 'date-fns';
+import {format as formatDate, formatRelative, formatDistanceToNow, isDate, Locale} from 'date-fns';
 import {uk} from 'date-fns/locale/uk';
 
 function sanitizeDateValue(value?: Date) {
@@ -28,7 +28,7 @@ export default function date(format: Format, value?: Date, locale: Locale = uk) 
     case 'relative':
       return formatRelative(dateObject, new Date(), {locale});
     case 'distance':
-      return formatDistance(dateObject, new Date(), {
+      return formatDistanceToNow(dateObject, {
         locale,
         addSuffix: true,
       });
