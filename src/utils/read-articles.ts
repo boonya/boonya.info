@@ -110,7 +110,7 @@ export function getRedirects() {
   );
 }
 
-export const PAGE_SIZE = 5;
+export const PAGE_SIZE = 10;
 
 export function getPages(pageSize = PAGE_SIZE) {
   const array = getArticles().toReversed();
