@@ -1,4 +1,5 @@
 import '@/styles/globals.css';
+
 // These styles apply to every route in the application
 import useGoogleAnalytics from '@/hooks/useGoogleAnalytics';
 import type {AppProps} from 'next/app';
