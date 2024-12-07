@@ -30,7 +30,7 @@ jobs:
           NEXT_PUBLIC_GISCUS_CATEGORY: ${{ vars.GISCUS_CATEGORY }}
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           NEXT_PUBLIC_ORIGIN: ${{ vars.WEBSITE_ORIGIN }}
-          NEXT_PUBLIC_REPO_ID: ${{ github.repository_id }}
+          NEXT_PUBLIC_REPO_ID: MDEwOlJlcG9zaXRvcnkyODMxMjkyNg== # ${{ github.repository_id }}
           NEXT_PUBLIC_REPO: ${{ github.repository }}
           NODE_ENV: ${{ inputs.environment }}
       - uses: actions/upload-pages-artifact@v2
