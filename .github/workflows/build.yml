@@ -18,8 +18,8 @@ jobs:
     environment: ${{ inputs.environment }}
     steps:
       - name: Checkout to "${{ github.ref }}".
-        uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
@@ -30,10 +30,10 @@ jobs:
           NEXT_PUBLIC_GISCUS_CATEGORY: ${{ vars.GISCUS_CATEGORY }}
           NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
           NEXT_PUBLIC_ORIGIN: ${{ vars.WEBSITE_ORIGIN }}
-          NEXT_PUBLIC_REPO_ID: MDEwOlJlcG9zaXRvcnkyODMxMjkyNg== # ${{ github.repository_id }}
+          NEXT_PUBLIC_REPO_ID: ${{ vars.REPO_ID }}
           NEXT_PUBLIC_REPO: ${{ github.repository }}
           NODE_ENV: ${{ inputs.environment }}
-      - uses: actions/upload-pages-artifact@v2
+      - uses: actions/upload-pages-artifact@v3
         with:
           name: bundle
           path: out
