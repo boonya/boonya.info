@@ -73,7 +73,7 @@ while true; do (adb shell rm /etc/rc.d/S90robotManager && echo "Done") 2>&1 | gr
 
 ![Welcome Shell](assets/vacuum-stytj02ym/welcome-shell.jpg)
 
-Тепер потрібно встановити [Dropbear](https://en.wikipedia.org/wiki/Dropbear_(software)) щоб уможливити підключення через [ssh](https://en.wikipedia.org/wiki/Secure_Shell). Звісно можна [зібрати його із сирців](https://github.com/mkj/dropbear) але простіше [скачати готовий бінарник](assets/vacuum-stytj02ym/dropbear_2015.71-2_sunxi.ipk) і встановити його.
+Тепер потрібно встановити [Dropbear](<https://en.wikipedia.org/wiki/Dropbear_(software)>) щоб уможливити підключення через [ssh](https://en.wikipedia.org/wiki/Secure_Shell). Звісно можна [зібрати його із сирців](https://github.com/mkj/dropbear) але простіше [скачати готовий бінарник](assets/vacuum-stytj02ym/dropbear_2015.71-2_sunxi.ipk) і встановити його.
 
 ```bash
 adb push dropbear_2015.71-2_sunxi.ipk /tmp

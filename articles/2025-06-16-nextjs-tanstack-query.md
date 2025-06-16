@@ -80,7 +80,7 @@ export async function generateMetadata({params}: PageProps) {
   const id = Number((await params).id);
 
   const entity = await getEntity(id);
-  
+
   return {title: entity.title};
 }
 
@@ -194,7 +194,7 @@ export async function generateMetadata({params}: PageProps) {
   const id = Number((await params).id);
 
   const entity = await getEntityQuery.queryFn(id);
-  
+
   return {title: entity.title};
 }
 
