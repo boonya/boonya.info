@@ -132,9 +132,10 @@ export async function getEntity(id: number) {
 import {QueryKey} from '@tanstack/react-query';
 
 export class Query<
-  QueryFn extends (params: any) => any,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  QueryFn extends (...params: any[] | never) => any,
   Key extends QueryKey = QueryKey,
-  Params = Parameters<QueryFn>[0],
+  Params extends unknown[] | never = Parameters<QueryFn>,
   Data = ReturnType<QueryFn>,
 > {
   public queryFn: QueryFn;
@@ -145,17 +146,18 @@ export class Query<
     this.queryFn = queryFn;
   }
 
-  public getKey = (params: Partial<Params>) => {
-    return [...this.baseKey, params] as const;
+  public getKey = (...params: Params) => {
+    return [...this.baseKey, ...params] as const;
   };
 
-  public getQuery = (params: Params) => {
+  public getQuery = (...params: Params) => {
     return {
-      queryKey: this.getKey(params),
-      queryFn: () => this.queryFn(params) as Data,
+      queryKey: this.getKey(...params),
+      queryFn: () => this.queryFn(...params) as Data,
     };
   };
 }
+
 ```
 
 Із типами ще до кінця не розібрався, щоб було максимально гарно, але цим вже можна користуватись.
