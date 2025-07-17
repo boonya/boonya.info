@@ -53,13 +53,13 @@ done
 
 ```bash
 cd mp3_output
-tar -czf GLaDOS.STYTJ02YM.tar.gz `ls -A`
-md5sum GLaDOS.STYTJ02YM.tar.gz
+tar -czf GLaDOS.STYTJ02YM.tgz `ls -A`
+md5sum GLaDOS.STYTJ02YM.tgz
 ```
 
-```md5
-81677139424497319377e40e841a5ae2
-```
+| name                                                                                                                                              | md5                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
+| [GLaDOS.STYTJ02YM.tgz](https://github.com/boonya/boonya.info/raw/refs/heads/vacuum-soundpack/public/assets/vacuum-stytj02ym/GLaDOS.STYTJ02YM.tgz) | `81677139424497319377e40e841a5ae2` |
 
 #### Sources
 
