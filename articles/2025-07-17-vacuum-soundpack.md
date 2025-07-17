@@ -51,6 +51,15 @@ done
 - Converted .mp3 files go into mp3_output/.
 - md5.ini contains lines like:
 
+```bash
+cd mp3_output
+tar -czf GLaDOS.STYTJ02YM.tar.gz `ls -A`
+md5sum GLaDOS.STYTJ02YM.tar.gz
+```
+
+```md5
+81677139424497319377e40e841a5ae2
+```
 
 #### Sources
 
