@@ -5,6 +5,8 @@ permalink: /blog/update-firefox-ubuntu.html
 redirect_from:
   - /blog/3-update-firefox-ubuntu.html
   - /my-blog/update-firefox-ubuntu.html
+createdAt: 2011-10-27
+description: Простой способ обновить Mozilla Firefox в Ubuntu до актуальной версии через терминал используя PPA репозиторий.
 ---
 
 Для того чтобы обновить **Mozilla Firefox** в **Ubuntu** до актуальной версии достаточно в терминале ввести команду:

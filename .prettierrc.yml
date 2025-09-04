@@ -10,4 +10,5 @@ overrides:
     options:
       singleQuote: false
 plugins:
-  - prettier-plugin-tailwindcss
+  - "prettier-plugin-astro"
+  - "prettier-plugin-tailwindcss"

@@ -1,0 +1,38 @@
+---
+import {getCollection, getEntry, render, type CollectionEntry} from 'astro:content';
+import GlobalLayout from '@/layouts/Root.astro';
+import Article from '@/components/FullArticle.astro';
+
+const lang = 'uk';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articles', ({data}) => {
+    // if (data.lang !== lang) return false;
+    if (data.draft) return false;
+    return true;
+  });
+
+  return posts.flatMap((post) => {
+    return [
+      {params: {path: post.data.permalink}, props: post},
+      ...post.data.redirect_from.map((value) => ({
+        params: {path: value},
+        props: post,
+      })),
+    ];
+  });
+}
+
+const {path} = Astro.params;
+const {id, data} = Astro.props;
+
+if (path !== data.permalink.replace(/^\//, '')) {
+  return Astro.redirect(data.permalink);
+}
+---
+
+<GlobalLayout lang={lang}>
+  <main>
+    <Article id={id} />
+  </main>
+</GlobalLayout>

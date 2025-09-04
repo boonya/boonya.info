@@ -1,0 +1,17 @@
+---
+import GlobalLayout from '@/layouts/Root.astro';
+import config from '@/site.config';
+
+const title = 'Nothing found';
+const description = config.description;
+---
+
+<GlobalLayout lang="uk" title={title}>
+  <header>
+    <h1>{description}</h1>
+  </header>
+  <main>
+    <h1>{title}</h1>
+    <a href="/" class="text-xs"> До головної сторінки </a>
+  </main>
+</GlobalLayout>

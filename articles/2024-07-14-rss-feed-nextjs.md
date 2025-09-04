@@ -1,8 +1,12 @@
 ---
 layout: post
 title: Додаємо RSS feed до nextjs SSG додатка
+description: Як додати RSS канал до статичного сайту на Next.js використовуючи npm пакет rss для автоматичної генерації xml фіду.
+createdAt: 2024-07-14
 permalink: /blog/2024-07-13-rss-feed-nextjs.html
-tags: #RSS
+tags:
+  - RSS
+  - nextjs
 ---
 
 [RSS](https://en.wikipedia.org/wiki/RSS) дозволяє користувачам підписатись на оновлення матеріалів вашого сайту і отримувати цю інформацію будь яким зручним для нього способом.
@@ -10,7 +14,9 @@ tags: #RSS
 Про те як додати RSS feed до вашого сайту cтвореному на основі Nextjs я спробую описати в даному матеріалі.
 
 <div style="max-width: 100px; margin: 1rem auto">
-![RSS Icon](/assets/rss-icon.svg)
+
+![RSS Icon](assets/rss-icon.svg)
+
 </div>
 
 <!--more-->

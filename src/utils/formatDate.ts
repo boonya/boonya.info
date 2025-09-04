@@ -1,4 +1,4 @@
-import {format as formatDate, formatRelative, formatDistanceToNow, isDate, Locale} from 'date-fns';
+import {format as formatDate, formatRelative, formatDistanceToNow, isDate, type Locale} from 'date-fns';
 import {uk} from 'date-fns/locale/uk';
 
 function sanitizeDateValue(value?: Date) {
@@ -17,6 +17,7 @@ const PATTERNS = {
   'date.long': 'PPP',
   'date.short': 'P',
   'time.short': 'p',
+  'time.long': 'pp',
   'dateTime.medium': 'PPp',
 } as const;
 

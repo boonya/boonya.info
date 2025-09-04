@@ -1,0 +1,27 @@
+---
+import {getCollection} from 'astro:content';
+import GlobalLayout from '@/layouts/Root.astro';
+import Article from '@/components/ShortArticle.astro';
+import config from '@/site.config';
+
+const lang = 'uk';
+
+const posts = (
+  await getCollection('articles', ({data}) => {
+    // if (data.lang !== lang) return false;
+    if (data.draft) return false;
+    return true;
+  })
+).sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
+
+const description = config.description;
+---
+
+<GlobalLayout lang={lang}>
+  <header>
+    <h1>{description}</h1>
+  </header>
+  <main>
+    {posts.map(({id}) => <Article id={id} />)}
+  </main>
+</GlobalLayout>

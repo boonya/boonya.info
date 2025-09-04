@@ -2,7 +2,13 @@
 layout: post
 title: GitHub commit "Verified"
 permalink: /blog/2024-07-02-gpg-signoff-at-github.html
-tags: #gpg #gpg-signoff #gpg-suite #macos
+tags:
+  - gpg
+  - gpg-signoff
+  - gpg-suite
+  - macos
+createdAt: 2024-07-02
+description: Налаштування GPG підпису комітів для верифікації авторства в GitHub через створення та конфігурацію GPG ключів.
 ---
 
 Ти можеш підписувати власні коміти і теги, щоб інші люди могли бути певними, що зробив їх саме ти.

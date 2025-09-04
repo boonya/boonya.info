@@ -2,6 +2,8 @@
 layout: post
 title: Создаем email aliases в вашем домене.
 permalink: /blog/email-aliases.html
+createdAt: 2015-07-28
+description: Настройка почтовых псевдонимов для вашего домена используя Postfix сервер для переадресации писем на основной ящик.
 ---
 
 Допустим, вы являетесь счастливым обладателем доменного имени `john.name` и

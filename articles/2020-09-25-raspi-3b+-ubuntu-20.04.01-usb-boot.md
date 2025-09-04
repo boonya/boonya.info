@@ -2,6 +2,8 @@
 layout: post
 title: Ubuntu Server 20.04.1 LTS (Focal Fossa)(ARM64) для Raspberry PI 3 B+ без использования SD карты.
 permalink: /blog/raspi-3b+-ubuntu-20.04.01-usb-boot.html
+createdAt: 2020-09-25
+description: Обновленная инструкция по установке Ubuntu Server 20.04.1 на USB диск для Raspberry Pi 3 B+ с редактированием config.txt.
 ---
 
 Продолжение истории [из предыдущей заметки](/blog/raspi-ubuntu-usb-boot.html)... Есть официальный подготовленный для "малины" образ [Ubuntu Server 20.04.1 LTS (Focal Fossa)](https://ubuntu.com/download/raspberry-pi), но, как обычно, его загрузчик подразумевает запись на MicroSD карту со всеми вытекающими. Поколупавшись некоторое время в интернатах я набросал вот такую шпаргалку.
