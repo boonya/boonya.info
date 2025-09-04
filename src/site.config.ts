@@ -43,4 +43,8 @@ export default {
     (false as const),
   ga: (GOOGLE_ANALYTICS_ID && {id: GOOGLE_ANALYTICS_ID}) || (false as const),
   faro: (FARO_COLLECTOR_URL && {url: FARO_COLLECTOR_URL}) || (false as const),
+  /**
+   * @link https://docs.astro.build/en/reference/configuration-reference/#trailingslash
+   */
+  trailingSlashes: 'never',
 };
