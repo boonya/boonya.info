@@ -6,8 +6,8 @@ import '@fontsource/ubuntu-mono';
 import '@/global.css';
 
 import config from '@/site.config';
-import {ClientRouter} from 'astro:transitions';
-import RssIcon from '@/icons/Rss';
+// import {ClientRouter} from 'astro:transitions'; 👈 Giscus comment block does not work because of it
+// import RssIcon from '@/icons/Rss';
 import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 import GrafanaFaro from '@/components/GrafanaFaro.astro';
 
@@ -39,7 +39,7 @@ const author = Astro.props.author || config.author;
     <meta name="keywords" content={keywords} />
     <meta name="author" content={author} />
     <title>{title}</title>
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
     <GoogleAnalytics />
     <GrafanaFaro />
   </head>

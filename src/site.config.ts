@@ -38,9 +38,12 @@ export default {
         repoId: GISCUS_REPO_ID,
         category: GISCUS_CATEGORY,
         categoryId: GISCUS_CATEGORY_ID,
-        reactionsEnabled: true, // Enable reactions on post itself
       }) ||
     (false as const),
   ga: (GOOGLE_ANALYTICS_ID && {id: GOOGLE_ANALYTICS_ID}) || (false as const),
   faro: (FARO_COLLECTOR_URL && {url: FARO_COLLECTOR_URL}) || (false as const),
+  /**
+   * @link https://docs.astro.build/en/reference/configuration-reference/#trailingslash
+   */
+  trailingSlashes: 'never',
 };
