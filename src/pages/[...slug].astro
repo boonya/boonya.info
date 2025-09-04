@@ -14,20 +14,20 @@ export async function getStaticPaths() {
 
   return posts.flatMap((post) => {
     return [
-      {params: {path: post.data.permalink}, props: post},
-      ...post.data.redirect_from.map((value) => ({
-        params: {path: value},
+      {params: {slug: post.data.permalink}, props: post},
+      ...post.data.redirect_from.map((redirect_from) => ({
+        params: {slug: redirect_from},
         props: post,
       })),
     ];
   });
 }
 
-const {path} = Astro.params;
+const {slug} = Astro.params;
 const {id, data} = Astro.props;
 
-if (path !== data.permalink.replace(/^\//, '')) {
-  return Astro.redirect(data.permalink);
+if (slug !== data.permalink) {
+  return Astro.redirect(`/${data.permalink}.html`, 301);
 }
 ---
 

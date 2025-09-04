@@ -16,16 +16,7 @@ const PORT = z.coerce.number().min(1024).max(65535).optional().parse(env.PORT) ?
 export default defineConfig({
   site: ORIGIN,
   server: {port: PORT},
-  image: {
-    responsiveStyles: true,
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: {
-        limitInputPixels: false,
-      },
-    },
-  },
-  integrations: [react(), mdx(), sitemap()],
+  integrations: [react(), mdx() /**, sitemap() */],
   vite: {
     // TODO: Figure it out later
     // @ts-ignore
@@ -52,4 +43,29 @@ export default defineConfig({
       GOOGLE_ANALYTICS_ID: envField.string({context: 'client', access: 'public', optional: true}),
     },
   },
+  /**
+   * @link https://docs.astro.build/en/reference/configuration-reference/#image-options
+   */
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+    responsiveStyles: true,
+    layout: 'full-width',
+    breakpoints: [640, 960, 1280, 1920, 2560],
+  },
+  /**
+   * @link https://docs.astro.build/en/reference/configuration-reference/#buildformat
+   */
+  build: {
+    assets: '_assets',
+    format: 'file',
+  },
+  /**
+   * @link https://docs.astro.build/en/reference/configuration-reference/#trailingslash
+   */
+  trailingSlashes: 'never',
 });
