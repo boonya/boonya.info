@@ -30,7 +30,7 @@
     "node": "~22.19.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "lint": "echo 'Not implemented yet!'; exit 0",

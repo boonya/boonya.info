@@ -5,6 +5,32 @@
   --font-mono: "Ubuntu Mono", monospace;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root) {
+  animation: view-slide-out 0.5s ease-in-out;
+}
+
+::view-transition-new(root) {
+  animation: view-slide-in 0.5s ease-in-out;
+}
+
+@keyframes view-slide-in {
+  from {
+    translate: 100% 0;
+  }
+}
+
+@keyframes view-slide-out {
+  to {
+    translate: -100% 0;
+  }
+}
+
 @layer base {
   html {
     @apply md:text-lg md:leading-7 lg:text-xl lg:leading-7 xl:text-2xl xl:leading-8;
