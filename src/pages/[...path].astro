@@ -31,7 +31,13 @@ if (path !== data.permalink.replace(/^\//, '')) {
 }
 ---
 
-<GlobalLayout lang={lang}>
+<GlobalLayout
+  lang={lang}
+  title={data.title}
+  description={data.description}
+  keywords={data.keywords}
+  author={data.author}
+>
   <main>
     <Article id={id} />
   </main>

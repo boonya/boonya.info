@@ -12,6 +12,8 @@ const ArticleSchema = z.object({
     .string()
     .nonempty({message: 'Description is required.'})
     .max(160, {message: 'Description must be 160 characters or less.'}),
+  keywords: z.string().trim().array().optional(),
+  author: z.string().trim().optional(),
   createdAt: z.date(),
   updatedAt: z
     .union([z.date(), z.date().array()])
