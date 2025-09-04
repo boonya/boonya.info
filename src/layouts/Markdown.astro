@@ -1,0 +1,35 @@
+---
+import Layout from '@/layouts/Root.astro';
+import type {MarkdownLayoutProps} from 'astro';
+import config from '@/site.config';
+
+type Props = MarkdownLayoutProps<{
+  title?: string;
+  description?: string;
+}>;
+
+// Now, `frontmatter`, `url`, and other Markdown layout properties
+// are accessible with type safety
+const {frontmatter} = Astro.props;
+
+const title = frontmatter.title ?? config.title;
+const description = frontmatter.description ?? config.description;
+---
+
+<Layout lang="uk" title={title} description={description}>
+  <main>
+    <article class="grid gap-5">
+      <header>
+        <h1>{title}</h1>
+        <nav>
+          <a href="/">До головної сторінки</a>
+        </nav>
+      </header>
+      <section class="grid gap-8 overflow-hidden">
+        <div class="overflow-hidden">
+          <slot />
+        </div>
+      </section>
+    </article>
+  </main>
+</Layout>

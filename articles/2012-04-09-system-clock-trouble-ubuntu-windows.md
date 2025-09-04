@@ -3,6 +3,8 @@ layout: post
 title: Сбивается время при перезагрузке из Ubuntu в Windows.
 permalink: /blog/system-clock-trouble-ubuntu-windows.html
 redirect_from: /my-blog/system-clock-trouble-ubuntu-windows.html
+createdAt: 2012-04-09
+description: Решение проблемы неправильного времени в Windows после перезагрузки из Ubuntu на системах с двойной загрузкой.
 ---
 
 Недавно установил себе на переносной жесткий **Ubuntu 12.04**. Посмотрел что нового, порадовался изменениям и нововведениям, но... перезагрузившись в **Windows** обнаружил, что системные часы показывают на два часа меньше чем на самом деле. "Oooops" - подумал я - "что за дела"?

@@ -4,13 +4,22 @@
 
 ### Build time environment variables
 
-| Name                              | Required | Default      | Description           |
-| --------------------------------- | -------- | ------------ | --------------------- |
-| `NEXT_PUBLIC_FARO_COLLECTOR_URL`  | `false`  | `<no value>` |                       |
-| `NEXT_PUBLIC_GISCUS_CATEGORY_ID`  | `false`  | `<no value>` |                       |
-| `NEXT_PUBLIC_GISCUS_CATEGORY`     | `false`  | `<no value>` |                       |
-| `NEXT_PUBLIC_GOOGLE_ANALYTICS_ID` | `false`  | `<no value>` |                       |
-| `NEXT_PUBLIC_ORIGIN`              | `true`   | `<no value>` | `https://boonya.info` |
-| `NEXT_PUBLIC_REPO_ID`             | `false`  | `<no value>` |                       |
-| `NEXT_PUBLIC_REPO`                | `false`  | `<no value>` |                       |
-| `NODE_ENV`                        | `false`  | `production` |                       |
+| Name                  | Required | Default      | Description                                      |
+| --------------------- | -------- | ------------ | ------------------------------------------------ |
+| `BUILD`               | `true`   | `vo value`   | `${{ github.sha }}`                              |
+| `ENVIRONMENT`         | `true`   | `vo value`   | `${{ inputs.environment }}` testing              |
+| `FARO_COLLECTOR_URL`  | `false`  | `<no value>` | `${{ vars.FARO_COLLECTOR_URL }}`                 |
+| `GISCUS_CATEGORY_ID`  | `false`  | `<no value>` | `${{ vars.GISCUS_CATEGORY_ID }}`                 |
+| `GISCUS_CATEGORY`     | `false`  | `<no value>` | `${{ vars.GISCUS_CATEGORY }}` Blog               |
+| `GISCUS_REPO_ID`      | `false`  | `<no value>` | `${{ vars.REPO_ID }}`                            |
+| `GISCUS_REPO`         | `false`  | `<no value>` | `${{ github.repository }}` boonya/boonya.info    |
+| `GOOGLE_ANALYTICS_ID` | `false`  | `<no value>` | `${{ vars.GOOGLE_ANALYTICS_ID }}`                |
+| `NODE_ENV`            | `false`  | `production` | `development` \| `production`                    |
+| `ORIGIN`              | `true`   | `<no value>` | `${{ vars.WEBSITE_ORIGIN }}` https://boonya.info |
+
+### Dev env. vars
+
+| Name       | Required | Default      | Description                   |
+| ---------- | -------- | ------------ | ----------------------------- |
+| `NODE_ENV` | `false`  | `production` | `development` \| `production` |
+| `PORT`     | `false`  | `4321`       |                               |

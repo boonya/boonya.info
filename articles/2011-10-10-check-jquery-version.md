@@ -5,6 +5,8 @@ permalink: /blog/check-jquery-version.html
 redirect_from:
   - /blog/10-web-technology/javascript/jquery/1-check-jquery-version.html
   - /my-blog/check-jquery-version.html
+createdAt: 2011-10-10
+description: JavaScript сниппет для проверки установки библиотеки jQuery на сайте и определения её версии через консоль браузера.
 ---
 
 Иногда возникает необходимость проверить установлена ли на сайте **JavaScript библиотека jQuery** и если да, то какой она версии.

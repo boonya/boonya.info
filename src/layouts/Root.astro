@@ -1,0 +1,57 @@
+---
+import '@fontsource/shantell-sans';
+import '@fontsource/shantell-sans/latin.css';
+import '@fontsource/shantell-sans/cyrillic.css';
+import '@fontsource/ubuntu-mono';
+import '@/global.css';
+
+import config from '@/site.config';
+import {ClientRouter} from 'astro:transitions';
+import RssIcon from '@/icons/Rss';
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
+import GrafanaFaro from '@/components/GrafanaFaro.astro';
+
+interface Props {
+  lang: 'uk' | (string & {});
+  title?: string;
+  description?: string;
+  keywords?: string[];
+  author?: string;
+}
+
+const {lang} = Astro.props;
+const title = Astro.props.title || config.title;
+const description = Astro.props.description || config.description;
+const keywords = (Astro.props.keywords || config.keywords)
+  .map((v) => v?.trim())
+  .filter(Boolean)
+  .join(', ');
+const author = Astro.props.author || config.author;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="favicon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <title>{title}</title>
+    <ClientRouter />
+    <GoogleAnalytics />
+    <GrafanaFaro />
+  </head>
+  <body>
+    <slot />
+    <footer class="flex w-full items-center gap-4 px-4">
+      <div class="grow">
+        <p>(c) {config.title} {new Date().getFullYear()}</p>
+      </div>
+      <!-- <a href="/rss.xml" rel="noreferrer" target="_blank" title="RSS feed" aria-label="RSS feed">
+        <RssIcon />
+      </a> -->
+    </footer>
+  </body>
+</html>

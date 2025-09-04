@@ -1,4 +1,6 @@
-export default function Calendar(props: JSX.IntrinsicElements['svg']) {
+import type {JSX} from 'react';
+
+export default function RssIcon(props: JSX.IntrinsicElements['svg']) {
   return (
     <svg fill="#F86201" height="20" width="20" version="1.1" viewBox="0 0 504.4 504.4" aria-hidden {...props}>
       <g>

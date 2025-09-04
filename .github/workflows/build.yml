@@ -25,15 +25,16 @@ jobs:
       - run: npm ci
       - run: npm run build
         env:
-          NEXT_PUBLIC_FARO_COLLECTOR_URL: ${{ vars.FARO_COLLECTOR_URL }}
-          NEXT_PUBLIC_GISCUS_CATEGORY_ID: ${{ vars.GISCUS_CATEGORY_ID }}
-          NEXT_PUBLIC_GISCUS_CATEGORY: ${{ vars.GISCUS_CATEGORY }}
-          NEXT_PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
-          NEXT_PUBLIC_ORIGIN: ${{ vars.WEBSITE_ORIGIN }}
-          NEXT_PUBLIC_REPO_ID: ${{ vars.REPO_ID }}
-          NEXT_PUBLIC_REPO: ${{ github.repository }}
-          NODE_ENV: ${{ inputs.environment }}
+          BUILD: ${{ github.sha }}
+          ENVIRONMENT: ${{ inputs.environment }}
+          FARO_COLLECTOR_URL: ${{ vars.FARO_COLLECTOR_URL }}
+          GISCUS_CATEGORY_ID: ${{ vars.GISCUS_CATEGORY_ID }}
+          GISCUS_CATEGORY: ${{ vars.GISCUS_CATEGORY }}
+          GISCUS_REPO_ID: ${{ vars.REPO_ID }}
+          GISCUS_REPO: ${{ github.repository }}
+          GOOGLE_ANALYTICS_ID: ${{ vars.GOOGLE_ANALYTICS_ID }}
+          ORIGIN: ${{ vars.WEBSITE_ORIGIN }}
       - uses: actions/upload-pages-artifact@v3
         with:
           name: bundle
-          path: out
+          path: dist

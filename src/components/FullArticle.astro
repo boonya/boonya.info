@@ -1,0 +1,33 @@
+---
+import {getEntry, render} from 'astro:content';
+import Time from '@/components/Time';
+import Comments from '@/components/Comments.astro';
+
+interface Props {
+  id: string;
+}
+
+const entry = await getEntry('articles', Astro.props.id);
+if (!entry) {
+  throw new Error('Could not find blog post.');
+}
+
+const {permalink, title, createdAt, description} = entry.data;
+const {Content, headings} = await render(entry);
+---
+
+<article class="grid gap-5">
+  <header>
+    <h1>{title}</h1>
+    <nav>
+      <a href="/">До головної сторінки</a>
+    </nav>
+    <Time client:load value={createdAt} withDistance />
+  </header>
+  <section class="grid gap-8 overflow-hidden">
+    <div class="overflow-hidden">
+      <Content />
+      <Comments />
+    </div>
+  </section>
+</article>

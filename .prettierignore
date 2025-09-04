@@ -1,4 +1,5 @@
 # Ignore artifacts:
-.next/
-out/
+.astro/
+.vscode/
+dist/
 coverage/

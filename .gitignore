@@ -1,40 +1,30 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 .obsidian
 public/rss.xml
 
+# build output
+dist/
+# generated types
+.astro/
+!.astro/**/*.d.ts
+
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+node_modules/
 
-# testing
-/coverage
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# next.js
-/.next/
-/out/
+# typescript
+*.tsbuildinfo
 
-# production
-/build
-public/rss.xml
+# environment variables
+.env
+.env.production
+.env*.local
 
 # misc
 .DS_Store
 *.pem
-
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+.idea/
