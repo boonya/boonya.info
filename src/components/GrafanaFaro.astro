@@ -8,10 +8,10 @@ if (!config.faro) {
 }
 
 const {url} = config.faro;
-const {build, environment} = config;
+const {revision, environment} = config;
 ---
 
-<script is:inline define:vars={{url, name, build, environment}}>
+<script is:inline define:vars={{url, name, revision, environment}}>
   (function () {
     var webSdkScript = document.createElement('script');
 
@@ -23,7 +23,7 @@ const {build, environment} = config;
         url,
         app: {
           name,
-          version: build,
+          version: revision,
           environment,
         },
         sessionTracking: {

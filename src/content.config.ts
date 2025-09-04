@@ -1,7 +1,10 @@
 import {defineCollection, z} from 'astro:content';
 import {glob} from 'astro/loaders';
 
-const HrefSchema = z.string().startsWith('/');
+const HrefSchema = z
+  .string()
+  .startsWith('/')
+  .transform((v) => v.replace(/^\//, '').replace(/\.html$/, ''));
 
 const ArticleSchema = z.object({
   layout: z.enum(['post']).optional().default('post'),
@@ -19,7 +22,7 @@ const ArticleSchema = z.object({
     .union([z.date(), z.date().array()])
     .optional()
     .transform((v) => [v].flat().filter(Boolean)),
-  permalink: z.string().startsWith('/'),
+  permalink: HrefSchema,
   redirect_from: z
     .union([HrefSchema, HrefSchema.array()])
     .optional()

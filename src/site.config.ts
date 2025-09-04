@@ -12,10 +12,10 @@ import {
 } from 'astro:env/client';
 
 export default {
-  build: BUILD,
-  environment: ENVIRONMENT,
   // Absolute URL to the root of your published site, used for generating links and sitemaps.
   site: ORIGIN,
+  revision: BUILD,
+  environment: ENVIRONMENT,
   // The name of your site, used in the title and for SEO.
   title: name,
   // The description of your site, used for SEO and RSS feed.
@@ -42,8 +42,4 @@ export default {
     (false as const),
   ga: (GOOGLE_ANALYTICS_ID && {id: GOOGLE_ANALYTICS_ID}) || (false as const),
   faro: (FARO_COLLECTOR_URL && {url: FARO_COLLECTOR_URL}) || (false as const),
-  /**
-   * @link https://docs.astro.build/en/reference/configuration-reference/#trailingslash
-   */
-  trailingSlashes: 'never',
 };
