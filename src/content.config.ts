@@ -4,7 +4,7 @@ import {glob} from 'astro/loaders';
 const HrefSchema = z
   .string()
   .startsWith('/')
-  .transform((v) => v.replace(/^\//, '').replace(/\.html$/, ''));
+  .transform((v) => v.replace(/^\//, ''));
 
 const ArticleSchema = z.object({
   layout: z.enum(['post']).optional().default('post'),

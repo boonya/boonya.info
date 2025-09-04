@@ -27,7 +27,7 @@ const {slug} = Astro.params;
 const {id, data} = Astro.props;
 
 if (slug !== data.permalink) {
-  return Astro.redirect(`/${data.permalink}.html`, 301);
+  return Astro.redirect(`/${data.permalink}`, 301);
 }
 ---
 

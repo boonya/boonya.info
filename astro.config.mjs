@@ -16,7 +16,7 @@ const PORT = z.coerce.number().min(1024).max(65535).optional().parse(env.PORT) ?
 export default defineConfig({
   site: ORIGIN,
   server: {port: PORT},
-  integrations: [react(), mdx() /**, sitemap() */],
+  integrations: [react(), mdx(), sitemap()],
   vite: {
     // TODO: Figure it out later
     // @ts-ignore
