@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Керування живленням 3D-принтера з UI Klipper`а
+title: Керування живленням 3D-принтера з UI Klipper'а
 description: >-
   Керування живленням 3D-принтера Ender 3 V3 SE за допомогою реле, Raspberry Pi та Moonraker. Покрокова інструкція з підключення та налаштування.
 createdAt: 2025-09-14
