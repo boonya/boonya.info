@@ -122,7 +122,7 @@ sudo launchctl load /Library/LaunchDaemons/local.KeyRemapping.plist
 
 ❕ Увімнути відображення прихованих файлів у Finder можна за допомогою комбінації `Cmd` + `Shift` + `.`
 
-![Системні параметри -> Приватність і безпека -> Контроль вводу](assets/2024-11-23-16.39.21.gif)
+![Системні параметри -> Приватність і безпека -> Контроль вводу](assets/hidutil-permissions.gif)
 
 ## Джерела
 
