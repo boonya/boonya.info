@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Керування живленням 3D-принтера за UI Klipper`а
+title: Керування живленням 3D-принтера з UI Klipper`а
 description: >-
   Керування живленням 3D-принтера Ender 3 V3 SE за допомогою реле, Raspberry Pi та Moonraker. Покрокова інструкція з підключення та налаштування.
 createdAt: 2025-09-14
@@ -105,9 +105,11 @@ restart_klipper_when_powered: True
 restart_delay: 3
 ```
 
+## Результат
+
 Перезавантажуємо Moonraker і вуаля... Маємо ось такий файний перемикач, яким можна увімкнути чи вимкнути "гудєлку", коли це потрібно.
 
-![Перемикач живлення в інтерфейсі](assets/ender3v3-se-power-control/ui-toggle.gif)
+![Приклад роботи UI перемикача в інтерфейсі Fluidd](assets/ender3v3-se-power-control/ui-toggle.gif)
 
 ## Джерела
 
