@@ -1,15 +1,15 @@
-import {name, description, author, keywords} from '/package.json';
 import {
   BUILD,
   ENVIRONMENT,
-  ORIGIN,
-  GISCUS_REPO,
-  GISCUS_REPO_ID,
+  FARO_COLLECTOR_URL,
   GISCUS_CATEGORY,
   GISCUS_CATEGORY_ID,
-  FARO_COLLECTOR_URL,
+  GISCUS_REPO,
+  GISCUS_REPO_ID,
   GOOGLE_ANALYTICS_ID,
+  ORIGIN,
 } from 'astro:env/client';
+import {author, description, keywords, name} from '/package.json';
 
 export default {
   // Absolute URL to the root of your published site, used for generating links and sitemaps.

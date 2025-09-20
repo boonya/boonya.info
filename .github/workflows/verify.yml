@@ -13,16 +13,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  codestyle:
-    uses: ./.github/workflows/codestyle.yml
+  check:
+    uses: ./.github/workflows/check.yml
     secrets: inherit
 
-  linting:
-    uses: ./.github/workflows/linting.yml
-    secrets: inherit
-
-  typecheck:
-    uses: ./.github/workflows/typecheck.yml
+  types:
+    uses: ./.github/workflows/types.yml
     secrets: inherit
 
   testing:

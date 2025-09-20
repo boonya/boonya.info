@@ -1,3 +1,5 @@
+/** biome-ignore-all lint/suspicious/noUnknownAtRules: <https://biomejs.dev/linter/rules/use-sorted-classes/#important-notes> */
+/** biome-ignore-all lint/correctness/noUnknownTypeSelector: <// TODO: Let's figure it out later.> */
 @import "tailwindcss";
 
 @theme {

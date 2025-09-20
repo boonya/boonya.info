@@ -10,7 +10,11 @@ const ArticleSchema = z.object({
   layout: z.enum(['post']).optional().default('post'),
   lang: z.enum(['uk' /** , 'ru', 'en'**/]).optional().default('uk'),
   draft: z.boolean().optional().default(false),
-  title: z.string().trim().nonempty({message: 'Title is required.'}).max(60, {message: 'Title must be 60 characters or less.'}),
+  title: z
+    .string()
+    .trim()
+    .nonempty({message: 'Title is required.'})
+    .max(60, {message: 'Title must be 60 characters or less.'}),
   description: z
     .string()
     .nonempty({message: 'Description is required.'})
