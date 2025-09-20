@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Ubuntu Server 20.04.1 LTS (Focal Fossa)(ARM64) для Raspberry PI 3 B+ без использования SD карты.
+title: Ubuntu Server 20.04 LTS для Raspberry PI 3 B+ без SD карты
 permalink: /blog/raspi-3b+-ubuntu-20.04.01-usb-boot.html
 createdAt: 2020-09-25
 description: Обновленная инструкция по установке Ubuntu Server 20.04.1 на USB диск для Raspberry Pi 3 B+ с редактированием config.txt.

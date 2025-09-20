@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Як обʼєднати nextjs server functions із tanstack query і мати з того зиск.
+title: Nextjs server functions + tanstack query
 description: Ефективний підхід до поєднання Next.js серверних функцій з TanStack Query для універсального використання з кешуванням.
 createdAt: 2025-06-16
 permalink: /blog/2025-06-16-nextjs-tanstack-query.html
-tags:
+keywords:
   - nextjs
   - tanstack-query
   - integration

@@ -4,7 +4,7 @@ title: Як швидко оновити npm залежності
 description: Короткий гайд зі швидкого оновлення всіх npm залежностей проекту до найновіших версій.
 createdAt: 2024-11-23
 permalink: /blog/2024-11-23-npm-upgrade-dependencies.html
-tags:
+keywords:
   - npm
   - node
   - frontend
