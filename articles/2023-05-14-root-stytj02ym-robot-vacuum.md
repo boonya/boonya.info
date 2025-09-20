@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Root доступ до пилососа Xiaomi STYTJ02YM (Viomi V8) Vacuum Robot
+title: Root до пилососа Xiaomi STYTJ02YM (Viomi V8) Vacuum Robot
 permalink: /blog/root-styj02ym-robot-vacuum.html
 createdAt: 2023-05-14
 description: Детальна інструкція отримання root доступу до робот-пилососа Xiaomi для відключення від китайських серверів та локального керування.

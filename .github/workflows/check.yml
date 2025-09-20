@@ -1,12 +1,12 @@
-name: Code Style 🔎
+name: Code Style and Linting 🔎
 
 on:
   workflow_dispatch:
   workflow_call:
 
 jobs:
-  codestyle:
-    name: Code Style 🔎
+  check:
+    name: Biome check 🔎
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -14,4 +14,4 @@ jobs:
         with:
           node-version-file: ".nvmrc"
       - run: npm ci
-      - run: npm run codestyle
+      - run: npm run check

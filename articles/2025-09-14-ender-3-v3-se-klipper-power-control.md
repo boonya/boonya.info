@@ -5,7 +5,7 @@ description: >-
   Керування живленням 3D-принтера Ender 3 V3 SE за допомогою реле, Raspberry Pi та Moonraker. Покрокова інструкція з підключення та налаштування.
 createdAt: 2025-09-14
 permalink: /blog/ender-3-v3-se-klipper-power-control.html
-tags:
+keywords:
   - 3d print
   - printer
   - klipper

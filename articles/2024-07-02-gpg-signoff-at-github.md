@@ -2,7 +2,7 @@
 layout: post
 title: GitHub commit "Verified"
 permalink: /blog/2024-07-02-gpg-signoff-at-github.html
-tags:
+keywords:
   - gpg
   - gpg-signoff
   - gpg-suite

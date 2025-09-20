@@ -2,7 +2,16 @@ import type {JSX} from 'react';
 
 export default function RssIcon(props: JSX.IntrinsicElements['svg']) {
   return (
-    <svg fill="#F86201" height="20" width="20" version="1.1" viewBox="0 0 504.4 504.4" aria-hidden {...props}>
+    // biome-ignore lint/a11y/noSvgWithoutTitle: <This one is aria-hidden />
+    <svg
+      fill="#F86201"
+      height="20"
+      width="20"
+      version="1.1"
+      viewBox="0 0 504.4 504.4"
+      aria-hidden
+      {...props}
+    >
       <g>
         <g>
           <path

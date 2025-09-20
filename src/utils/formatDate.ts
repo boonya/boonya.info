@@ -1,4 +1,10 @@
-import {format as formatDate, formatRelative, formatDistanceToNow, isDate, type Locale} from 'date-fns';
+import {
+  format as formatDate,
+  formatDistanceToNow,
+  formatRelative,
+  isDate,
+  type Locale,
+} from 'date-fns';
 import {uk} from 'date-fns/locale/uk';
 
 function sanitizeDateValue(value?: Date) {
@@ -23,7 +29,11 @@ const PATTERNS = {
 
 export type Format = keyof typeof PATTERNS | (string & {});
 
-export default function date(format: Format, value?: Date, locale: Locale = uk) {
+export default function date(
+  format: Format,
+  value?: Date,
+  locale: Locale = uk,
+) {
   const dateObject = sanitizeDateValue(value);
   switch (format) {
     case 'relative':
@@ -33,9 +43,10 @@ export default function date(format: Format, value?: Date, locale: Locale = uk) 
         locale,
         addSuffix: true,
       });
-    default:
+    default: {
       // @ts-expect-error It's okay. It gonna work.
       const pattern = PATTERNS[format] || format;
       return formatDate(dateObject, pattern, {locale});
+    }
   }
 }
