@@ -16,7 +16,7 @@ keywords:
   - MacBook
   - клавіатура
   - hidutil
-  - ремаппінг клавіш
+  - ремапінг клавіш
   - європейська клавіатура
   - launchctl
   - Sonoma
@@ -40,13 +40,29 @@ keywords:
 
 ## Є така вбудована утиліта `hidutil`
 
-За допомогою однієї єдиної команди можно перевизначити розташування клавіш.
+За допомогою однієї єдиної команди можна перевизначити розташування клавіш.
 
 ```sh
-hidutil property --matching '{"VendorID":1452,"ProductID":833}' --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
 ```
 
 Це перемикає клавішу з кодом `0x700000035` з клавішею з кодом `0x700000064`.
+
+## Маленька, але важлива деталь
+
+Якщо ти маєш ще додаткові клавіатури, то краще ремапити кнопки тільки вбудованої. Для цього `hidutil` викликається із параметром `--matching` якому передаються відповідні VendorID та ProductID.
+
+Наступний конвеєр дасть тобі ті самі значення:
+
+```sh
+hidutil list | grep -i 'internal keyboard' | head -1 | awk '{print "{\"VendorID\":"$1",\"ProductID\":"$2"}"}'
+```
+
+А потім їх додай до `hidutil` ось так
+
+```sh
+hidutil property --matching '{"VendorID":0x5ac,"ProductID":0x341}' --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000035,"HIDKeyboardModifierMappingDst":0x700000064},{"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}'
+```
 
 ## Від ребута до ребута
 
@@ -65,7 +81,7 @@ hidutil property --matching '{"VendorID":1452,"ProductID":833}' --set '{"UserKey
             <string>/usr/bin/hidutil</string>
             <string>property</string>
             <string>--matching</string>
-            <string>{"VendorID":1452,"ProductID":833}</string>
+            <string>{"VendorID":0x5ac,"ProductID":0x341}</string>
             <string>--set</string>
             <string>{"UserKeyMapping": [{"HIDKeyboardModifierMappingSrc":0x700000035, "HIDKeyboardModifierMappingDst":0x700000064}, {"HIDKeyboardModifierMappingSrc":0x700000064,"HIDKeyboardModifierMappingDst":0x700000035}]}</string>
         </array>
@@ -75,6 +91,14 @@ hidutil property --matching '{"VendorID":1452,"ProductID":833}' --set '{"UserKey
 </plist>
 ```
 
+Також потрібно додати **hidutil** до списка додатків яким дозволено моніторити пристрої вводу.
+
+Відкриваємо меню **Системні параметри 👉 Приватність і безпека 👉 Контроль вводу**, натиснути `+` потім `Cmd+Shift+G` та `/usr/bin/hidutil`. Після цього увімкнути тоглік навпроти.
+
+❕ Увімкнути відображення прихованих файлів у Finder можна за допомогою комбінації `Cmd` + `Shift` + `.`
+
+![Системні параметри -> Приватність і безпека -> Контроль вводу](assets/hidutil-permissions.gif)
+
 Далі потрібно завантажити цей файл та запустити сервіс
 
 ```sh
@@ -83,20 +107,9 @@ sudo launchctl bootout system/local.keyboard_layout_remap 2>/dev/null
 sudo launchctl bootstrap system /Library/LaunchDaemons/local.keyboard_layout_remap.plist
 ```
 
-## 👍 Update at 2024-11-23
-
-[Знайшов](https://apple.stackexchange.com/questions/467341/hidutil-stopped-working-on-macos-14-2-update#answer-470622:~:text=Edit%20for%20MacOS%2015%20Sequoia%20Update) 🚀
-
-У відповіді на питання під заголовком **Edit for MacOS 15 Sequoia Update** [Kemal Erbakirci](https://apple.stackexchange.com/users/383122/kemal-erbakirci) радить додати **hidutil** до спика додатків яким дозволено моніторити пристрої вводу.
-
-Для цього необхідно відкрити меню **Системні параметри 👉 Приватність і безпека 👉 Контроль вводу**, натиснути `+` потім `Cmd+Shift+G` та `/usr/bin/hidutil`. Після цього увімкнути тоглік навпроти.
-
-❕ Увімнути відображення прихованих файлів у Finder можна за допомогою комбінації `Cmd` + `Shift` + `.`
-
-![Системні параметри -> Приватність і безпека -> Контроль вводу](assets/hidutil-permissions.gif)
-
 ## Джерела
 
+- [Edit for MacOS 15 Sequoia Update](https://apple.stackexchange.com/questions/467341/hidutil-stopped-working-on-macos-14-2-update#answer-470622:~:text=Edit%20for%20MacOS%2015%20Sequoia%20Update) 🚀
 - [Using hidutil to map macOS keyboard keys @rakhesh.com](https://rakhesh.com/mac/using-hidutil-to-map-macos-keyboard-keys/)
 - [Simple tool to generate HIDUTIL key remapping configurations for MacOS](https://hidutil-generator.netlify.app/)
 - [HIDUTIL key remapping generator for MacOS @github.com/amarsyla](https://github.com/amarsyla/hidutil-key-remapping-generator)
